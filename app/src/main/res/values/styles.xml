@@ -6,5 +6,7 @@
         <item name="colorPrimaryDark">#3498db</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
-
+    <style name="SplashTheme" parent="@android:style/Theme.Light.NoTitleBar">
+        <item name="android:windowBackground">@drawable/splash</item>
+    </style>
 </resources>
