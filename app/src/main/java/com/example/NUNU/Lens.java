@@ -8,11 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link Lens#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class Lens extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -21,7 +16,6 @@ public class Lens extends Fragment {
     public Lens() {
         // Required empty public constructor
     }
-
 
     public static Lens newInstance(String param1, String param2) {
         Lens fragment = new Lens();
@@ -44,7 +38,6 @@ public class Lens extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         return inflater.inflate(R.layout.fragment_lens, container, false);
     }
 }
