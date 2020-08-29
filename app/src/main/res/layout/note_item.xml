@@ -66,14 +66,22 @@
                     android:layout_marginLeft="20dp"
                     android:text="2020.08.09"
                     android:textSize="16sp" />
-
+                <TextView
+                    android:id="@+id/st_en"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:textColor="#333333"
+                    android:layout_toRightOf="@id/start_date"
+                    android:text="~"
+                    android:textSize="16sp"  />
                 <TextView
                     android:id="@+id/end_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginLeft="10dp"
                     android:textColor="#333333"
-                    android:layout_toRightOf="@id/start_date"
+                    android:layout_toRightOf="@id/st_en"
                     android:text="2020.10.09"
                     android:textSize="16sp"  />
 
