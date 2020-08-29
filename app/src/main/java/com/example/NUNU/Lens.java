@@ -1,43 +1,46 @@
 package com.example.NUNU;
 
+import android.content.Context;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+
 public class Lens extends Fragment {
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-    private String mParam1;
-    private String mParam2;
-    public Lens() {
-        // Required empty public constructor
-    }
 
-    public static Lens newInstance(String param1, String param2) {
-        Lens fragment = new Lens();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
+    RecyclerView recyclerView;
+    NoteAdapter adapter;
+    Context context;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_lens, container, false);
+
+        initUI(rootView);
+
+        return rootView;
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_lens, container, false);
+
+    private void initUI(ViewGroup rootView) {
+
+        recyclerView = rootView.findViewById(R.id.recyclerView);
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+        recyclerView.setLayoutManager(layoutManager);
+
+        adapter = new NoteAdapter();
+
+        adapter.addItem(new Note(0, "칵테일 먼슬리", 1, "2020.08.30", "2020.10.30"));
+        adapter.addItem(new Note(1, "메이크오버 원데이", 2, "2020.08.02", "2020.09.02"));
+        adapter.addItem(new Note(2, "아몬드 쵸코", 3, "2020.08.17", "2020.11.17"));
+
+        recyclerView.setAdapter(adapter);
     }
+
 }
