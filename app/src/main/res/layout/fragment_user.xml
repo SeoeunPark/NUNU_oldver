@@ -6,6 +6,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".User">
 
+    <!--
+    user 페이지는 3 부분으로 나눠져있음
+    1. 사용자 이름과 사용자에게 인사
+    2. 사용자의 시력 정보 및 보유 렌즈 수
+    3. 사용자의 시력 상태 변화를 보여주는 그래프
+    -->
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -54,8 +60,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="312dp"
-        android:orientation="vertical"
-        android:layout_marginTop="250dp">
+        android:layout_marginTop="250dp"
+        android:orientation="vertical">
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
@@ -66,22 +72,28 @@
             android:layout_marginBottom="5dp">
 
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
 
+                android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="300dp"
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="시력 상태 변화"
+                    android:textColor="#004182"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
 
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="시력 상태 변화"
-            android:textColor="#004182"
-            android:textSize="24sp"
-            android:textStyle="bold" />
-    </LinearLayout>
+                <com.github.mikephil.charting.charts.LineChart
+                    android:id="@+id/sightchart"
+                    android:layout_width="250dp"
+                    android:layout_height="250dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_gravity="center_horizontal"/>
+            </LinearLayout>
         </androidx.cardview.widget.CardView>
     </LinearLayout>
 </FrameLayout>
