@@ -11,8 +11,10 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab"
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
@@ -20,7 +22,9 @@
             android:layout_marginRight="10dp"
             android:layout_marginBottom="10dp"
             android:src="@drawable/plus"
-            />
+            app:backgroundTint="@color/colorAccent"
+            app:fabSize="auto"
+            app:maxImageSize="40dp" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab1"
@@ -32,11 +36,10 @@
             android:layout_marginBottom="70dp"
             android:src="@drawable/today"
             android:visibility="invisible"
-
-            app:backgroundTint="@color/color"
+            app:backgroundTint="#ffffff"
             app:elevation="6dp"
-            app:pressedTranslationZ="12dp"
-            />
+            app:maxImageSize="36dp"
+            app:pressedTranslationZ="12dp" />
         W
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -49,10 +52,10 @@
             android:layout_marginBottom="130dp"
             android:src="@drawable/month"
             android:visibility="invisible"
-            app:backgroundTint="@color/color"
+            app:backgroundTint="#ffffff"
             app:elevation="6dp"
-            app:pressedTranslationZ="12dp"
-            />
+            app:maxImageSize="36dp"
+            app:pressedTranslationZ="12dp" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
@@ -61,7 +64,6 @@
             android:layout_marginLeft="4dp"
             android:layout_marginRight="4dp"
             android:layout_marginBottom="8dp" />
-
 
     </RelativeLayout>
 </FrameLayout>

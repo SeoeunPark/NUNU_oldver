@@ -22,6 +22,9 @@ public class Lens extends Fragment implements View.OnClickListener{
     RecyclerView recyclerView;
     NoteAdapter adapter;
     Context context;
+    Oneday oneday;
+    Monthly monthly;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -68,6 +71,8 @@ public class Lens extends Fragment implements View.OnClickListener{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        oneday = new Oneday();
+        monthly = new Monthly();
     }
 
     @Override
@@ -79,20 +84,19 @@ public class Lens extends Fragment implements View.OnClickListener{
                 //Toast.makeText(getActivity(), "Floating Action Button", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.fab1:
-                anim();
+                //anim();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_layout, oneday).commitAllowingStateLoss();
                 //Toast.makeText(getActivity(),"Button1", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.fab2:
-                anim();
+                //anim();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_layout, monthly).commitAllowingStateLoss();
                 //Toast.makeText(getActivity(), "Button2", Toast.LENGTH_SHORT).show(); 버튼 누르면 토스트 발생, 지금은 필요없을 듯
                 break;
         }
-
-
     }
 
     public void anim() {
-
         if (isFabOpen) {
             fab.setImageResource(R.drawable.plus);
             fab1.startAnimation(fab_close);
