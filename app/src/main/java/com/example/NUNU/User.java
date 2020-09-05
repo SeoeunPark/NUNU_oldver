@@ -1,92 +1,107 @@
 package com.example.NUNU;
 
-import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
+import android.graphics.Color;
 import com.github.mikephil.charting.charts.LineChart;
-import com.github.mikephil.charting.components.Legend;
+import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
-import com.github.mikephil.charting.formatter.ValueFormatter;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.Locale;
-import java.util.concurrent.TimeUnit;
-
+import java.util.List;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 public class User extends Fragment {
-    LineChart chart;
+    View view;
+    private LineChart lineChart;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
+        public View onCreateView (LayoutInflater inflater, ViewGroup container, Bundle
+        savedInstanceState){
+            view = inflater.inflate(R.layout.fragment_user, container, false);
+            lineChart = (LineChart) view.findViewById(R.id.sightchart);
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_user,container,false);
-        initUI(rootView);
-        return rootView;
+            List<Entry> entry1 = new ArrayList<>();
+            entry1.add(new Entry(1, 1));
+            entry1.add(new Entry(2, 2));
+            entry1.add(new Entry(3, 0));
+            entry1.add(new Entry(4, 4));
+            entry1.add(new Entry(5, 3));
+
+            List<Entry> entry2 = new ArrayList<>();
+            entry2.add(new Entry(1, 5));
+            entry2.add(new Entry(2, 3));
+            entry2.add(new Entry(3, 1));
+            entry2.add(new Entry(4, -1));
+            entry2.add(new Entry(5, -3));
+            entry2.add(new Entry(6, -5));
+            entry2.add(new Entry(7, -8));
+            entry2.add(new Entry(8, -8));
+            entry2.add(new Entry(9, -10));
+            
+            LineDataSet set1 = new LineDataSet(entry1, "왼쪽 시력");
+            LineDataSet set2 = new LineDataSet(entry2, "오른쪽 시력");
+
+            set1.setAxisDependency(YAxis.AxisDependency.LEFT);
+            set1.setColor(ColorTemplate.getHoloBlue());
+            set1.setValueTextColor(ColorTemplate.getHoloBlue());
+            set1.setLineWidth(1.5f);
+            set1.setDrawCircles(true);
+            set1.setDrawValues(false);
+            set1.setFillAlpha(65);
+            set1.setFillColor(ColorTemplate.getHoloBlue());
+            set1.setHighLightColor(Color.rgb(244, 117, 117));
+            set1.setDrawCircleHole(false);
+
+            set2.setAxisDependency(YAxis.AxisDependency.LEFT);
+            set2.setColor(Color.parseColor("#646EFF"));
+            set2.setValueTextColor(Color.parseColor("#646EFF"));
+            set2.setLineWidth(1.5f);
+            set2.setDrawCircles(true);
+            set2.setDrawValues(false);
+            set2.setFillAlpha(65);
+            set1.setHighLightColor(Color.rgb(220, 180, 117));
+            set2.setDrawCircleHole(true);
+
+            LineData chartData = new LineData();
+            chartData.addDataSet(set1);
+
+            chartData.addDataSet(set2);
+            lineChart.setData(chartData);
+
+            XAxis xAxis = lineChart.getXAxis();
+            xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+            xAxis.setTextColor(Color.BLACK);
+            xAxis.enableGridDashedLine(8, 24, 0);
+
+            YAxis yLAxis = lineChart.getAxisLeft();
+            yLAxis.setTextColor(Color.BLACK);
+
+            YAxis yRAxis = lineChart.getAxisRight();
+            yRAxis.setDrawLabels(false);
+            yRAxis.setDrawAxisLine(false);
+            yRAxis.setDrawGridLines(false);
+
+            Description description = new Description();
+            description.setText("");
+
+            lineChart.setDoubleTapToZoomEnabled(false);
+            lineChart.setDrawGridBackground(false);
+            lineChart.setDescription(description);
+            //lineChart.animateY(2000, Easing.EasingOption.EaseInCubic);
+            lineChart.invalidate();
+            return view;
+        }
     }
-
-    private void initUI(ViewGroup rootView){
-        chart = rootView.findViewById(R.id.sightchart);
-        chart.getDescription().setEnabled(false);
-        chart.setDrawGridBackground(false);
-        chart.setBackgroundColor(Color.WHITE);
-        chart.setViewPortOffsets(0,0,0,0);
-
-        Legend legend = chart.getLegend();
-        legend.setEnabled(false);
-
-        XAxis xAxis = chart.getXAxis();
-        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM_INSIDE);
-        xAxis.setTextSize(10f);
-        xAxis.setTextColor(Color.WHITE);
-        xAxis.setDrawAxisLine(false);
-        xAxis.setDrawGridLines(true);
-        xAxis.setTextColor(Color.rgb(255, 192, 56));
-        xAxis.setCenterAxisLabels(true);
-        xAxis.setGranularity(1f);
-        xAxis.setValueFormatter(new ValueFormatter() {
-            private final SimpleDateFormat mFormat = new SimpleDateFormat("MM-dd", Locale.KOREA);
-
-            @Override
-            public String getFormattedValue(float value) {
-                Date date = new Date();
-                long millis = date.getTime() + TimeUnit.HOURS.toMillis((long) value);
-                return mFormat.format(new Date(millis));
-            }
-        });
-        YAxis leftAxis = chart.getAxisLeft();
-        leftAxis.setPosition(YAxis.YAxisLabelPosition.INSIDE_CHART);
-        leftAxis.setTextColor(ColorTemplate.getHoloBlue());
-        leftAxis.setDrawGridLines(true);
-        leftAxis.setGranularityEnabled(true);
-        leftAxis.setAxisMinimum(0f);
-        leftAxis.setAxisMaximum(5f);
-        leftAxis.setYOffset(-9f);
-        leftAxis.setTextColor(Color.rgb(255, 192, 56));
-
-        YAxis rightAxis = chart.getAxisRight();
-        rightAxis.setEnabled(false);
-
-    }
-
-
-}
