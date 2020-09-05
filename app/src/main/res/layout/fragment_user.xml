@@ -51,24 +51,27 @@
             android:layout_height="match_parent" >
 
             <TextView
+                android:id="@+id/count_lens"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center"
                 android:text=" 3"
-                android:gravity="center"
                 android:textSize="28sp" />
 
             <TextView
+                android:id="@+id/left_sight"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center"
                 android:text=" 0.2"
-                android:gravity="center"
                 android:textSize="28sp" />
 
             <TextView
+                android:id="@+id/right_sight"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text=" 0.4"
                 android:gravity="center"
+                android:text=" 0.4"
                 android:textSize="28sp" />
 
         </TableRow>
@@ -89,16 +92,6 @@
             android:layout_marginBottom="3dp"
             android:src="@drawable/ic_baseline_account_circle_24" />
 
-        <ImageView
-            android:id="@+id/setting"
-            android:layout_width="57dp"
-            android:layout_height="50dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginLeft="344dp"
-            android:layout_marginBottom="58dp"
-            android:src="@drawable/ic_baseline_settings_24" />
-
         <TextView
             android:id="@+id/username"
             android:layout_width="wrap_content"
@@ -109,9 +102,10 @@
             android:layout_marginStart="140dp"
             android:layout_marginLeft="140dp"
             android:layout_marginTop="33dp"
-            android:text="'name'님"
+            android:text="회원님"
             android:textColor="#004182"
             android:textSize="24sp" />
+
 
         <TextView
             android:id="@+id/greeting"
@@ -126,6 +120,23 @@
             android:textColor="#004182"
             android:text="안녕하세요"
             android:textSize="24sp" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/setting"
+            android:layout_width="102dp"
+            android:layout_height="84dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginRight="12dp"
+            android:clickable="true"
+            android:src="@drawable/ic_baseline_settings_24"
+            app:backgroundTint="#FFFFFF"
+            app:elevation="6dp"
+            app:maxImageSize="38dp"
+            app:pressedTranslationZ="12dp" />
 
     </RelativeLayout>
 
@@ -160,7 +171,7 @@
 
                 <com.github.mikephil.charting.charts.LineChart
                     android:id="@+id/sightchart"
-                    android:layout_width="250dp"
+                    android:layout_width="350dp"
                     android:layout_height="250dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"

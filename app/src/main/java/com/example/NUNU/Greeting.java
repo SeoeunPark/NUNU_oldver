@@ -5,7 +5,7 @@ public class Greeting {
     String greeting;
 
     public Greeting(String username){
-        this.username = username;
+        this.username = "박서빈";
     }
 
     public String getUsername() {

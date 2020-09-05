@@ -13,9 +13,12 @@ import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.utils.ColorTemplate;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,14 +26,24 @@ import android.view.ViewGroup;
 public class User extends Fragment {
     View view;
     private LineChart lineChart;
+    Option option;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        option = new Option();
     }
         public View onCreateView (LayoutInflater inflater, ViewGroup container, Bundle
         savedInstanceState){
+
             view = inflater.inflate(R.layout.fragment_user, container, false);
+            FloatingActionButton setting = view.findViewById(R.id.setting);
+            setting.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_layout, option).commitAllowingStateLoss();
+                }
+            });
             lineChart = (LineChart) view.findViewById(R.id.sightchart);
 
             List<Entry> entry1 = new ArrayList<>();
@@ -50,7 +63,7 @@ public class User extends Fragment {
             entry2.add(new Entry(7, -8));
             entry2.add(new Entry(8, -8));
             entry2.add(new Entry(9, -10));
-            
+
             LineDataSet set1 = new LineDataSet(entry1, "왼쪽 시력");
             LineDataSet set2 = new LineDataSet(entry2, "오른쪽 시력");
 
@@ -104,4 +117,7 @@ public class User extends Fragment {
             lineChart.invalidate();
             return view;
         }
-    }
+
+   
+       
+}

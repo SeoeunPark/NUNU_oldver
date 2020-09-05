@@ -1,6 +1,7 @@
 package com.example.NUNU;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,7 +12,6 @@ public class MainActivity extends AppCompatActivity {
     Home fragment1; // 홈 fragment
     Lens fragment2; // 렌즈 fragment
     User fragment3; // 유저 fragment
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
         fragment1 = new Home();
         fragment2 = new Lens();
         fragment3 = new User();
+
         //제일 처음 보여지는 창
         getSupportFragmentManager().beginTransaction().replace(R.id.main_layout, fragment1).commitAllowingStateLoss();
 
@@ -48,4 +49,5 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
 }
