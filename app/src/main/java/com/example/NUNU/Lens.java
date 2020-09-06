@@ -1,6 +1,7 @@
 package com.example.NUNU;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -85,8 +86,10 @@ public class Lens extends Fragment implements View.OnClickListener{
                 break;
             case R.id.fab1:
                 //anim();
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_layout, oneday).commitAllowingStateLoss();
+                //getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_layout, oneday).commitAllowingStateLoss();
+                getActivity().startActivity(new Intent(getActivity(), oneday.getClass())); //<= 액티비티 화면 ( 네비게이션 바 안 뜸)
                 //Toast.makeText(getActivity(),"Button1", Toast.LENGTH_SHORT).show();
+
                 break;
             case R.id.fab2:
                 //anim();

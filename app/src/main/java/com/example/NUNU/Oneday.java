@@ -1,23 +1,43 @@
 package com.example.NUNU;
 
+import android.app.DatePickerDialog;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
+import android.widget.DatePicker;
+import android.widget.EditText;
+import androidx.appcompat.app.AppCompatActivity;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
 
-import androidx.fragment.app.Fragment;
-
-public class Oneday extends Fragment {
-
-    public Oneday() {
-        // Required empty public constructor
+public class Oneday extends AppCompatActivity {
+    Calendar myCalendar = Calendar.getInstance();
+    DatePickerDialog.OnDateSetListener myDatePicker = new DatePickerDialog.OnDateSetListener(){
+        @Override
+        public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+            myCalendar.set(Calendar.YEAR, year);
+            myCalendar.set(Calendar.MONTH, month);
+            myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+            updateLabel();
+        }
+    };
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_oneday);
+        EditText et_Date = (EditText) findViewById(R.id.Shelf_life);
+        et_Date.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new DatePickerDialog(Oneday.this,myDatePicker,myCalendar.get(Calendar.YEAR), myCalendar.get(Calendar.MONTH), myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+            }
+        });
     }
 
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_oneday, container, false);
+    private void updateLabel() {
+        String myFormat = "yyyy/MM/dd";    // 출력형식   2018/11/28
+        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.KOREA);
+        EditText et_date = (EditText) findViewById(R.id.Shelf_life);
+        et_date.setText(sdf.format(myCalendar.getTime()));
     }
 }
