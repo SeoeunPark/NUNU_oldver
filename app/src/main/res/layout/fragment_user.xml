@@ -55,23 +55,23 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text=" 3"
+                android:text="0"
                 android:textSize="28sp" />
 
             <TextView
-                android:id="@+id/left_sight"
+                android:id="@+id/leftSight"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text=" 0.2"
+                android:text="0.0"
                 android:textSize="28sp" />
 
             <TextView
-                android:id="@+id/right_sight"
+                android:id="@+id/rightSight"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text=" 0.4"
+                android:text="0.0"
                 android:textSize="28sp" />
 
         </TableRow>
@@ -102,7 +102,7 @@
             android:layout_marginStart="140dp"
             android:layout_marginLeft="140dp"
             android:layout_marginTop="33dp"
-            android:text="회원님"
+            android:text="OOO님"
             android:textColor="#004182"
             android:textSize="24sp" />
 

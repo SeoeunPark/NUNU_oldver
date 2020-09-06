@@ -18,33 +18,47 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.ArrayList;
 import java.util.List;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 public class User extends Fragment {
     View view;
     private LineChart lineChart;
     Option option;
-
+    TextView userTextView;
+    TextView leftSightTextView;
+    TextView rightSightTextView;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         option = new Option();
+
     }
         public View onCreateView (LayoutInflater inflater, ViewGroup container, Bundle
         savedInstanceState){
+            ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_user, container, false);
+            initInfo(rootView);
+            initGraph(rootView);
+            initButton(rootView);
 
-            view = inflater.inflate(R.layout.fragment_user, container, false);
-            FloatingActionButton setting = view.findViewById(R.id.setting);
-            setting.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_layout, option).commitAllowingStateLoss();
-                }
-            });
-            lineChart = (LineChart) view.findViewById(R.id.sightchart);
+            return rootView;
+        }
+
+        private void initInfo(ViewGroup rootView){
+        userTextView = rootView.findViewById(R.id.username);
+        userTextView.setText(UserInfo.username+"님");
+
+        leftSightTextView = rootView.findViewById(R.id.leftSight);
+        leftSightTextView.setText(UserInfo.leftSight);
+
+        rightSightTextView = rootView.findViewById(R.id.rightSight);
+        rightSightTextView.setText(UserInfo.rightSight);
+        }
+
+        private void initGraph(ViewGroup rootView){
+            lineChart = rootView.findViewById(R.id.sightchart);
 
             List<Entry> entry1 = new ArrayList<>();
             entry1.add(new Entry(1, 1));
@@ -115,9 +129,16 @@ public class User extends Fragment {
             lineChart.setDescription(description);
             //lineChart.animateY(2000, Easing.EasingOption.EaseInCubic);
             lineChart.invalidate();
-            return view;
-        }
 
-   
-       
+        }
+        private void initButton(ViewGroup rootView){
+            FloatingActionButton setting = rootView.findViewById(R.id.setting);
+            setting.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_layout, option).commitAllowingStateLoss();
+                }
+            });
+        }
+        
 }
