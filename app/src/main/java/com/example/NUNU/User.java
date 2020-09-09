@@ -140,5 +140,5 @@ public class User extends Fragment {
                 }
             });
         }
-        
+
 }
