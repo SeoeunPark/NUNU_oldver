@@ -1,10 +1,25 @@
 package com.example.NUNU;
 
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity
 public class UserInfo {
+
+    @PrimaryKey(autoGenerate = true) //id는 PrimaryKey로 지정해주며 자동으로 생성해줌
+    private int id;
     public static String username;
     public static String greeting;
     public static String leftSight;
     public static String rightSight;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public static String getUsername() {
         return username;
@@ -37,4 +52,5 @@ public class UserInfo {
     public static void setRightSight(String rightSight) {
         UserInfo.rightSight = rightSight;
     }
+
 }
