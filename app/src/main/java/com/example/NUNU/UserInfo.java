@@ -3,15 +3,36 @@ package com.example.NUNU;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+
 @Entity
 public class UserInfo {
 
     @PrimaryKey(autoGenerate = true) //id는 PrimaryKey로 지정해주며 자동으로 생성해줌
-    private int id;
+    public int id;
     public static String username;
     public static String greeting;
     public static String leftSight;
     public static String rightSight;
+
+    public UserInfo(){
+
+    }
+    public UserInfo(int id, String username,String leftSight,String rightSight){
+        this.id=id;
+        this.username=username;
+        this.leftSight=leftSight;
+        this.rightSight=rightSight;
+
+    }
+    public UserInfo(String username, String leftSight, String rightSight) {
+        this.username=username;
+        this.leftSight=leftSight;
+        this.rightSight=rightSight;
+    }
+
+
+
+
 
     public int getId() {
         return id;
@@ -53,4 +74,13 @@ public class UserInfo {
         UserInfo.rightSight = rightSight;
     }
 
+    @Override
+    public String toString() {
+        return "UserInfo{" +
+                "id=" + id +
+                "name="+username+
+                "leftsight="+leftSight+
+                "rightSight="+rightSight+
+                '}';
+    }
 }

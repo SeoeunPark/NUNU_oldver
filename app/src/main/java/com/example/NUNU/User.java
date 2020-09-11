@@ -1,8 +1,10 @@
 package com.example.NUNU;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.room.Room;
 
 import android.graphics.Color;
 import com.github.mikephil.charting.charts.LineChart;
@@ -30,12 +32,18 @@ public class User extends Fragment {
     TextView userTextView;
     TextView leftSightTextView;
     TextView rightSightTextView;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         option = new Option();
+        Context context = getContext();
+        final AppDatabase db = Room.databaseBuilder(context,AppDatabase.class,"userinfo-db")
+                .allowMainThreadQueries()
+                .build();
 
     }
+
         public View onCreateView (LayoutInflater inflater, ViewGroup container, Bundle
         savedInstanceState){
             ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_user, container, false);

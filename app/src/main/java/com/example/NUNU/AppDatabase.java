@@ -8,5 +8,4 @@ public abstract class AppDatabase extends RoomDatabase {
 
     public abstract UserDao userInfo(); // Dao 인터페이스
 
-
 }
