@@ -93,7 +93,8 @@ public class Lens extends Fragment implements View.OnClickListener{
                 break;
             case R.id.fab2:
                 //anim();
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_layout, monthly).commitAllowingStateLoss();
+                getActivity().startActivity(new Intent(getActivity(), monthly.getClass()));
+                //getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_layout, monthly).commitAllowingStateLoss();
                 //Toast.makeText(getActivity(), "Button2", Toast.LENGTH_SHORT).show(); 버튼 누르면 토스트 발생, 지금은 필요없을 듯
                 break;
         }
