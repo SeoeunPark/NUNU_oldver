@@ -9,29 +9,20 @@ public class UserInfo {
 
     @PrimaryKey(autoGenerate = true) //id는 PrimaryKey로 지정해주며 자동으로 생성해줌
     public int id;
-    public static String username;
-    public static String greeting;
-    public static String leftSight;
-    public static String rightSight;
+    public  String username;
+    public  String greeting;
+    public  String leftSight;
+    public  String rightSight;
 
     public UserInfo(){
 
     }
-    public UserInfo(int id, String username,String leftSight,String rightSight){
-        this.id=id;
-        this.username=username;
-        this.leftSight=leftSight;
-        this.rightSight=rightSight;
 
-    }
     public UserInfo(String username, String leftSight, String rightSight) {
         this.username=username;
         this.leftSight=leftSight;
         this.rightSight=rightSight;
     }
-
-
-
 
 
     public int getId() {
@@ -42,36 +33,36 @@ public class UserInfo {
         this.id = id;
     }
 
-    public static String getUsername() {
+    public  String getUsername() {
         return username;
     }
 
-    public static void setUsername(String username) {
-        UserInfo.username = username;
+    public  void setUsername(String username) {
+        this.username = username;
     }
 
-    public static String getGreeting() {
+    public  String getGreeting() {
         return greeting;
     }
 
-    public static void setGreeting(String greeting) {
-        UserInfo.greeting = greeting;
+    public  void setGreeting(String greeting) {
+        this.greeting = greeting;
     }
 
-    public static String getLeftSight() {
+    public  String getLeftSight() {
         return leftSight;
     }
 
-    public static void setLeftSight(String leftSight) {
-        UserInfo.leftSight = leftSight;
+    public  void setLeftSight(String leftSight) {
+        this.leftSight = leftSight;
     }
 
-    public static String getRightSight() {
+    public  String getRightSight() {
         return rightSight;
     }
 
-    public static void setRightSight(String rightSight) {
-        UserInfo.rightSight = rightSight;
+    public  void setRightSight(String rightSight) {
+        this.rightSight = rightSight;
     }
 
     @Override

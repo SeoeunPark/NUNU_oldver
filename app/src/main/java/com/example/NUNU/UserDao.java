@@ -1,6 +1,5 @@
 package com.example.NUNU;
 
-
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -15,14 +14,22 @@ public interface UserDao {
     @Query("SELECT * FROM UserInfo")
     List<UserInfo> getAll();
 
+    @Query("SELECT leftSight FROM UserInfo ORDER BY id DESC limit 1")
+    String getLeft();
+
+    @Query("SELECT rightSight FROM UserInfo ORDER BY id DESC limit 1")
+    String getRight();
+
+    @Query("SELECT username FROM UserInfo ORDER BY id DESC limit 1")
+    String getName();
     @Insert
-    void insert(UserInfo todo);
+    void insert(UserInfo userInfo);
 
     @Update
-    void update(UserInfo todo);
+    void update(UserInfo userInfo);
 
     @Delete
-    void delete(UserInfo todo);
+    void delete(UserInfo userInfo);
 
     @Query("DELETE FROM UserInfo")
     void deleteAll();

@@ -1,7 +1,5 @@
 package com.example.NUNU;
 
-
-
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -38,6 +36,7 @@ public class InitSetting extends Fragment {
     private void initInfo(ViewGroup rootView){
         Context context = getContext();
         final AppDatabase db = Room.databaseBuilder(context,AppDatabase.class,"userinfo-db")
+                .fallbackToDestructiveMigration ()
                 .allowMainThreadQueries()
                 .build();
 
@@ -46,17 +45,26 @@ public class InitSetting extends Fragment {
         set_right = rootView.findViewById(R.id.set_right);
         show_data = rootView.findViewById(R.id.show_data);
 
-        show_data.setText(db.userInfo().getAll().toString());
+        show_data.setText(db.UserDao().getAll().toString());
 
         rootView.findViewById(R.id.add_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                db.userInfo().insert(new UserInfo(set_name.getText().toString(),set_left.getText().toString(),set_right.getText().toString()));
-                String text = db.userInfo().getAll().toString();
+                db.UserDao().insert(new UserInfo(set_name.getText().toString(),set_left.getText().toString(),set_right.getText().toString()));
+                String text = db.UserDao().getAll().toString();
                 show_data.setText(text);
                 //mResultTextView.setText(db.todoDao().getAll().get(5).toString()); getAll().get(숫자) 하면 원하는 거 가져올 수 있음
             }
         });
+        rootView.findViewById(R.id.delete_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                db.UserDao().deleteAll();
+                String text = db.UserDao().getAll().toString();
+                show_data.setText(text);
+            }
+        });
+
     }
 
 }
