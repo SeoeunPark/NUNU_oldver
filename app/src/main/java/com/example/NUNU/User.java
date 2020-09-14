@@ -34,8 +34,8 @@ public class User extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //option = new Option();
-        initSetting = new InitSetting();
+        option = new Option();
+        //initSetting = new InitSetting();
 
 
     }
@@ -133,7 +133,7 @@ public class User extends Fragment {
         setting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_layout, initSetting).commitAllowingStateLoss();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_layout, option).commitAllowingStateLoss();
             }
         });
     }
