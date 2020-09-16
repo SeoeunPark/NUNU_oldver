@@ -22,6 +22,7 @@ public interface UserDao {
 
     @Query("SELECT username FROM UserInfo ORDER BY id DESC limit 1")
     String getName();
+
     @Insert
     void insert(UserInfo userInfo);
 

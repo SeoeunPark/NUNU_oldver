@@ -1,6 +1,7 @@
 package com.example.NUNU;
 
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 
@@ -14,6 +15,9 @@ public class UserInfo {
     public  String leftSight;
     public  String rightSight;
 
+
+
+    @Ignore
     public UserInfo(){
 
     }
@@ -65,6 +69,8 @@ public class UserInfo {
         this.rightSight = rightSight;
     }
 
+
+
     @Override
     public String toString() {
         return "UserInfo{" +
@@ -72,6 +78,7 @@ public class UserInfo {
                 "name="+username+
                 "leftsight="+leftSight+
                 "rightSight="+rightSight+
+                //"date="+date+
                 '}';
     }
 }

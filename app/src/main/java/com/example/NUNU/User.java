@@ -35,7 +35,7 @@ public class User extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         option = new Option();
-        //initSetting = new InitSetting();
+        initSetting = new InitSetting();
 
 
     }
@@ -68,24 +68,24 @@ public class User extends Fragment {
 
     private void initGraph(ViewGroup rootView){
         lineChart = rootView.findViewById(R.id.sightchart);
-        List<Entry> entry1 = new ArrayList<>();
-        entry1.add(new Entry(1, 1));
-        entry1.add(new Entry(2, 2));
-        entry1.add(new Entry(3, 0));
-        entry1.add(new Entry(4, 4));
-        entry1.add(new Entry(5, 3));
-        List<Entry> entry2 = new ArrayList<>();
-        entry2.add(new Entry(1, 5));
-        entry2.add(new Entry(2, 3));
-        entry2.add(new Entry(3, 1));
-        entry2.add(new Entry(4, -1));
-        entry2.add(new Entry(5, -3));
-        entry2.add(new Entry(6, -5));
-        entry2.add(new Entry(7, -8));
-        entry2.add(new Entry(8, -8));
-        entry2.add(new Entry(9, -10));
-        LineDataSet set1 = new LineDataSet(entry1, "왼쪽 시력");
-        LineDataSet set2 = new LineDataSet(entry2, "오른쪽 시력");
+        Context context = getContext();
+        final AppDatabase db = Room.databaseBuilder(context,AppDatabase.class,"userinfo-db")
+                .fallbackToDestructiveMigration ()
+                .allowMainThreadQueries()
+                .build();
+        List<Entry> leftEntry = new ArrayList<>();
+
+        for(int i = 0; i< db.UserDao().getAll().size();i++){
+            double leftSight = Double.parseDouble(db.UserDao().getAll().get(i).getLeftSight());
+            leftEntry.add(new Entry(i, (float) leftSight));
+        }
+        List<Entry> rightEntry = new ArrayList<>();
+        for(int i = 0; i< db.UserDao().getAll().size();i++){
+            double rightSight = Double.parseDouble(db.UserDao().getAll().get(i).getRightSight());
+            rightEntry.add(new Entry(i, (float) rightSight));
+        }
+        LineDataSet set1 = new LineDataSet(leftEntry, "왼쪽 시력");
+        LineDataSet set2 = new LineDataSet(rightEntry, "오른쪽 시력");
         set1.setAxisDependency(YAxis.AxisDependency.LEFT);
         set1.setColor(ColorTemplate.getHoloBlue());
         set1.setValueTextColor(ColorTemplate.getHoloBlue());
@@ -133,7 +133,7 @@ public class User extends Fragment {
         setting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_layout, option).commitAllowingStateLoss();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_layout, initSetting).commitAllowingStateLoss();
             }
         });
     }
