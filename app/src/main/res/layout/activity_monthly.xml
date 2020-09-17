@@ -77,23 +77,25 @@ tools:context=".Monthly">
                                 android:textSize="20sp" />
 
                             <TextView
-                                android:id="@+id/month_cnt_text"
+                                android:id="@+id/month_type_text"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@id/Monthly_name"
                                 android:layout_marginTop="10dp"
-                                android:text="보유 개수"
+                                android:text="렌즈 유형"
                                 android:textColor="@color/dartblue"
                                 android:textSize="23sp" />
 
                             <EditText
-                                android:id="@+id/Monthly_cnt"
-                                android:layout_width="100dp"
+                                android:id="@+id/Monthly_type"
+                                android:layout_width="150dp"
                                 android:layout_height="wrap_content"
-                                android:layout_below="@id/month_cnt_text"
+                                android:layout_below="@id/month_type_text"
                                 android:layout_marginTop="4dp"
-                                android:hint="ex) 30 "
-                                android:inputType="phone"
+                                android:clickable="true"
+                                android:editable="false"
+                                android:focusable="false"
+                                android:hint="ex)소프트렌즈"
                                 android:textColor="#29367A"
                                 android:textSize="20sp" />
 
@@ -101,7 +103,7 @@ tools:context=".Monthly">
                                 android:id="@+id/month_period_text"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_below="@id/Monthly_cnt"
+                                android:layout_below="@id/Monthly_type"
                                 android:layout_marginTop="10dp"
                                 android:text="착용기간"
                                 android:textColor="@color/dartblue"

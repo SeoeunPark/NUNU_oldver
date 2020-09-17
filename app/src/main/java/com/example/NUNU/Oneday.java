@@ -1,11 +1,15 @@
 package com.example.NUNU;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -20,8 +24,9 @@ public class Oneday extends AppCompatActivity {
     Calendar myCalendar = Calendar.getInstance();
     private Button pallete;
     private int posi;
-    private String clname;
-    private Button cancel;
+    private String clname;  // 렌즈 색
+    private Button cancel; //X 버튼
+    private EditText one_type; // 렌즈유형
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +35,13 @@ public class Oneday extends AppCompatActivity {
         EditText et_Date = (EditText) findViewById(R.id.Oneday_period);
         pallete = (Button) findViewById(R.id.Oneday_color);
         cancel = (Button) findViewById(R.id.to_main);
+        one_type = (EditText)findViewById(R.id.Oneday_type);
+
+        one_type.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v){
+                type();
+            }
+        });
 
         //유효기간
         et_Date.setOnClickListener(new View.OnClickListener() {
@@ -60,11 +72,11 @@ public class Oneday extends AppCompatActivity {
             myCalendar.set(Calendar.YEAR, year);
             myCalendar.set(Calendar.MONTH, month);
             myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-            updateLabel();
+            updateLabel_period();
         }
     };
 
-    private void updateLabel() {
+    private void updateLabel_period() {
         String myFormat = "yyyy/MM/dd";    // 출력형식   2018/11/28
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.KOREA);
         EditText et_date = (EditText) findViewById(R.id.Oneday_period);
@@ -122,7 +134,6 @@ public class Oneday extends AppCompatActivity {
                         }else if(posi ==9) {
                             clname = "보라색";
                         }
-
                     }
                     @Override
                     public void onCancel() {
@@ -131,6 +142,26 @@ public class Oneday extends AppCompatActivity {
                 }).show();  // dialog 생성
         //색 잘 들어가는지 확인
         // Toast.makeText(getApplicationContext(), clname, Toast.LENGTH_SHORT).show();
+    }
+    final Context context = this;
+    public void type(){
+        {
+            final CharSequence[] items ={"소프트렌즈","하드렌즈","미용렌즈"};
+            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+            alertDialogBuilder.setTitle("옵션 선택");
+
+            alertDialogBuilder.setSingleChoiceItems(items, -1, new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    Toast.makeText(getApplicationContext(), items[id], Toast.LENGTH_SHORT).show();
+                    EditText type = (EditText) findViewById(R.id.Oneday_type);
+                    type.setText(items[id]);
+                    dialog.dismiss();
+                }
+            });
+
+            AlertDialog alertDialog = alertDialogBuilder.create();
+            alertDialog.show();
+        }
     }
 
 }

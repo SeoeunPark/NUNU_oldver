@@ -1,6 +1,5 @@
 package com.example.NUNU;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -13,7 +12,6 @@ public class MainActivity extends AppCompatActivity {
     Home fragment1; // 홈 fragment
     Lens fragment2; // 렌즈 fragment
     User fragment3; // 유저 fragment
-    public static Context mContext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +22,6 @@ public class MainActivity extends AppCompatActivity {
         fragment1 = new Home();
         fragment2 = new Lens();
         fragment3 = new User();
-        mContext = this;
         //제일 처음 보여지는 창
         getSupportFragmentManager().beginTransaction().replace(R.id.main_layout, fragment1).commitAllowingStateLoss();
         navi_bar(); // 메뉴 선택

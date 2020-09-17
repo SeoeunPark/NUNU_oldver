@@ -27,7 +27,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder>{
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position) {
         Note item = items.get(position);
-      viewHolder.setItem(item);  //이게 추가하는 거
+        viewHolder.setItem(item);  //이게 추가하는 거
     }
     //recylerview의 총 개수
     @Override
@@ -52,7 +52,6 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder>{
 
         public ViewHolder(View itemView ){
             super(itemView);
-
             layout1 = itemView.findViewById(R.id.layout1);
             lens_name = itemView.findViewById(R.id.lens_name);
             lens_cnt = itemView.findViewById(R.id.lens_cnt);

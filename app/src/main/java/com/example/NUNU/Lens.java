@@ -74,6 +74,7 @@ public class Lens extends Fragment implements View.OnClickListener{
         super.onCreate(savedInstanceState);
         oneday = new Oneday();
         monthly = new Monthly();
+
     }
 
     @Override
