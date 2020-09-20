@@ -14,41 +14,42 @@
     -->
 
     <TableLayout
-        android:layout_width="match_parent"
+        android:layout_width="399dp"
         android:layout_height="115dp"
-        android:stretchColumns="*"
+        android:layout_marginTop="130dp"
         android:gravity="center"
-        android:layout_marginTop="130dp">
+        android:stretchColumns="*">
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent">
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="86dp"
                 android:layout_height="wrap_content"
+                android:gravity="center"
                 android:text=" 보유 렌즈"
+                android:textSize="28sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:gravity="center"
+                android:text="좌안"
                 android:textSize="28sp" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text=" 왼쪽 시력"
                 android:gravity="center"
-                android:textSize="28sp" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text=" 오른쪽 시력"
-                android:gravity="center"
+                android:text="우안"
                 android:textSize="28sp" />
 
         </TableRow>
+
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent">
 
             <TextView
                 android:id="@+id/count_lens"

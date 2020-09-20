@@ -7,11 +7,22 @@
     android:background="#FFFFFF">
 
     <RelativeLayout
-        android:layout_width="413dp"
-        android:layout_height="140dp"
+        android:id="@+id/relativeLayout2"
+        android:layout_width="417dp"
+        android:layout_height="154dp"
         android:layout_marginTop="4dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/relativeLayout3">
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_below="@+id/textView"
+            android:layout_alignBottom="@+id/switch1"
+            android:layout_marginTop="9dp"
+            android:layout_marginBottom="-22dp"
+            android:background="#161D7EF4" />
 
         <Switch
             android:id="@+id/switch1"
@@ -42,23 +53,12 @@
 
     <RelativeLayout
         android:id="@+id/relativeLayout3"
-        android:layout_width="410dp"
-        android:layout_height="262dp"
+        android:layout_width="405dp"
+        android:layout_height="210dp"
         android:layout_marginTop="64dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/relativeLayout">
-
-        <View
-            android:id="@+id/view"
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_below="@+id/textView"
-            android:layout_alignBottom="@+id/editright_btn"
-            android:layout_marginTop="9dp"
-            android:layout_marginBottom="-31dp"
-            android:background="#201D7EF4" />
 
         <TextView
             android:id="@+id/textView3"
@@ -82,15 +82,15 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:layout_marginStart="1dp"
-            android:layout_marginLeft="1dp"
-            android:layout_marginTop="57dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="68dp"
             android:background="#FFFFFF"
             android:text="이름 변경                                                                          "
             android:textSize="16sp" />
 
         <Button
-            android:id="@+id/editleft_btn"
+            android:id="@+id/editsight_btn"
             android:layout_width="412dp"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
@@ -98,24 +98,17 @@
             android:layout_alignParentTop="true"
             android:layout_marginStart="0dp"
             android:layout_marginLeft="0dp"
-            android:layout_marginTop="115dp"
+            android:layout_marginTop="135dp"
             android:background="#FFFFFF"
-            android:text="왼쪽 시력 변경                                                                 "
+            android:text="시력 변경                                                                          "
             android:textSize="16sp" />
 
-        <Button
-            android:id="@+id/editright_btn"
-            android:layout_width="412dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="0dp"
-            android:layout_marginLeft="0dp"
-            android:layout_marginTop="179dp"
-            android:background="#FFFFFF"
-            android:text="오른쪽 시력 변경                                                             "
-            android:textSize="16sp" />
+        <View
+            android:id="@+id/view2"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#391D7EF4" />
+
     </RelativeLayout>
 
     <RelativeLayout
@@ -125,19 +118,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="58dp"
-            android:layout_height="54dp"
-            android:layout_alignParentBottom="true"
-            android:layout_marginEnd="110dp"
-            android:layout_marginRight="110dp"
-            android:layout_marginBottom="4dp"
-            android:layout_toStartOf="@+id/textView"
-            android:layout_toLeftOf="@+id/textView"
-            app:srcCompat="@drawable/abc_vector_test"
-            app:tint="#1DA2FA" />
 
         <TextView
             android:id="@+id/textView"
@@ -153,13 +133,56 @@
             android:textSize="30sp"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_below="@+id/textView"
-            android:layout_marginTop="9dp"
-            android:background="#171D7EF4" />
+        <ImageButton
+            android:id="@+id/goback_btn"
+            android:layout_width="51dp"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="7dp"
+            android:background="@android:color/transparent"
+            android:scaleType="fitCenter"
+            android:tint="#D31D7EF4"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/abc_vector_test" />
 
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="409dp"
+        android:layout_height="105dp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout2">
+
+        <Button
+            android:id="@+id/editname_btn3"
+            android:layout_width="412dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="55dp"
+            android:background="#FFFFFF"
+            android:text="    데이터 삭제                                                                          "
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="14dp"
+            android:layout_marginLeft="14dp"
+            android:layout_marginTop="8dp"
+            android:text="기타"
+            android:textSize="18sp"
+            android:textStyle="bold" />
     </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

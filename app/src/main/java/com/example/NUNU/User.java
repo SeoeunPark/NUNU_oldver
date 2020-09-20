@@ -74,15 +74,16 @@ public class User extends Fragment {
                 .allowMainThreadQueries()
                 .build();
         List<Entry> leftEntry = new ArrayList<>();
-
+        leftEntry.add(new Entry(1,(float)0.0));
         for(int i = 0; i< db.UserDao().getAll().size();i++){
             double leftSight = Double.parseDouble(db.UserDao().getAll().get(i).getLeftSight());
-            leftEntry.add(new Entry(i, (float) leftSight));
+            leftEntry.add(new Entry(i+2, (float) leftSight));
         }
         List<Entry> rightEntry = new ArrayList<>();
+        rightEntry.add(new Entry(1,(float)0.0));
         for(int i = 0; i< db.UserDao().getAll().size();i++){
             double rightSight = Double.parseDouble(db.UserDao().getAll().get(i).getRightSight());
-            rightEntry.add(new Entry(i, (float) rightSight));
+            rightEntry.add(new Entry(i+2, (float) rightSight));
         }
         LineDataSet set1 = new LineDataSet(leftEntry, "왼쪽 시력");
         LineDataSet set2 = new LineDataSet(rightEntry, "오른쪽 시력");
@@ -103,12 +104,15 @@ public class User extends Fragment {
         set2.setDrawCircles(true);
         set2.setDrawValues(false);
         set2.setFillAlpha(65);
-        set1.setHighLightColor(Color.rgb(220, 180, 117));
+        set2.setHighLightColor(Color.rgb(220, 180, 117));
         set2.setDrawCircleHole(true);
+
+
         LineData chartData = new LineData();
         chartData.addDataSet(set1);
         chartData.addDataSet(set2);
         lineChart.setData(chartData);
+
         XAxis xAxis = lineChart.getXAxis();
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis.setTextColor(Color.BLACK);
@@ -133,8 +137,9 @@ public class User extends Fragment {
         setting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_layout, initSetting).commitAllowingStateLoss();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_layout, option).commitAllowingStateLoss();
             }
         });
     }
+
 }
