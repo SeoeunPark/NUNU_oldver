@@ -167,14 +167,14 @@ public class Lens extends Fragment implements View.OnClickListener{
 
     public void anim() {
         if (isFabOpen) {
-            fab.setImageResource(R.drawable.plus);
+            fab.setImageResource(R.drawable.fab_plus);
             fab1.startAnimation(fab_close);
             fab2.startAnimation(fab_close);
             fab1.setClickable(false);
             fab2.setClickable(false);
             isFabOpen = false;
         } else {
-            fab.setImageResource(R.drawable.close);
+            fab.setImageResource(R.drawable.fab_close);
             fab1.startAnimation(fab_open);
             fab2.startAnimation(fab_open);
             fab1.setClickable(true);

@@ -20,7 +20,7 @@
             android:layout_alignParentBottom="true"
             android:layout_marginRight="10dp"
             android:layout_marginBottom="10dp"
-            android:src="@drawable/plus"
+            android:src="@drawable/fab_plus"
             app:backgroundTint="@color/colorAccent"
             app:fabSize="auto"
             app:maxImageSize="40dp" />
