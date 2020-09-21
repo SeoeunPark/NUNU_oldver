@@ -58,12 +58,13 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder>{
             start_date = itemView.findViewById(R.id.start_date);
             end_date = itemView.findViewById(R.id.end_date);
         }
+
         //화면에 보여지게 넣는 함수
         public void setItem(Note item) {
             lens_name.setText(item.getLens_name());
             lens_cnt.setText("보유개수 :"+item.getLens_cnt());
-            start_date.setText(item.getStart_date());
-            end_date.setText(item.getEnd_date());
+            start_date.setText(item.getLens_start());
+            end_date.setText(item.getLens_end());
         }
 
     }

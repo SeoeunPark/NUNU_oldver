@@ -3,16 +3,22 @@ package com.example.NUNU;
 public class Note {
     int _id;
     String lens_name;
+    String lens_type;
     int lens_cnt;
-    String start_date;
-    String end_date;
-    //타입 잘 봐!!
-    public Note(int _id, String lens_name, int lens_cnt, String start_date, String end_date) {
+    String lens_period;
+    String lens_color;
+    String lens_start;
+    String lens_end;
+
+    public Note(int _id, String lens_name, String lens_type, int lens_cnt, String lens_period, String lens_color, String lens_start, String lens_end) {
         this._id = _id;
         this.lens_name = lens_name;
+        this.lens_type = lens_type;
         this.lens_cnt = lens_cnt;
-        this.start_date = start_date;
-        this.end_date = end_date;
+        this.lens_period = lens_period;
+        this.lens_color = lens_color;
+        this.lens_start = lens_start;
+        this.lens_end = lens_end;
     }
 
     public int get_id() {
@@ -31,6 +37,14 @@ public class Note {
         this.lens_name = lens_name;
     }
 
+    public String getLens_type() {
+        return lens_type;
+    }
+
+    public void setLens_type(String lens_type) {
+        this.lens_type = lens_type;
+    }
+
     public int getLens_cnt() {
         return lens_cnt;
     }
@@ -39,19 +53,35 @@ public class Note {
         this.lens_cnt = lens_cnt;
     }
 
-    public String getStart_date() {
-        return start_date;
+    public String getLens_period() {
+        return lens_period;
     }
 
-    public void setStart_date(String start_date) {
-        this.start_date = start_date;
+    public void setLens_period(String lens_period) {
+        this.lens_period = lens_period;
     }
 
-    public String getEnd_date() {
-        return end_date;
+    public String getLens_color() {
+        return lens_color;
     }
 
-    public void setEnd_date(String end_date) {
-        this.end_date = end_date;
+    public void setLens_color(String lens_color) {
+        this.lens_color = lens_color;
+    }
+
+    public String getLens_start() {
+        return lens_start;
+    }
+
+    public void setLens_start(String lens_start) {
+        this.lens_start = lens_start;
+    }
+
+    public String getLens_end() {
+        return lens_end;
+    }
+
+    public void setLens_end(String lens_end) {
+        this.lens_end = lens_end;
     }
 }
