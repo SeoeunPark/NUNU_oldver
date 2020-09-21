@@ -3,8 +3,81 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".User">
 
+    <!--
+    user 페이지는 3 부분으로 나눠져있음
+    1. 사용자 이름과 사용자에게 인사
+    2. 사용자의 시력 정보 및 보유 렌즈 수
+    3. 사용자의 시력 상태 변화를 보여주는 그래프
+    -->
+
+    <TableLayout
+        android:layout_width="399dp"
+        android:layout_height="115dp"
+        android:layout_marginTop="130dp"
+        android:gravity="center"
+        android:stretchColumns="*">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="86dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text=" 보유 렌즈"
+                android:textSize="28sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="좌안"
+                android:textSize="28sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="우안"
+                android:textSize="28sp" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/count_lens"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="0"
+                android:textSize="28sp" />
+
+            <TextView
+                android:id="@+id/leftSight"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="0.0"
+                android:textSize="28sp" />
+
+            <TextView
+                android:id="@+id/rightSight"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="0.0"
+                android:textSize="28sp" />
+
+        </TableRow>
+
+    </TableLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -30,8 +103,10 @@
             android:layout_marginStart="140dp"
             android:layout_marginLeft="140dp"
             android:layout_marginTop="33dp"
-            android:text="'name'님"
+            android:text="OOO님"
+            android:textColor="#004182"
             android:textSize="24sp" />
+
 
         <TextView
             android:id="@+id/greeting"
@@ -43,15 +118,68 @@
             android:layout_marginStart="0dp"
             android:layout_marginLeft="0dp"
             android:layout_marginBottom="18dp"
+            android:textColor="#004182"
             android:text="안녕하세요"
             android:textSize="24sp" />
 
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/setting"
+            android:layout_width="102dp"
+            android:layout_height="84dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginRight="12dp"
+            android:clickable="true"
+            android:src="@drawable/ic_baseline_settings_24"
+            app:backgroundTint="#FFFFFF"
+            app:elevation="6dp"
+            app:maxImageSize="38dp"
+            app:pressedTranslationZ="12dp" />
+
     </RelativeLayout>
 
-    <com.github.mikephil.charting.charts.LineChart
-        android:id="@+id/chart"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:layout_marginTop="250dp" />
+        android:layout_height="312dp"
+        android:layout_marginTop="250dp"
+        android:orientation="vertical">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="5dp">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="시력 상태 변화"
+                    android:textColor="#004182"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <com.github.mikephil.charting.charts.LineChart
+                    android:id="@+id/sightchart"
+                    android:layout_width="350dp"
+                    android:layout_height="250dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_gravity="center_horizontal"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
 
 </FrameLayout>

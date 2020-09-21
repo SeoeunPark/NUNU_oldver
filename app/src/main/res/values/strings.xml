@@ -2,4 +2,5 @@
     <string name="app_name">NUNU</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="graph_title">시력 변화</string>
 </resources>
