@@ -72,64 +72,6 @@ public class Lens extends Fragment implements View.OnClickListener{
         fab1.setOnClickListener(this);
         fab2.setOnClickListener(this);
     }
-    //여기부터 해야함
-    public int loadNoteListData() {
-        AppConstants.println("loadNoteListData called.");
-
-        String sql = "select _id, LENS_NAME, LENS_TYPE, LENS_CNT, LENS_PERIOD, LENS_COLOR, LENS_START, LENS_END from " + NoteDatabase.TABLE_NOTE + " order by CREATE_DATE desc";
-
-        int recordCount = -1;
-        NoteDatabase database = NoteDatabase.getInstance(context);
-        if (database != null) {
-            Cursor outCursor = database.rawQuery(sql);
-
-            recordCount = outCursor.getCount();
-            AppConstants.println("record count : " + recordCount + "\n");
-
-            ArrayList<Note> items = new ArrayList<Note>();
-
-            for (int i = 0; i < recordCount; i++) {
-                outCursor.moveToNext();
-
-                int _id = outCursor.getInt(0);
-                String lens_name = outCursor.getString(1);
-                String lens_type = outCursor.getString(2);
-                int lens_cnt = outCursor.getInt(3); // cnt
-                String lens_period = outCursor.getString(4);
-                String lens_color = outCursor.getString(5);
-                String lens_start = outCursor.getString(6);
-                String lens_end = outCursor.getString(7);
-                //String dateStr = outCursor.getString(8);
-                /*
-                if (dateStr != null && dateStr.length() > 10) {
-                    try {
-                        Date inDate = AppConstants.dateFormat4.parse(dateStr);
-                        createDateStr = AppConstants.dateFormat3.format(inDate);
-                    } catch(Exception e) {
-                        e.printStackTrace();
-                    }
-                } else {
-                    createDateStr = "";
-                }
-
-                 */
-
-                AppConstants.println("#" + i + " -> " + _id + ", " + lens_name + ", " +
-                        lens_type + ", " + lens_cnt + ", " + lens_period + ", " + lens_color + ", " +
-                        lens_start + ", " + lens_end);
-
-                items.add(new Note(_id, lens_name, lens_type, lens_cnt, lens_period, lens_color, lens_start, lens_end));
-            }
-
-            outCursor.close();
-
-            adapter.setItems(items);
-            adapter.notifyDataSetChanged();
-
-        }
-
-        return recordCount;
-    }
 
     //floating 버튼 눌르면 뜨게 작업
 
