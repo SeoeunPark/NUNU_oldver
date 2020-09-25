@@ -22,6 +22,7 @@ public class UserInfo {
 
     }
 
+
     public UserInfo(String username, String leftSight, String rightSight) {
         this.username=username;
         this.leftSight=leftSight;
