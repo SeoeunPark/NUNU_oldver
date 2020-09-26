@@ -78,7 +78,7 @@ public class ChangeName extends Fragment {
                 if(TextUtils.isEmpty(change_name.getText().toString())){
                     Toast.makeText(context,"변경할 이름을 입력해주세요.",Toast.LENGTH_SHORT).show();
                 }else{
-                    db.UserDao().update(new UserInfo(change_name.getText().toString(),db.UserDao().getLeft(),db.UserDao().getRight()));
+                    db.UserDao().insert(new UserInfo(change_name.getText().toString(),db.UserDao().getLeft(),db.UserDao().getRight()));
                     Toast.makeText(context,"이름이 변경되었습니다.",Toast.LENGTH_SHORT).show();
                     getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_layout, User).commitAllowingStateLoss();
                 }

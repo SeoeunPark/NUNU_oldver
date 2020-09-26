@@ -14,7 +14,7 @@
     -->
 
     <TableLayout
-        android:layout_width="399dp"
+        android:layout_width="match_parent"
         android:layout_height="115dp"
         android:layout_marginTop="145dp"
         android:gravity="center"
@@ -25,7 +25,7 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:layout_width="86dp"
+                android:layout_width="56dp"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text=" 보유 렌즈"
@@ -174,7 +174,7 @@
                 <com.github.mikephil.charting.charts.LineChart
                     android:id="@+id/sightchart"
                     android:layout_width="350dp"
-                    android:layout_height="250dp"
+                    android:layout_height="229dp"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp" />

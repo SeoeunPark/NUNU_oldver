@@ -13,6 +13,8 @@ import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 import androidx.room.Room;
 
+import org.w3c.dom.Text;
+
 
 public class InitSetting extends Fragment {
     public EditText set_name;
@@ -49,15 +51,25 @@ public class InitSetting extends Fragment {
 
         show_data.setText(db.UserDao().getAll().toString());
 
+//        else if(TextUtils.isDigitsOnly(set_left.getText().toString())==false){
+////            Toast.makeText(context,"좌안 시력을 숫자로 입력해주세요",Toast.LENGTH_SHORT).show();
+////        }else if(TextUtils.isDigitsOnly(set_right.getText().toString())==false){
+////            Toast.makeText(context,"우안 시력을 숫자로 입력해주세요",Toast.LENGTH_SHORT).show();
+////        }
+
         rootView.findViewById(R.id.add_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(TextUtils.isEmpty(set_name.getText().toString())){
-                    Toast.makeText(context,"You have to write name",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context,"이름을 입력해주세요.",Toast.LENGTH_SHORT).show();
                 }else if(TextUtils.isEmpty(set_left.getText().toString())){
-                    Toast.makeText(context,"You have to write left sight",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context,"좌안 시력을 입력해주세요.",Toast.LENGTH_SHORT).show();
                 }else if(TextUtils.isEmpty(set_right.getText().toString())){
-                    Toast.makeText(context,"You have to write right sight",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context,"우안 시력을 입력해주세요.",Toast.LENGTH_SHORT).show();
+                }else if((Float.valueOf(set_left.getText().toString())>=-20.0 && Float.valueOf(set_left.getText().toString())<=10.0)==false) {
+                    Toast.makeText(context, "좌안 시력이 범위를 벗어났습니다.", Toast.LENGTH_SHORT).show();
+                }else if((Float.valueOf(set_right.getText().toString())>=-20.0 && Float.valueOf(set_right.getText().toString())<=10.0)==false) {
+                    Toast.makeText(context, "우안 시력이 범위를 벗어났습니다.", Toast.LENGTH_SHORT).show();
                 }else{
                     Toast.makeText(context,"Done",Toast.LENGTH_SHORT).show();
                     db.UserDao().insert(new UserInfo(set_name.getText().toString(),set_left.getText().toString(),set_right.getText().toString()));
