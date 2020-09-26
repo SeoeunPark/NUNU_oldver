@@ -15,6 +15,9 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 
 public class ChangeName extends Fragment {
 
@@ -63,7 +66,8 @@ public class ChangeName extends Fragment {
                 .allowMainThreadQueries()
                 .build();
         change_name = rootView.findViewById(R.id.change_name);
-
+        SimpleDateFormat fdate = new SimpleDateFormat("MM-dd");
+        Date date = new Date();
         ImageButton gobackbtn = (ImageButton)rootView.findViewById(R.id.exit);
         gobackbtn.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -78,7 +82,7 @@ public class ChangeName extends Fragment {
                 if(TextUtils.isEmpty(change_name.getText().toString())){
                     Toast.makeText(context,"변경할 이름을 입력해주세요.",Toast.LENGTH_SHORT).show();
                 }else{
-                    db.UserDao().insert(new UserInfo(change_name.getText().toString(),db.UserDao().getLeft(),db.UserDao().getRight()));
+                    db.UserDao().insert(new UserInfo(change_name.getText().toString(),db.UserDao().getLeft(),db.UserDao().getRight(),fdate.format(date)));
                     Toast.makeText(context,"이름이 변경되었습니다.",Toast.LENGTH_SHORT).show();
                     getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_layout, User).commitAllowingStateLoss();
                 }

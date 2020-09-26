@@ -16,6 +16,9 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 
 public class ChangeSight extends Fragment {
     TextView showleft;
@@ -64,6 +67,8 @@ public class ChangeSight extends Fragment {
         editleft = rootView.findViewById(R.id.editleftbtn);
         editright = rootView.findViewById(R.id.editrightbtn);
         ImageButton gobackbtn = (ImageButton)rootView.findViewById(R.id.exit2);
+        SimpleDateFormat fdate = new SimpleDateFormat("MM-dd");
+        Date date = new Date();
         gobackbtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
@@ -78,8 +83,12 @@ public class ChangeSight extends Fragment {
                     Toast.makeText(context,"변경할 좌안 시력을 입력해주세요.",Toast.LENGTH_SHORT).show();
                 }else if(TextUtils.isEmpty(editright.getText().toString())){
                     Toast.makeText(context,"변경할 우안 시력을 입력해주세요.",Toast.LENGTH_SHORT).show();
+                }else if((Float.valueOf(editleft.getText().toString())>=-20.0 && Float.valueOf(editleft.getText().toString())<=10.0)==false) {
+                    Toast.makeText(context, "좌안 시력이 범위를 벗어났습니다.", Toast.LENGTH_SHORT).show();
+                }else if((Float.valueOf(editright.getText().toString())>=-20.0 && Float.valueOf(editright.getText().toString())<=10.0)==false) {
+                    Toast.makeText(context, "우안 시력이 범위를 벗어났습니다.", Toast.LENGTH_SHORT).show();
                 }else{
-                    db.UserDao().insert(new UserInfo(db.UserDao().getName(),editleft.getText().toString(),editright.getText().toString()));
+                    db.UserDao().insert(new UserInfo(db.UserDao().getName(),editleft.getText().toString(),editright.getText().toString(),fdate.format(date)));
                     Toast.makeText(context,"이름이 변경되었습니다.",Toast.LENGTH_SHORT).show();
                     getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_layout, User).commitAllowingStateLoss();
                 }
