@@ -5,16 +5,17 @@ import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 
+
 @Entity
 public class UserInfo {
 
     @PrimaryKey(autoGenerate = true) //id는 PrimaryKey로 지정해주며 자동으로 생성해줌
     public int id;
-    public  String username;
-    public  String greeting;
-    public  String leftSight;
-    public  String rightSight;
-
+    public String username;
+    public String greeting;
+    public String leftSight;
+    public String rightSight;
+    public String date;
 
 
     @Ignore
@@ -22,10 +23,12 @@ public class UserInfo {
 
     }
 
-    public UserInfo(String username, String leftSight, String rightSight) {
+
+    public UserInfo(String username, String leftSight, String rightSight,String date) {
         this.username=username;
         this.leftSight=leftSight;
         this.rightSight=rightSight;
+        this.date = date;
     }
 
 
@@ -69,7 +72,13 @@ public class UserInfo {
         this.rightSight = rightSight;
     }
 
+    public String getDate() {
+        return date;
+    }
 
+    public void setDate(String date) {
+        this.date = date;
+    }
 
     @Override
     public String toString() {
@@ -78,7 +87,7 @@ public class UserInfo {
                 "name="+username+
                 "leftsight="+leftSight+
                 "rightSight="+rightSight+
-                //"date="+date+
+                "date="+date+
                 '}';
     }
 }

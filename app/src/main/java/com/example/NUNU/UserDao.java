@@ -8,6 +8,7 @@ import androidx.room.Update;
 
 import java.util.List;
 
+
 @Dao
 public interface UserDao {
 
@@ -22,6 +23,7 @@ public interface UserDao {
 
     @Query("SELECT username FROM UserInfo ORDER BY id DESC limit 1")
     String getName();
+
 
     @Insert
     void insert(UserInfo userInfo);

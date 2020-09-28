@@ -14,9 +14,9 @@
     -->
 
     <TableLayout
-        android:layout_width="399dp"
+        android:layout_width="match_parent"
         android:layout_height="115dp"
-        android:layout_marginTop="130dp"
+        android:layout_marginTop="145dp"
         android:gravity="center"
         android:stretchColumns="*">
 
@@ -25,7 +25,7 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:layout_width="86dp"
+                android:layout_width="56dp"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text=" 보유 렌즈"
@@ -81,7 +81,8 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="120dp">
+        android:layout_height="120dp"
+        android:layout_marginTop="15dp">
 
         <ImageView
             android:id="@+id/account_iv_profile"
@@ -118,8 +119,8 @@
             android:layout_marginStart="0dp"
             android:layout_marginLeft="0dp"
             android:layout_marginBottom="18dp"
-            android:textColor="#004182"
             android:text="안녕하세요"
+            android:textColor="#004182"
             android:textSize="24sp" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -144,7 +145,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="312dp"
-        android:layout_marginTop="250dp"
+        android:layout_marginTop="270dp"
         android:orientation="vertical">
 
         <androidx.cardview.widget.CardView
@@ -173,10 +174,10 @@
                 <com.github.mikephil.charting.charts.LineChart
                     android:id="@+id/sightchart"
                     android:layout_width="350dp"
-                    android:layout_height="250dp"
+                    android:layout_height="229dp"
+                    android:layout_gravity="center_horizontal"
                     android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:layout_gravity="center_horizontal"/>
+                    android:layout_marginBottom="10dp" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
