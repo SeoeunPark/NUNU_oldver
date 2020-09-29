@@ -54,77 +54,56 @@ public class InitSetting extends Fragment {
 
         show_data.setText(db.UserDao().getAll().toString());
 
-//        else if(TextUtils.isDigitsOnly(set_left.getText().toString())==false){
-//            Toast.makeText(context,"좌안 시력을 숫자로 입력해주세요",Toast.LENGTH_SHORT).show();
-//        }else if(TextUtils.isDigitsOnly(set_right.getText().toString())==false){
-//            Toast.makeText(context,"우안 시력을 숫자로 입력해주세요",Toast.LENGTH_SHORT).show();
-//        }
-
-//        else if((Float.valueOf(set_left.getText().toString())>=-20.0 && Float.valueOf(set_left.getText().toString())<=10.0)==false) {
-//            Toast.makeText(context, "좌안 시력이 범위를 벗어났습니다.", Toast.LENGTH_SHORT).show();
-//        }else if((Float.valueOf(set_right.getText().toString())>=-20.0 && Float.valueOf(set_right.getText().toString())<=10.0)==false) {
-//            Toast.makeText(context, "우안 시력이 범위를 벗어났습니다.", Toast.LENGTH_SHORT).show();
-//        }
 
         rootView.findViewById(R.id.add_button).setOnClickListener(new View.OnClickListener() {
-            Boolean check = true;
-            Boolean checkcheck = true;
             SimpleDateFormat fdate = new SimpleDateFormat("MM-dd");
             Date date = new Date();
+            Boolean check = true;
+            Boolean check2 = true;
             @Override
             public void onClick(View view) {
                 if(TextUtils.isEmpty(set_name.getText().toString())){
                     Toast.makeText(context,"이름을 입력해주세요.",Toast.LENGTH_SHORT).show();
                 }else if(TextUtils.isEmpty(set_left.getText().toString())){
                     Toast.makeText(context,"좌안 시력을 입력해주세요.",Toast.LENGTH_SHORT).show();
-                }else if(TextUtils.isEmpty(set_right.getText().toString())){
-                    Toast.makeText(context,"우안 시력을 입력해주세요.",Toast.LENGTH_SHORT).show();
+                }else if(TextUtils.isEmpty(set_right.getText().toString())) {
+                    Toast.makeText(context, "우안 시력을 입력해주세요.", Toast.LENGTH_SHORT).show();
                 }else if(check){
-                    boolean output = true;
-                    String nosign = null;
-                    for(int i=0; i<set_left.getText().toString().length();i++){
-                        char tmp = set_left.getText().toString().charAt(i);
-                        if (tmp!='-' || tmp!='.'){
-                            nosign += tmp;
+                    char tmp;
+                    int count = 0;
+                    for(int i=0; i<set_left.getText().toString().length();i++) {
+                        tmp = set_left.getText().toString().charAt(i);
+                        int num = (int)tmp;
+                        if(!(num==45 || num==46 || (num>=48 && num<=57))) {
+                            count++;
                         }
                     }
-
-                    for(int j=0; j<nosign.length();j++){
-                        char tmp = nosign.charAt(j);
-                        if(('0' <=tmp && tmp<='9')){
-                            output=true;
-                        }else{
-                            output=false;
-                        }
-                    }
-                    if(output==false){
-                        Toast.makeText(context,"좌안 시력을 숫자로 작성해주세요.",Toast.LENGTH_SHORT).show();
+                    if(count!=0){
+                        Toast.makeText(context, "좌안 시력을 숫자로 입력해주세요.", Toast.LENGTH_SHORT).show();
+                        check=true;
                     }else{
-                        check=false;
+                        check = false;
                     }
-                }else if(checkcheck){
-                    boolean output = true;
-                    String nosign = null;
-                    for(int i=0; i<set_right.getText().toString().length();i++){
-                        char tmp = set_right.getText().toString().charAt(i);
-                        if (tmp!='-' || tmp!='.'){
-                            nosign += tmp;
+                }else if(check2){
+                    char tmp;
+                    int count = 0;
+                    for(int i=0; i<set_right.getText().toString().length();i++) {
+                        tmp = set_right.getText().toString().charAt(i);
+                        int num = (int)tmp;
+                        if(!(num==45 || num==46 || (num>=48 && num<=57))) {
+                            count++;
                         }
                     }
-
-                    for(int j=0; j<nosign.length();j++){
-                        char tmp = nosign.charAt(j);
-                        if(!('0' <=tmp && tmp<='9')){
-                            output=false;
-                        }else{
-                            output=true;
-                        }
-                    }
-                    if(output==false){
-                        Toast.makeText(context,"우안 시력을 숫자로 작성해주세요.",Toast.LENGTH_SHORT).show();
+                    if(count!=0){
+                        Toast.makeText(context, "우안 시력을 숫자로 입력해주세요.", Toast.LENGTH_SHORT).show();
+                        check2=true;
                     }else{
-                        checkcheck=false;
+                        check2 = false;
                     }
+                }else if((Float.valueOf(set_left.getText().toString())>=-20.0 && Float.valueOf(set_left.getText().toString())<=10.0)==false) {
+                    Toast.makeText(context, "좌안 시력이 범위를 벗어났습니다.", Toast.LENGTH_SHORT).show();
+                }else if((Float.valueOf(set_right.getText().toString())>=-20.0 && Float.valueOf(set_right.getText().toString())<=10.0)==false) {
+                    Toast.makeText(context, "우안 시력이 범위를 벗어났습니다.", Toast.LENGTH_SHORT).show();
                 }else{
                     Toast.makeText(context,"Done",Toast.LENGTH_SHORT).show();
                     db.UserDao().insert(new UserInfo(set_name.getText().toString(),set_left.getText().toString(),set_right.getText().toString(),fdate.format(date)));
