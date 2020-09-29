@@ -25,7 +25,6 @@ public class InitSetting extends Fragment {
     public EditText set_right;
     private TextView show_data;
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

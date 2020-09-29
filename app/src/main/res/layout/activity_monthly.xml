@@ -15,33 +15,41 @@ tools:context=".Monthly">
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
+            //뒤에 파란색
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="267dp"
-                android:background="#D265B0E2"
-                android:orientation="vertical" />
-
-
-            <RelativeLayout
-                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:layout_marginBottom="30dp">
-
+                android:weightSum="1"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_weight="0.5"
+                    android:layout_height="match_parent"
+                    android:background="#D265B0E2"
+                    />
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="20dp"
-                    android:background="@drawable/round_background">
+                    />
+            </LinearLayout>
 
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="30dp"
+                android:background="@drawable/round_background"
+                android:orientation="horizontal">
                     <ScrollView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:fillViewport="true">
 
-                        <RelativeLayout
+                        <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_marginLeft="20dp">
@@ -53,110 +61,127 @@ tools:context=".Monthly">
                                 android:layout_marginTop="10dp"
                                 android:text="기간 렌즈"
                                 android:textColor="#000000"
-                                android:textSize="30sp" />
+                                android:textSize="30sp"
+                                app:layout_constraintBottom_toTopOf="@id/month_name_text"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
 
                             <TextView
                                 android:id="@+id/month_name_text"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_below="@id/month_title_text"
                                 android:layout_marginTop="20dp"
                                 android:text="렌즈 이름"
                                 android:textColor="@color/dartblue"
-                                android:textSize="23sp" />
+                                android:textSize="23sp"
+                                app:layout_constraintBottom_toTopOf="@id/Monthly_name"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/month_title_text" />
 
                             <EditText
                                 android:id="@+id/Monthly_name"
                                 android:layout_width="300dp"
                                 android:layout_height="wrap_content"
-                                android:layout_below="@id/month_name_text"
                                 android:layout_marginTop="4dp"
                                 android:hint="ex) 악마 홀로리스 원데이 "
                                 android:inputType="text"
                                 android:textColor="#29367A"
-                                android:textSize="20sp" />
+                                android:textSize="20sp"
+                                app:layout_constraintBottom_toTopOf="@id/month_type_text"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/month_name_text" />
 
                             <TextView
                                 android:id="@+id/month_type_text"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_below="@id/Monthly_name"
                                 android:layout_marginTop="10dp"
                                 android:text="렌즈 유형"
                                 android:textColor="@color/dartblue"
-                                android:textSize="23sp" />
+                                android:textSize="23sp"
+                                app:layout_constraintBottom_toTopOf="@id/Monthly_type"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/Monthly_name" />
 
                             <EditText
                                 android:id="@+id/Monthly_type"
                                 android:layout_width="150dp"
                                 android:layout_height="wrap_content"
-                                android:layout_below="@id/month_type_text"
                                 android:layout_marginTop="4dp"
                                 android:clickable="true"
                                 android:editable="false"
                                 android:focusable="false"
                                 android:hint="ex)소프트렌즈"
                                 android:textColor="#29367A"
-                                android:textSize="20sp" />
+                                android:textSize="20sp"
+                                app:layout_constraintBottom_toTopOf="@id/month_period_text"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/month_type_text" />
 
                             <TextView
                                 android:id="@+id/month_period_text"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_below="@id/Monthly_type"
                                 android:layout_marginTop="10dp"
                                 android:text="착용기간"
                                 android:textColor="@color/dartblue"
-                                android:textSize="24sp" />
+                                android:textSize="24sp"
+                                app:layout_constraintBottom_toTopOf="@id/Monthly_start"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/Monthly_type" />
 
                             <EditText
                                 android:id="@+id/Monthly_start"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_below="@id/month_period_text"
-                                android:layout_marginTop="4dp"
                                 android:clickable="true"
                                 android:editable="false"
                                 android:focusable="false"
                                 android:hint="yyyy/mm/dd"
                                 android:textColor="#29367A"
-                                android:textSize="20sp" />
+                                android:textSize="20sp"
+                                app:layout_constraintBottom_toTopOf="@id/month_color_text"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/month_period_text" />
 
                             <TextView
                                 android:id="@+id/wave_text"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_below="@id/month_period_text"
-                                android:layout_marginLeft="5dp"
-                                android:layout_marginRight="5dp"
-                                android:layout_marginTop="16dp"
-                                android:layout_toRightOf="@id/Monthly_start"
                                 android:text="~"
-                                android:textSize="20sp" />
+                                android:textSize="20sp"
+                                app:layout_constraintBottom_toBottomOf="@+id/Monthly_start"
+                                app:layout_constraintEnd_toStartOf="@id/Monthly_end"
+                                app:layout_constraintStart_toEndOf="@+id/Monthly_start"
+                                app:layout_constraintTop_toTopOf="@+id/Monthly_start" />
 
                             <EditText
                                 android:id="@+id/Monthly_end"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_below="@id/month_period_text"
-                                android:layout_toRightOf="@id/wave_text"
-                                android:layout_marginTop="4dp"
+                                android:layout_marginStart="4dp"
+                                android:layout_marginLeft="4dp"
                                 android:clickable="true"
                                 android:editable="false"
                                 android:focusable="false"
                                 android:hint="yyyy/mm/dd"
                                 android:textColor="#29367A"
-                                android:textSize="20sp" />
+                                android:textSize="20sp"
+                                app:layout_constraintBottom_toBottomOf="@+id/wave_text"
+                                app:layout_constraintStart_toEndOf="@id/wave_text"
+                                app:layout_constraintTop_toTopOf="@+id/wave_text" />
 
                             <TextView
                                 android:id="@+id/month_color_text"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_below="@id/Monthly_start"
                                 android:layout_marginTop="10dp"
                                 android:text="색상"
                                 android:textColor="@color/dartblue"
-                                android:textSize="23sp" />
+                                android:textSize="23sp"
+                                app:layout_constraintBottom_toTopOf="@id/Monthly_color"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/Monthly_end" />
 
                             <Button
                                 android:id="@+id/Monthly_color"
@@ -164,35 +189,47 @@ tools:context=".Monthly">
                                 android:layout_height="wrap_content"
                                 android:layout_below="@id/month_color_text"
                                 android:layout_marginTop="4dp"
-                                android:background="@drawable/pallete" />
+                                android:background="@drawable/pallete"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/month_color_text" />
 
                             <Button
-                                android:id="@+id/Monthly_save"
+                                android:id="@+id/Oneday_save"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentRight="true"
                                 android:layout_alignParentBottom="true"
-                                android:layout_marginBottom="20dp"
-                                android:layout_marginRight="30dp"
+                                android:layout_marginEnd="16dp"
+                                android:layout_marginRight="16dp"
+                                android:layout_marginBottom="16dp"
                                 android:background="@color/color"
                                 android:text="저장"
-                                android:textSize="30sp"
                                 android:textColor="@color/white"
-                                />
+                                android:textSize="30sp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent" />
 
                             <Button
                                 android:id="@+id/to_main"
                                 android:layout_width="50dp"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentRight="true"
-                                android:layout_marginRight="5dp"
-                                android:layout_marginTop="10dp"
-                                android:background="@drawable/close"
-                                android:backgroundTint="@color/dartblue"/>
+                                android:layout_marginTop="16dp"
+                                android:layout_marginEnd="16dp"
+                                android:layout_marginRight="16dp"
+                                android:background="@drawable/fab_close"
+                                android:backgroundTint="@color/dartblue"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
 
-                        </RelativeLayout>
+                            <androidx.constraintlayout.widget.Group
+                                android:id="@+id/group"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
                     </ScrollView>
-                </LinearLayout>
-            </RelativeLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
         </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
