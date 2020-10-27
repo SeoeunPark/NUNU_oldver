@@ -63,6 +63,13 @@
             android:layout_marginLeft="4dp"
             android:layout_marginRight="4dp"
             android:layout_marginBottom="8dp" />
+        <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+            tools:ignore="MissingConstraints">
+            <androidx.fragment.app.FragmentContainerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/lowerCalculator" />
+        </FrameLayout>
 
     </RelativeLayout>
 </FrameLayout>

@@ -1,14 +1,15 @@
 package com.example.NUNU;
 
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
-
+import androidx.room.Room;
 
 
 @Entity
 public class UserInfo {
-
+    @ColumnInfo(name = "id")
     @PrimaryKey(autoGenerate = true) //id는 PrimaryKey로 지정해주며 자동으로 생성해줌
     public int id;
     public String username;

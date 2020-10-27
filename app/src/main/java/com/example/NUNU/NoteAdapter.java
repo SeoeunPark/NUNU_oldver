@@ -1,5 +1,6 @@
 package com.example.NUNU;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,38 +11,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder>{
-    //apdapter에 들어갈 list
-    ArrayList<Note> items = new ArrayList<Note>();
-
-    @NonNull
-    @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
-        LayoutInflater inflater = LayoutInflater.from(viewGroup.getContext());
-        View itemView = inflater.inflate(R.layout.note_item, viewGroup, false);
-        //만들어둔 note_item 넣기
-        return new ViewHolder(itemView);
-    }
-    //item을 하나하나 보여주는 함수
-    @Override
-    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position) {
-        Note item = items.get(position);
-        viewHolder.setItem(item);  //이게 추가하는 거
-    }
-    //recylerview의 총 개수
-    @Override
-    public int getItemCount() {
-        return items.size();
-    }
-    //외부에서 itme 추가
-    public void addItem(Note item) {
-        items.add(item);
-    }
-
-    public void setItems(ArrayList<Note> items) {
-        this.items = items;
-    }
     static class ViewHolder extends RecyclerView.ViewHolder {
         LinearLayout layout1;
         TextView lens_name;
@@ -68,5 +40,59 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder>{
         }
 
     }
+    private final LayoutInflater mInflater;
+    private List<Note> mNotes;
 
+    NoteAdapter(Context context){
+        mInflater = LayoutInflater.from(context);
     }
+
+    //apdapter에 들어갈 list
+    //ArrayList<Note> items = new ArrayList<Note>();
+
+    @NonNull
+    @Override
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        //LayoutInflater inflater = LayoutInflater.from(viewGroup.getContext());
+        View itemView = mInflater.inflate(R.layout.note_item, parent, false);
+        //만들어둔 note_item 넣기
+        return new ViewHolder(itemView);
+    }
+    //item을 하나하나 보여주는 함수
+    @Override
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        if(mNotes != null){
+            Note current = mNotes.get(position);
+            holder.lens_name.setText(current.getLens_name());
+            holder.lens_cnt.setText("보유개수 :"+current.getLens_cnt());
+            holder.start_date.setText(current.getLens_start());
+            holder.end_date.setText(current.getLens_end());
+        }else{
+            holder.lens_name.setText("No word");
+            holder.lens_cnt.setText("No word");
+            holder.start_date.setText("No word");
+            holder.end_date.setText("No word");
+        }
+        //Note item = items.get(position);
+        //viewHolder.setItem(item);  //이게 추가하는 거
+    }
+
+    public void setItems(List<Note> notes) {
+        mNotes = notes;
+        notifyDataSetChanged();
+    }
+    //recylerview의 총 개수
+    @Override
+    public int getItemCount() {
+        if(mNotes !=null)
+            return mNotes.size();
+        else return 0;
+    }
+    /*
+    //외부에서 itme 추가
+    public void addItem(Note item) {
+        items.add(item);
+    }
+
+     */
+}

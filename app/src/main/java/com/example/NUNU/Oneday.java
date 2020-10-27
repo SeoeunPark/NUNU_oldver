@@ -1,10 +1,14 @@
 package com.example.NUNU;
 
 import android.app.AlertDialog;
+import android.app.Application;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.AsyncTask;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -12,30 +16,68 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.ListFragment;
+import androidx.lifecycle.LiveData;
+import androidx.room.Room;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Locale;
 
 import petrov.kristiyan.colorpicker.ColorPicker;
 
-public class Oneday extends AppCompatActivity {
+public class Oneday extends AppCompatActivity  {
+    public static final String EXTRA_REPLY = "com.example.NUNU.REPLY";
     Calendar myCalendar = Calendar.getInstance();
     private Button pallete;
     private int posi;
-    private String clname;  // 렌즈 색
+    private EditText one_name;
+    private EditText one_cnt;
+    private String clname="아무 색";  // 렌즈 색
     private Button cancel; //X 버튼
     private EditText one_type; // 렌즈유형
+    private LensDao mLensDao;
+    //private LiveData<List<Note>> mAllWords;
+    /*
+    public Oneday(Application application) {
+        AppDatabase db=AppDatabase.getAppDatabase(application);
+        //RoomDatabase에 있는 Dao를 가져온다.
+        mLensDao=db.lensDao();
+        //Dao의 쿼리를 이용하여 저장되어있는 모든 word를 가져온다.
+        mAllWords=mLensDao.getAllWords();
+    }
+
+    public Oneday() {
+
+    }
+
+    public LiveData<List<Note>> getAllWords() {
+        return mAllWords;
+    }
+
+
+
+
+    //word를 추가하는 함수
+    public void insert(Note note) {
+        new insertAsyncTask(mLensDao).execute(note);
+    }
+    */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_oneday);
+
         EditText et_Date = (EditText) findViewById(R.id.Oneday_period);
+        one_name = (EditText)findViewById(R.id.Oneday_name);
+        one_cnt = (EditText)findViewById(R.id.Oneday_cnt);
         pallete = (Button) findViewById(R.id.Oneday_color);
         cancel = (Button) findViewById(R.id.to_main);
         one_type = (EditText)findViewById(R.id.Oneday_type);
+        Button save = findViewById(R.id.Oneday_save);
 
         one_type.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v){
@@ -43,12 +85,51 @@ public class Oneday extends AppCompatActivity {
             }
         });
 
+        save.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent replyIntent = new Intent();
+                if (TextUtils.isEmpty(one_name.getText())) {
+                    setResult(RESULT_CANCELED, replyIntent);
+                } else {
+                    //String word = mEditWordView.getText().toString();
+                    replyIntent.putExtra("onename",one_name.getText().toString()); //name 이란 이름으로 one_name에 들어간 text 저장
+                    replyIntent.putExtra("onetype",one_type.getText().toString());
+                    replyIntent.putExtra("onecnt",Integer.parseInt(one_cnt.getText().toString()));
+                    replyIntent.putExtra("oneperiod",1);
+                    replyIntent.putExtra("onecl",clname);
+                    replyIntent.putExtra("onestart","0");
+                    replyIntent.putExtra("oneend",et_Date.getText().toString());
+                    setResult(RESULT_OK, replyIntent);
+                }
+                finish();
+            }
+        });
+
+
         //유효기간
         et_Date.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 new DatePickerDialog(Oneday.this,myDatePicker,myCalendar.get(Calendar.YEAR), myCalendar.get(Calendar.MONTH), myCalendar.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
+        /*
+        //추가버튼시 DB에 데이터 INSERT
+        findViewById(R.id.Oneday_save).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                    new insertAsyncTask(db.LensDao()).execute(new Note(one_name.getText().toString(),one_type.getText().toString(),
+                    Integer.parseInt(one_cnt.getText().toString()),1,clname,"0",et_Date.getText().toString()));
+                    one_name.setText("");
+                    one_type.setText("");
+                    one_cnt.setText("");
+                    et_Date.setText("");
+                    pallete.setText("");
+            }
+        });
+
+         */
+
+
         //x 버튼
         cancel.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -133,6 +214,8 @@ public class Oneday extends AppCompatActivity {
                             clname = "분홍색";
                         }else if(posi ==9) {
                             clname = "보라색";
+                        }else{
+                            clname="";
                         }
                     }
                     @Override
@@ -143,7 +226,10 @@ public class Oneday extends AppCompatActivity {
         //색 잘 들어가는지 확인
         // Toast.makeText(getApplicationContext(), clname, Toast.LENGTH_SHORT).show();
     }
+
+
     final Context context = this;
+
     public void type(){
         {
             final CharSequence[] items ={"소프트렌즈","하드렌즈","미용렌즈"};
@@ -164,5 +250,21 @@ public class Oneday extends AppCompatActivity {
         }
     }
 
+    //메인스레드에서 데이터베이스에 접근할 수 없으므로 AsyncTask를 사용하도록 한다.
+    public static class insertAsyncTask extends AsyncTask<Note, Void, Void> {
+        private LensDao mLensDao;
+
+        public insertAsyncTask(LensDao lensDao) {
+            this.mLensDao = lensDao;
+        }
+
+        @Override //백그라운드작업(메인스레드 X)
+        protected Void doInBackground(Note... lens) {
+            //추가만하고 따로 SELECT문을 안해도 라이브데이터로 인해
+            //getAll()이 반응해서 데이터를 갱신해서 보여줄 것이다,  메인액티비티에 옵저버에 쓴 코드가 실행된다. (라이브데이터는 스스로 백그라운드로 처리해준다.)
+            mLensDao.insert(lens[0]);
+            return null;
+        }
+    }
 }
 

@@ -1,16 +1,24 @@
 package com.example.NUNU;
 
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity(tableName = "lens_table")
+
 public class Note {
+    @PrimaryKey(autoGenerate = true) //id는 PrimaryKey로 지정해주며 자동으로 생성해줌
+    @ColumnInfo(name="word")
     int _id;
     String lens_name;
     String lens_type;
     int lens_cnt;
-    String lens_period;
+    int lens_period;
     String lens_color;
     String lens_start;
     String lens_end;
 
-    public Note(int _id, String lens_name, String lens_type, int lens_cnt, String lens_period, String lens_color, String lens_start, String lens_end) {
+    public Note(String lens_name, String lens_type, int lens_cnt, int lens_period, String lens_color, String lens_start, String lens_end) {
         this._id = _id;
         this.lens_name = lens_name;
         this.lens_type = lens_type;
@@ -53,11 +61,11 @@ public class Note {
         this.lens_cnt = lens_cnt;
     }
 
-    public String getLens_period() {
+    public int getLens_period() {
         return lens_period;
     }
 
-    public void setLens_period(String lens_period) {
+    public void setLens_period(int lens_period) {
         this.lens_period = lens_period;
     }
 
