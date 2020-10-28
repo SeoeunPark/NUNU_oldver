@@ -133,7 +133,7 @@ public class Lens extends Fragment implements View.OnClickListener{
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
             super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == NEW_WORD_ACTIVITY_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
-            Note word = new Note(data.getExtras().getString("onename"),data.getExtras().getString("onetype"),data.getExtras().getInt("onecnt"),data.getExtras().getInt("oneperiod"),data.getExtras().getString("onecl"),data.getExtras().getString("onestart"),data.getExtras().getString("oneend"));
+            Note word = new Note(data.getExtras().getString("name"),data.getExtras().getString("type"),data.getExtras().getInt("cnt"),data.getExtras().getInt("period"),data.getExtras().getString("cl"),data.getExtras().getString("start"),data.getExtras().getString("end"));
             mWordViewModel.insert(word);
         } else {
             //Toast.makeText(getActivity(), "저장되어 있는 단어가 없습니다.", Toast.LENGTH_LONG).show();
@@ -162,9 +162,7 @@ public class Lens extends Fragment implements View.OnClickListener{
         super.onCreate(savedInstanceState);
         oneday = new Oneday();
         monthly = new Monthly();
-
     }
-
     @Override
     public void onClick(View v) {
         int id = v.getId();
@@ -187,7 +185,9 @@ public class Lens extends Fragment implements View.OnClickListener{
                 break;
             case R.id.fab2:
                 //anim();
-                getActivity().startActivity(new Intent(getActivity(), monthly.getClass()));
+                //getActivity().startActivity(new Intent(getActivity(), monthly.getClass()));
+                Intent mintent = new Intent(v.getContext(), Monthly.class); //이거 진짜 중요
+                startActivityForResult(mintent, NEW_WORD_ACTIVITY_REQUEST_CODE); // 이것도 중요
                 //getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_layout, monthly).commitAllowingStateLoss();
                 //Toast.makeText(getActivity(), "Button2", Toast.LENGTH_SHORT).show(); 버튼 누르면 토스트 발생, 지금은 필요없을 듯
                 break;

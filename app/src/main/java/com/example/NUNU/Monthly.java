@@ -4,7 +4,10 @@ import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -21,22 +24,27 @@ import java.util.Locale;
 import petrov.kristiyan.colorpicker.ColorPicker;
 
 public class Monthly extends AppCompatActivity {
+    public static final String EXTRA_REPLY = "com.example.NUNU.REPLY";
     Calendar myCalendar = Calendar.getInstance();
+
     private Button pallete;
     private int posi;
-    private String clname; // 렌즈 색
+    private String clname="아무 색"; // 렌즈 색
     private Button cancel; //X 버튼
     private EditText mon_type; // 렌즈유형
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_monthly);
+
+        EditText mon_name = (EditText)findViewById(R.id.Monthly_name);
         final EditText monthly_start = (EditText) findViewById(R.id.Monthly_start);
         final EditText monthly_end = (EditText) findViewById(R.id.Monthly_end);
-        EditText monthly_type = (EditText)findViewById(R.id.Monthly_type);
         pallete = (Button) findViewById(R.id.Monthly_color);
         cancel = (Button) findViewById(R.id.to_main);
         mon_type = (EditText)findViewById(R.id.Monthly_type);
+        Button m_save =findViewById(R.id.Monthly_save);
         final Context context = this;
 
         //렌즈 유형
@@ -45,6 +53,27 @@ public class Monthly extends AppCompatActivity {
                 type();
             }
         });
+
+        m_save.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent replyIntent = new Intent();
+                if (TextUtils.isEmpty(mon_name.getText())) {
+                    setResult(RESULT_CANCELED, replyIntent);
+                } else {
+                    //String word = mEditWordView.getText().toString();
+                    replyIntent.putExtra("name",mon_name.getText().toString()); //name 이란 이름으로 one_name에 들어간 text 저장
+                    replyIntent.putExtra("type",mon_type.getText().toString());
+                    replyIntent.putExtra("cnt",1);
+                    replyIntent.putExtra("period",2);
+                    replyIntent.putExtra("cl",clname);
+                    replyIntent.putExtra("start",monthly_start.getText().toString());
+                    replyIntent.putExtra("end",monthly_end.getText().toString());
+                    setResult(RESULT_OK, replyIntent);
+                }
+                finish();
+            }
+        });
+
 
         //유효기간
         monthly_start.setOnClickListener(new View.OnClickListener() {
@@ -57,7 +86,7 @@ public class Monthly extends AppCompatActivity {
             public void onClick(View v) {
                 if(monthly_start.getText().toString().length()!=0) {
                     new DatePickerDialog(Monthly.this, myDatePicker_end, myCalendar.get(Calendar.YEAR), myCalendar.get(Calendar.MONTH), myCalendar.get(Calendar.DAY_OF_MONTH)).show();
-                }else{
+                }else if(monthly_start.getText().toString().length()==0){
                      Toast.makeText(getApplicationContext(),"시작일부터 입력해주세요.", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -193,5 +222,22 @@ public class Monthly extends AppCompatActivity {
             alertDialog.show();
         }
     }
+    //메인스레드에서 데이터베이스에 접근할 수 없으므로 AsyncTask를 사용하도록 한다.
+    public static class insertAsyncTask extends AsyncTask<Note, Void, Void> {
+        private LensDao mLensDao;
+
+        public insertAsyncTask(LensDao lensDao) {
+            this.mLensDao = lensDao;
+        }
+
+        @Override //백그라운드작업(메인스레드 X)
+        protected Void doInBackground(Note... lens) {
+            //추가만하고 따로 SELECT문을 안해도 라이브데이터로 인해
+            //getAll()이 반응해서 데이터를 갱신해서 보여줄 것이다,  메인액티비티에 옵저버에 쓴 코드가 실행된다. (라이브데이터는 스스로 백그라운드로 처리해준다.)
+            mLensDao.insert(lens[0]);
+            return null;
+        }
+    }
+
 
 }

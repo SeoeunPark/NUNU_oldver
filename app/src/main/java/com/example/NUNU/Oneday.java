@@ -77,7 +77,7 @@ public class Oneday extends AppCompatActivity  {
         pallete = (Button) findViewById(R.id.Oneday_color);
         cancel = (Button) findViewById(R.id.to_main);
         one_type = (EditText)findViewById(R.id.Oneday_type);
-        Button save = findViewById(R.id.Oneday_save);
+        Button o_save = findViewById(R.id.Oneday_save);
 
         one_type.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v){
@@ -85,26 +85,25 @@ public class Oneday extends AppCompatActivity  {
             }
         });
 
-        save.setOnClickListener(new View.OnClickListener() {
+        o_save.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Intent replyIntent = new Intent();
                 if (TextUtils.isEmpty(one_name.getText())) {
                     setResult(RESULT_CANCELED, replyIntent);
                 } else {
                     //String word = mEditWordView.getText().toString();
-                    replyIntent.putExtra("onename",one_name.getText().toString()); //name 이란 이름으로 one_name에 들어간 text 저장
-                    replyIntent.putExtra("onetype",one_type.getText().toString());
-                    replyIntent.putExtra("onecnt",Integer.parseInt(one_cnt.getText().toString()));
-                    replyIntent.putExtra("oneperiod",1);
-                    replyIntent.putExtra("onecl",clname);
-                    replyIntent.putExtra("onestart","0");
-                    replyIntent.putExtra("oneend",et_Date.getText().toString());
+                    replyIntent.putExtra("name",one_name.getText().toString()); //name 이란 이름으로 one_name에 들어간 text 저장
+                    replyIntent.putExtra("type",one_type.getText().toString());
+                    replyIntent.putExtra("cnt",Integer.parseInt(one_cnt.getText().toString()));
+                    replyIntent.putExtra("period",1);
+                    replyIntent.putExtra("cl",clname);
+                    replyIntent.putExtra("start","");
+                    replyIntent.putExtra("end",et_Date.getText().toString());
                     setResult(RESULT_OK, replyIntent);
                 }
                 finish();
             }
         });
-
 
         //유효기간
         et_Date.setOnClickListener(new View.OnClickListener() {
