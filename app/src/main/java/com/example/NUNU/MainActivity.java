@@ -12,11 +12,14 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.room.Room;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 public class MainActivity extends AppCompatActivity {
+
     BottomNavigationView bottomNavigationView;
     Home fragment1; // 홈 fragment
     Lens fragment2; // 렌즈 fragment
     User fragment3; // 유저 fragment
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

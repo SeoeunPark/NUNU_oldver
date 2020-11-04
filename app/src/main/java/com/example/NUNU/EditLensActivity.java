@@ -1,55 +1,29 @@
 package com.example.NUNU;
 
-import android.app.AlertDialog;
-import android.app.DatePickerDialog;
-import android.content.Context;
-import android.content.DialogInterface;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.DatePicker;
-import android.widget.EditText;
-import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Locale;
 
 import petrov.kristiyan.colorpicker.ColorPicker;
 
-public class Oneday extends AppCompatActivity {
+public class EditLensActivity extends AppCompatActivity {
     Calendar myCalendar = Calendar.getInstance();
     private Button pallete;
+    private Button cancel;
     private int posi;
-    private String clname;  // 렌즈 색
-    private Button cancel; //X 버튼
-    private EditText one_type; // 렌즈유형
-
+    private String clname; // 렌즈 색
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_oneday);
-        EditText et_Date = (EditText) findViewById(R.id.lens_period);
+        setContentView(R.layout.activity_editlens);
         pallete = (Button) findViewById(R.id.lens_color);
         cancel = (Button) findViewById(R.id.to_main);
-        one_type = (EditText)findViewById(R.id.edit_type);
 
-        one_type.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v){
-                type();
-            }
-        });
-
-        //유효기간
-        et_Date.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                new DatePickerDialog(Oneday.this,myDatePicker,myCalendar.get(Calendar.YEAR), myCalendar.get(Calendar.MONTH), myCalendar.get(Calendar.DAY_OF_MONTH)).show();
-            }
-        });
-        //x 버튼
         cancel.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 finish();
@@ -62,28 +36,8 @@ public class Oneday extends AppCompatActivity {
                 openColorPicker();
             }
         });
-    } // end of onCreate
-
-
-    //날짜 입력
-    DatePickerDialog.OnDateSetListener myDatePicker = new DatePickerDialog.OnDateSetListener(){
-        @Override
-        public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-            myCalendar.set(Calendar.YEAR, year);
-            myCalendar.set(Calendar.MONTH, month);
-            myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-            updateLabel_period();
-        }
-    };
-
-    private void updateLabel_period() {
-        String myFormat = "yyyy/MM/dd";    // 출력형식   2018/11/28
-        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.KOREA);
-        EditText et_date = (EditText) findViewById(R.id.lens_period);
-        et_date.setText(sdf.format(myCalendar.getTime()));
     }
 
-    //색상 선택
     public void openColorPicker() {
         final ColorPicker colorPicker = new ColorPicker(this);  // ColorPicker 객체 생성
         ArrayList<String> colors = new ArrayList<>();  // 렌즈 컬러 리스트
@@ -134,6 +88,7 @@ public class Oneday extends AppCompatActivity {
                         }else if(posi ==9) {
                             clname = "보라색";
                         }
+
                     }
                     @Override
                     public void onCancel() {
@@ -143,26 +98,4 @@ public class Oneday extends AppCompatActivity {
         //색 잘 들어가는지 확인
         // Toast.makeText(getApplicationContext(), clname, Toast.LENGTH_SHORT).show();
     }
-    final Context context = this;
-    public void type(){
-        {
-            final CharSequence[] items ={"소프트렌즈","하드렌즈","미용렌즈"};
-            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
-            alertDialogBuilder.setTitle("옵션 선택");
-
-            alertDialogBuilder.setSingleChoiceItems(items, -1, new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog, int id) {
-                    Toast.makeText(getApplicationContext(), items[id], Toast.LENGTH_SHORT).show();
-                    EditText type = (EditText) findViewById(R.id.edit_type);
-                    type.setText(items[id]);
-                    dialog.dismiss();
-                }
-            });
-
-            AlertDialog alertDialog = alertDialogBuilder.create();
-            alertDialog.show();
-        }
-    }
-
 }
-
