@@ -3,6 +3,7 @@ package com.example.NUNU;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -20,6 +21,7 @@ public class Option extends Fragment {
     ChangeName ChangeName = new ChangeName();
     ChangeSight ChangeSight = new ChangeSight();
     InitSetting GoInitSetting = new InitSetting();
+    InitInfo InitInfo = new InitInfo();
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,6 +73,8 @@ public class Option extends Fragment {
                     public void onClick(DialogInterface dialogInterface, int i) {
                         db.UserDao().deleteAll();
                         Toast.makeText(context,"데이터가 초기화 되었습니다.",Toast.LENGTH_SHORT).show();
+                      //  Intent intent = new Intent(getActivity(),InitInfo.class);
+                        //startActivity(intent);
                         getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_layout, GoInitSetting).commitAllowingStateLoss();
                     }
                 });

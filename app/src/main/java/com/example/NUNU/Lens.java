@@ -79,6 +79,7 @@ public class Lens extends Fragment implements View.OnClickListener{
             public void onChanged(@Nullable final List<Note> notes) {
                 adapter.setItems(notes);
             }
+
         });
 
         //이건 데이터 삽입

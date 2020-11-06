@@ -32,6 +32,8 @@ public class Monthly extends AppCompatActivity {
     private String clname="아무 색"; // 렌즈 색
     private Button cancel; //X 버튼
     private EditText mon_type; // 렌즈유형
+    String imon;
+    //private EditText mon_cnt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,9 +46,9 @@ public class Monthly extends AppCompatActivity {
         pallete = (Button) findViewById(R.id.Monthly_color);
         cancel = (Button) findViewById(R.id.to_main);
         mon_type = (EditText)findViewById(R.id.Monthly_type);
+        //mon_cnt = (EditText)findViewById(R.id.Monthly_cnt);
         Button m_save =findViewById(R.id.Monthly_save);
         final Context context = this;
-
         //렌즈 유형
         mon_type.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v){
@@ -63,7 +65,7 @@ public class Monthly extends AppCompatActivity {
                     //String word = mEditWordView.getText().toString();
                     replyIntent.putExtra("name",mon_name.getText().toString()); //name 이란 이름으로 one_name에 들어간 text 저장
                     replyIntent.putExtra("type",mon_type.getText().toString());
-                    replyIntent.putExtra("cnt",1);
+                    replyIntent.putExtra("cnt",1);//Integer.parseInt(mon_cnt.getText().toString()));
                     replyIntent.putExtra("period",2);
                     replyIntent.putExtra("cl",clname);
                     replyIntent.putExtra("start",monthly_start.getText().toString());

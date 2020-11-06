@@ -13,14 +13,21 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder>{
+public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> implements OnPersonItemClickListener{
+
+    OnPersonItemClickListener listener;
+
+    @Override
+    public void onItemClick(ViewHolder holder, View view, int position) {
+        if(listener != null){ listener.onItemClick(holder,view,position); }
+    }
+
     static class ViewHolder extends RecyclerView.ViewHolder {
         LinearLayout layout1;
         TextView lens_name;
         TextView lens_cnt;
         TextView start_date;
         TextView end_date;
-
 
         public ViewHolder(View itemView ){
             super(itemView);
@@ -38,7 +45,6 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder>{
             start_date.setText(item.getLens_start());
             end_date.setText(item.getLens_end());
         }
-
     }
     private final LayoutInflater mInflater;
     private List<Note> mNotes;
