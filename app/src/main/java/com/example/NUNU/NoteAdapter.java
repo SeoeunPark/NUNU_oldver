@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> implements OnPersonItemClickListener{
-
     OnPersonItemClickListener listener;
 
     @Override
