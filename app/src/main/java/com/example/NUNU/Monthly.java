@@ -60,6 +60,7 @@ public class Monthly extends AppCompatActivity {
             public void onClick(View view) {
                 Intent replyIntent = new Intent();
                 if (TextUtils.isEmpty(mon_name.getText())) {
+                    Toast.makeText(context, "렌즈 이름을 입력해주세요.", Toast.LENGTH_SHORT).show();
                     setResult(RESULT_CANCELED, replyIntent);
                 } else {
                     //String word = mEditWordView.getText().toString();

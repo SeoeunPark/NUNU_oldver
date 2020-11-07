@@ -29,8 +29,6 @@ public interface LensDao {
     @Query("DELETE FROM lens_table")
     void deleteAll();
 
-    @Query("SELECT * FROM lens_table")
-    LiveData<List<Note>> getAllData();
 
     @Query("SELECT * from lens_table ORDER BY word ASC")
     LiveData<List<Note>> getAllWords();

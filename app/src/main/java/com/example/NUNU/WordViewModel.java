@@ -25,4 +25,14 @@ public class WordViewModel extends AndroidViewModel {
     public void insert(Note note){
         mRepository.insert(note);
     }
+    public void update(Note note){
+        mRepository.update(note);
+    }
+    public void delete(Note note){
+        mRepository.delete(note);
+    }
+    public void deleteAllNotes(){
+        mRepository.deleteAllNotes();
+    }
+
 }
