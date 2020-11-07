@@ -79,7 +79,6 @@ public class Lens extends Fragment implements View.OnClickListener{
                     //update RecylerView 리사이클러뷰 업데이트 매우 중요
                     adapter.setItems(notes);
                 }
-
             });
             //스와이프해서 삭제
             new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0,
