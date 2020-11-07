@@ -48,18 +48,11 @@ public class Oneday extends AppCompatActivity  {
         //Dao의 쿼리를 이용하여 저장되어있는 모든 word를 가져온다.
         mAllWords=mLensDao.getAllWords();
     }
-
     public Oneday() {
-
     }
-
     public LiveData<List<Note>> getAllWords() {
         return mAllWords;
     }
-
-
-
-
     //word를 추가하는 함수
     public void insert(Note note) {
         new insertAsyncTask(mLensDao).execute(note);
@@ -70,10 +63,14 @@ public class Oneday extends AppCompatActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_oneday);
+
         EditText et_Date = (EditText) findViewById(R.id.Oneday_period);
+        one_name = (EditText)findViewById(R.id.Oneday_name);
+        one_cnt = (EditText)findViewById(R.id.Oneday_cnt);
         pallete = (Button) findViewById(R.id.Oneday_color);
         cancel = (Button) findViewById(R.id.to_main);
         one_type = (EditText)findViewById(R.id.Oneday_type);
+        Button o_save = findViewById(R.id.Oneday_save);
 
         one_type.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v){
@@ -121,7 +118,6 @@ public class Oneday extends AppCompatActivity  {
                     pallete.setText("");
             }
         });
-
          */
 
 
@@ -262,4 +258,3 @@ public class Oneday extends AppCompatActivity  {
         }
     }
 }
-

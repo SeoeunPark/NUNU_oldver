@@ -16,6 +16,10 @@ import java.util.List;
 public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> implements OnPersonItemClickListener{
     OnPersonItemClickListener listener;
 
+    public void setOnItemClicklistener(OnPersonItemClickListener listener){
+        this.listener = listener;
+    }
+
     @Override
     public void onItemClick(ViewHolder holder, View view, int position) {
         if(listener != null){ listener.onItemClick(holder,view,position); }

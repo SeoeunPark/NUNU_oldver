@@ -88,8 +88,9 @@ public class Lens extends Fragment implements View.OnClickListener{
         initFL(rootView);
         //loadNoteListData();
         recyclerView.setAdapter(adapter);
+
         return rootView;
-    }
+    } // end of onCreateView
 
 
 /*

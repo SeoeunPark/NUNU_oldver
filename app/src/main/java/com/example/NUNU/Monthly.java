@@ -89,7 +89,7 @@ public class Monthly extends AppCompatActivity {
                 if(monthly_start.getText().toString().length()!=0) {
                     new DatePickerDialog(Monthly.this, myDatePicker_end, myCalendar.get(Calendar.YEAR), myCalendar.get(Calendar.MONTH), myCalendar.get(Calendar.DAY_OF_MONTH)).show();
                 }else if(monthly_start.getText().toString().length()==0){
-                     Toast.makeText(getApplicationContext(),"시작일부터 입력해주세요.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),"시작일부터 입력해주세요.", Toast.LENGTH_SHORT).show();
                 }
             }
         });
