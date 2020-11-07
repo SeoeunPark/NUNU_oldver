@@ -56,29 +56,29 @@
                         android:layout_marginLeft="20dp">
 
                         <TextView
-                            android:id="@+id/one_title_text"
+                            android:id="@+id/edit_lens_text"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="원데이 렌즈"
                             android:textColor="#000000"
                             android:textSize="30sp"
-                            app:layout_constraintBottom_toTopOf="@id/one_name_text"
+                            app:layout_constraintBottom_toTopOf="@id/lens_name_text"
                             app:layout_constraintLeft_toLeftOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <TextView
-                            android:id="@+id/one_name_text"
+                            android:id="@+id/lens_name_text"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="렌즈 이름"
                             android:textColor="@color/dartblue"
                             android:textSize="23sp"
                             app:layout_constraintLeft_toLeftOf="parent"
-                            app:layout_constraintBottom_toTopOf="@id/Oneday_name"
-                            app:layout_constraintTop_toBottomOf="@id/one_title_text" />
+                            app:layout_constraintBottom_toTopOf="@id/edit_lens_name"
+                            app:layout_constraintTop_toBottomOf="@id/edit_lens_text" />
 
                         <EditText
-                            android:id="@+id/Oneday_name"
+                            android:id="@+id/edit_lens_name"
                             android:layout_width="300dp"
                             android:layout_height="wrap_content"
                             android:hint="ex) 악마 홀로리스 원데이 "
@@ -86,11 +86,11 @@
                             android:textColor="#29367A"
                             android:textSize="20sp"
                             app:layout_constraintLeft_toLeftOf="parent"
-                            app:layout_constraintBottom_toTopOf="@id/one_type_text"
-                            app:layout_constraintTop_toBottomOf="@id/one_name_text" />
+                            app:layout_constraintBottom_toTopOf="@id/edit_type_text"
+                            app:layout_constraintTop_toBottomOf="@id/lens_name_text" />
 
                         <TextView
-                            android:id="@+id/one_type_text"
+                            android:id="@+id/edit_type_text"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
@@ -98,12 +98,12 @@
                             android:textColor="@color/dartblue"
                             android:textSize="23sp"
                             app:layout_constraintLeft_toLeftOf="parent"
-                            app:layout_constraintBottom_toTopOf="@id/Oneday_type"
-                            app:layout_constraintTop_toBottomOf="@id/Oneday_name" />
+                            app:layout_constraintBottom_toTopOf="@id/edit_type"
+                            app:layout_constraintTop_toBottomOf="@id/edit_lens_name" />
                         />
 
                         <EditText
-                            android:id="@+id/Oneday_type"
+                            android:id="@+id/edit_type"
                             android:layout_width="150dp"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
@@ -114,11 +114,11 @@
                             android:textColor="#29367A"
                             android:textSize="20sp"
                             app:layout_constraintLeft_toLeftOf="parent"
-                            app:layout_constraintBottom_toTopOf="@id/one_cnt_text"
-                            app:layout_constraintTop_toBottomOf="@id/one_type_text" />
+                            app:layout_constraintBottom_toTopOf="@id/edit_cnt_text"
+                            app:layout_constraintTop_toBottomOf="@id/edit_type_text" />
 
                         <TextView
-                            android:id="@+id/one_cnt_text"
+                            android:id="@+id/edit_cnt_text"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
@@ -126,12 +126,12 @@
                             android:textColor="@color/dartblue"
                             android:textSize="23sp"
                             app:layout_constraintLeft_toLeftOf="parent"
-                            app:layout_constraintBottom_toTopOf="@id/Oneday_cnt"
-                            app:layout_constraintTop_toBottomOf="@id/Oneday_type" />
+                            app:layout_constraintBottom_toTopOf="@id/change_lens_cnt"
+                            app:layout_constraintTop_toBottomOf="@id/edit_type" />
                         />
 
                         <EditText
-                            android:id="@+id/Oneday_cnt"
+                            android:id="@+id/change_lens_cnt"
                             android:layout_width="100dp"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
@@ -140,12 +140,12 @@
                             android:textColor="#29367A"
                             android:textSize="20sp"
                             app:layout_constraintLeft_toLeftOf="parent"
-                            app:layout_constraintBottom_toTopOf="@id/one_period_text"
-                            app:layout_constraintTop_toBottomOf="@id/one_cnt_text" />
+                            app:layout_constraintBottom_toTopOf="@id/lens_period_text"
+                            app:layout_constraintTop_toBottomOf="@id/edit_cnt_text" />
                         />
 
                         <TextView
-                            android:id="@+id/one_period_text"
+                            android:id="@+id/lens_period_text"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
@@ -153,12 +153,12 @@
                             android:textColor="@color/dartblue"
                             android:textSize="24sp"
                             app:layout_constraintLeft_toLeftOf="parent"
-                            app:layout_constraintBottom_toTopOf="@id/Oneday_period"
-                            app:layout_constraintTop_toBottomOf="@id/Oneday_cnt" />
+                            app:layout_constraintBottom_toTopOf="@id/lens_period"
+                            app:layout_constraintTop_toBottomOf="@id/change_lens_cnt" />
                         />
 
                         <EditText
-                            android:id="@+id/Oneday_period"
+                            android:id="@+id/lens_period"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
@@ -169,12 +169,12 @@
                             android:textColor="#29367A"
                             android:textSize="20sp"
                             app:layout_constraintLeft_toLeftOf="parent"
-                            app:layout_constraintBottom_toTopOf="@id/one_color_text"
-                            app:layout_constraintTop_toBottomOf="@id/one_period_text" />
+                            app:layout_constraintBottom_toTopOf="@id/lens_color_text"
+                            app:layout_constraintTop_toBottomOf="@id/lens_period_text" />
                         />
 
                         <TextView
-                            android:id="@+id/one_color_text"
+                            android:id="@+id/lens_color_text"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
@@ -182,22 +182,22 @@
                             android:textColor="@color/dartblue"
                             android:textSize="23sp"
                             app:layout_constraintLeft_toLeftOf="parent"
-                            app:layout_constraintBottom_toTopOf="@id/Oneday_color"
-                            app:layout_constraintTop_toBottomOf="@id/Oneday_period" />
+                            app:layout_constraintBottom_toTopOf="@id/lens_color"
+                            app:layout_constraintTop_toBottomOf="@id/lens_period" />
                         />
 
                         <Button
-                            android:id="@+id/Oneday_color"
+                            android:id="@+id/lens_color"
                             android:layout_width="55dp"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
                             android:background="@drawable/pallete"
                             app:layout_constraintLeft_toLeftOf="parent"
                             app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/one_color_text" />
+                            app:layout_constraintTop_toBottomOf="@id/lens_color_text" />
 
                         <Button
-                            android:id="@+id/Oneday_save"
+                            android:id="@+id/lens_change"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentRight="true"
