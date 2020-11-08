@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -14,29 +15,37 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {//implements OnPersonItemClickListener{
-    OnPersonItemClickListener listener;
+    //OnPersonItemClickListener listener;
+    /*
+    private OnItemClickListener listener;
     private final LayoutInflater mInflater;
-    private List<Note> mNotes;
+    private List<Note> mNotes = new ArrayList<>();
 
+     */
+    private static OnItemClickListener listener;
+    private final LayoutInflater mInflater;
+    private static List<Note> mNotes = new ArrayList<>();
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+
         //LayoutInflater inflater = LayoutInflater.from(viewGroup.getContext());
         View itemView = mInflater.inflate(R.layout.note_item, parent, false);
         //만들어둔 note_item 넣기
         return new ViewHolder(itemView);
     }
+
     //item을 하나하나 보여주는 함수
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        if(mNotes != null){
+        if (mNotes != null) {
             Note current = mNotes.get(position);
             holder.lens_name.setText(current.getLens_name());
-            holder.lens_cnt.setText("보유개수 :"+current.getLens_cnt());
+            holder.lens_cnt.setText("보유개수 :" + current.getLens_cnt());
             holder.start_date.setText(current.getLens_start());
             holder.end_date.setText(current.getLens_end());
-        }else{
+        } else {
             holder.lens_name.setText("No word");
             holder.lens_cnt.setText("No word");
             holder.start_date.setText("No word");
@@ -45,69 +54,72 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {/
         //Note item = items.get(position);
         //viewHolder.setItem(item);  //이게 추가하는 거
     }
+
     @Override
     public int getItemCount() {
-        if(mNotes !=null)
+        if (mNotes != null)
             return mNotes.size();
         else return 0;
     }
+
     public void setItems(List<Note> notes) {
         mNotes = notes;
         notifyDataSetChanged();
     }
-    public Note getNoteAt(int position){
+
+    public Note getNoteAt(int position) {
         return mNotes.get(position);
     }
 
+
     static class ViewHolder extends RecyclerView.ViewHolder {
+
         LinearLayout layout1;
         private TextView lens_name;
         private TextView lens_cnt;
         private TextView start_date;
         private TextView end_date;
 
-        public ViewHolder(View itemView ){
+        public ViewHolder(View itemView) {
             super(itemView);
             layout1 = itemView.findViewById(R.id.layout1);
             lens_name = itemView.findViewById(R.id.lens_name);
             lens_cnt = itemView.findViewById(R.id.lens_cnt);
             start_date = itemView.findViewById(R.id.start_date);
             end_date = itemView.findViewById(R.id.end_date);
-            /*
-            //클릭이벤트
-            itemView.setOnClickListener(new View.OnClickListener() {                @Override
+
+
+            itemView.setOnClickListener(new View.OnClickListener(){
+                @Override
                 public void onClick(View view) {
-                int pos = getAdapterPosition();
-                if(pos!= RecyclerView.NO_POSITION){
                     int position = getAdapterPosition();
-                    listener.onItemClick(notes.get(position));
-                }
+                    if (listener != null && position != RecyclerView.NO_POSITION) {
+                        listener.onItemClick(mNotes.get(position));
+                    }
                 }
             });
 
-             */
 
         }
 
         //화면에 보여지게 넣는 함수
         public void setItem(Note item) {
             lens_name.setText(item.getLens_name());
-            lens_cnt.setText("보유개수 :"+item.getLens_cnt());
+            lens_cnt.setText("보유개수 :" + item.getLens_cnt());
             start_date.setText(item.getLens_start());
             end_date.setText(item.getLens_end());
         }
     }
 
-    public void setOnItemClicklistener(OnPersonItemClickListener listener){
+    public interface OnItemClickListener {
+        void onItemClick(Note note);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
         this.listener = listener;
     }
 
-    public void onItemClick(ViewHolder holder, View view, int position) {
-        if(listener != null){ listener.onItemClick(holder,view,position); }
-    }
-
-
-    NoteAdapter(Context context){
+    NoteAdapter(Context context) {
         mInflater = LayoutInflater.from(context);
     }
 

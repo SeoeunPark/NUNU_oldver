@@ -39,6 +39,7 @@ public class Oneday extends AppCompatActivity  {
     private Button cancel; //X 버튼
     private EditText one_type; // 렌즈유형
     private LensDao mLensDao;
+    Note note;
     //private LiveData<List<Note>> mAllWords;
     /*
     public Oneday(Application application) {

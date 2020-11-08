@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.AdapterView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -44,6 +45,7 @@ public class Lens extends Fragment implements View.OnClickListener{
         Monthly monthly;
 
         public static final int NEW_WORD_ACTIVITY_REQUEST_CODE = 1;
+        public static final int EDIT_NOTE_REQUEST =2;
         private WordViewModel mWordViewModel;
 
         public void setListData(List<Note> dataItemList) {
@@ -94,6 +96,27 @@ public class Lens extends Fragment implements View.OnClickListener{
                     Toast.makeText(getActivity(), "렌즈가 삭제되었습니다.", Toast.LENGTH_SHORT).show();
                 }
             }).attachToRecyclerView(recyclerView);
+            //클릭했을 때의 이벤트
+
+            adapter.setOnItemClickListener(new NoteAdapter.OnItemClickListener(){
+                @Override
+                public void onItemClick(Note note) {
+                    Intent intent = new Intent(getActivity(),Detail.class);
+                    intent.putExtra("id",note.get_id());
+                    intent.putExtra("name",note.getLens_name()); //name 이란 이름으로 one_name에 들어간 text 저장
+                    intent.putExtra("type",note.getLens_type());
+                    intent.putExtra("cnt",note.getLens_cnt());
+                    intent.putExtra("period",note.getLens_period());
+                    intent.putExtra("cl",note.getLens_color());
+                    intent.putExtra("start",note.getLens_start());
+                    intent.putExtra("end",note.getLens_end());
+                    //startActivity(intent);
+                    startActivityForResult(intent, EDIT_NOTE_REQUEST);
+                    //getActivity().startActivityForResult(intent,EDIT_NOTE_REQUEST);
+                }
+
+
+            });
 
             //이건 데이터 삽입
             //initUI(rootView);
@@ -101,7 +124,6 @@ public class Lens extends Fragment implements View.OnClickListener{
             initFL(rootView);
             //loadNoteListData();
             recyclerView.setAdapter(adapter);
-
             return rootView;
         } // end of onCreateView
 

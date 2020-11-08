@@ -143,13 +143,24 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="136dp"
             android:layout_marginRight="136dp"
-            android:text="30개"
+            android:text="30"
             android:textColor="#0E0000"
             android:textSize="30sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/detail_name"
             app:layout_constraintVertical_bias="0.034" />
+
+        <TextView
+            android:id="@+id/detail_type3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="7dp"
+            android:text="개"
+            android:textColor="#0E0000"
+            android:textSize="30sp"
+            app:layout_constraintLeft_toRightOf="@id/detail_type2"
+            app:layout_constraintBottom_toBottomOf="@id/detail_type2"/>
 
         <ImageView
             android:id="@+id/imageView4"
@@ -161,7 +172,7 @@
             app:srcCompat="@drawable/blue" />
 
         <TextView
-            android:id="@+id/type"
+            android:id="@+id/type_om"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -227,7 +238,7 @@
             app:layout_constraintTop_toBottomOf="@+id/day_text" />
             -->
         <TextView
-            android:id="@+id/detail_period"
+            android:id="@+id/detail_period_start"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -237,7 +248,7 @@
             android:text="2020.01.01"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/type"/>
+            app:layout_constraintTop_toBottomOf="@+id/type_om"/>
 
         <TextView
             android:id="@+id/wave_text"
@@ -247,8 +258,8 @@
             android:text="~"
             android:textColor="@color/dartblue"
             android:textSize="20sp"
-            app:layout_constraintLeft_toRightOf="@id/detail_period"
-            app:layout_constraintBottom_toBottomOf="@id/detail_period"/>
+            app:layout_constraintLeft_toRightOf="@id/detail_period_start"
+            app:layout_constraintBottom_toBottomOf="@id/detail_period_start"/>
         <TextView
             android:id="@+id/detail_period_end"
             android:layout_width="wrap_content"
@@ -270,7 +281,7 @@
             "
             android:textSize="15sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/detail_period"/>
+            app:layout_constraintTop_toBottomOf="@+id/detail_period_start"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
