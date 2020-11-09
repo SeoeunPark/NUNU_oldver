@@ -35,7 +35,7 @@ public class Oneday extends AppCompatActivity  {
     private int posi;
     private EditText one_name;
     private EditText one_cnt;
-    private String clname="아무 색";  // 렌즈 색
+    private String clname;  // 렌즈 색
     private Button cancel; //X 버튼
     private EditText one_type; // 렌즈유형
     private LensDao mLensDao;
@@ -82,8 +82,10 @@ public class Oneday extends AppCompatActivity  {
         o_save.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Intent replyIntent = new Intent();
-                if (TextUtils.isEmpty(one_name.getText())) {
-                    Toast.makeText(context, "렌즈 이름을 입력해주세요.", Toast.LENGTH_SHORT).show();
+                if (TextUtils.isEmpty(one_name.getText()) || TextUtils.isEmpty(one_type.getText()) ||
+                        TextUtils.isEmpty(clname) || TextUtils.isEmpty(one_cnt.getText()) ||
+                        TextUtils.isEmpty(et_Date.getText())) {
+                    Toast.makeText(context, "값을 모두 입력해주세요.", Toast.LENGTH_SHORT).show();
                     setResult(RESULT_CANCELED, replyIntent);
                 } else {
                     //String word = mEditWordView.getText().toString();
@@ -95,8 +97,8 @@ public class Oneday extends AppCompatActivity  {
                     replyIntent.putExtra("start","");
                     replyIntent.putExtra("end",et_Date.getText().toString());
                     setResult(RESULT_OK, replyIntent);
+                    finish();
                 }
-                finish();
             }
         });
 
@@ -208,7 +210,7 @@ public class Oneday extends AppCompatActivity  {
                         }else if(posi ==9) {
                             clname = "보라색";
                         }else{
-                            clname="";
+                            clname="파랑색";
                         }
                     }
                     @Override

@@ -29,7 +29,7 @@ public class Monthly extends AppCompatActivity {
 
     private Button pallete;
     private int posi;
-    private String clname="아무 색"; // 렌즈 색
+    private String clname; // 렌즈 색
     private Button cancel; //X 버튼
     private EditText mon_type; // 렌즈유형
     String imon;
@@ -59,10 +59,13 @@ public class Monthly extends AppCompatActivity {
         m_save.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Intent replyIntent = new Intent();
-                if (TextUtils.isEmpty(mon_name.getText())) {
-                    Toast.makeText(context, "렌즈 이름을 입력해주세요.", Toast.LENGTH_SHORT).show();
+                if (TextUtils.isEmpty(mon_name.getText()) || TextUtils.isEmpty(mon_type.getText()) ||
+                    TextUtils.isEmpty(clname) || TextUtils.isEmpty(monthly_start.getText()) ||
+                    TextUtils.isEmpty(monthly_end.getText())) {
+                    Toast.makeText(context, "값을 모두 입력해주세요.", Toast.LENGTH_SHORT).show();
                     setResult(RESULT_CANCELED, replyIntent);
-                } else {
+                }
+                else {
                     //String word = mEditWordView.getText().toString();
                     replyIntent.putExtra("name",mon_name.getText().toString()); //name 이란 이름으로 one_name에 들어간 text 저장
                     replyIntent.putExtra("type",mon_type.getText().toString());
@@ -72,8 +75,8 @@ public class Monthly extends AppCompatActivity {
                     replyIntent.putExtra("start",monthly_start.getText().toString());
                     replyIntent.putExtra("end",monthly_end.getText().toString());
                     setResult(RESULT_OK, replyIntent);
+                    finish();
                 }
-                finish();
             }
         });
 
@@ -194,6 +197,8 @@ public class Monthly extends AppCompatActivity {
                             clname = "분홍색";
                         }else if(posi ==9) {
                             clname = "보라색";
+                        }else{
+                            clname="파랑색";
                         }
 
                     }
