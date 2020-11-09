@@ -4,6 +4,7 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.media.Image;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -18,7 +19,7 @@ public class Detail extends AppCompatActivity {
     private static final String TAG= "Detail";
     private Button cancel;
     private ImageView more;
-    private ImageView nunu_ch;
+    private ImageView dimage;
     private TextView dday;
     private TextView dname;
     private TextView dtype;
@@ -36,6 +37,7 @@ public class Detail extends AppCompatActivity {
     private String idperiod_s;
     private String idperiod_e;
     private String idinfo;
+    private String  idcl;
 
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -47,7 +49,6 @@ public class Detail extends AppCompatActivity {
         setContentView(R.layout.activity_detail);
         cancel = (Button) findViewById(R.id.go_out);
         more = (ImageView) findViewById(R.id.more);
-        nunu_ch = (ImageView)findViewById(R.id.imageView4); //누누 캐릭터
         dday = (TextView)findViewById(R.id.d_day_text3); //d-day 남은 기간 text
         dname = (TextView)findViewById(R.id.detail_name); //렌즈 이름
         dtype = (TextView)findViewById(R.id.detail_type); //소프트/하드/미용
@@ -56,14 +57,17 @@ public class Detail extends AppCompatActivity {
         dperiod_s = (TextView)findViewById(R.id.detail_period_start);
         dperiod_e = (TextView)findViewById(R.id.detail_period_end);
         dinfo = (TextView)findViewById(R.id.detail_info);
+        dimage = (ImageView)findViewById(R.id.nunu_ch); //누누 캐릭터
 
         //intent로 값 받아오기
         idname = intent.getExtras().getString("name");
         idtype= intent.getExtras().getString("type");
         idcnt= Integer.toString(intent.getExtras().getInt("cnt"));
         idtype_om=Integer.toString(intent.getExtras().getInt("period")); //1 이면 원데이 2이면 먼슬리
+        idcl = intent.getExtras().getString("cl"); //값 잘 들어감
         idperiod_s=intent.getExtras().getString("start");
         idperiod_e=intent.getExtras().getString("end");
+
         //디데이 구하기
         String str = idperiod_e;
         String[] array = str.split("/");
@@ -81,7 +85,27 @@ public class Detail extends AppCompatActivity {
             idtype_om="먼슬리 렌즈";
         }
 
-
+        if(idcl.equals("오렌지")){
+            dimage.setImageResource(R.drawable.orange);
+        }else if(idcl.equals("연갈색")){
+            dimage.setImageResource(R.drawable.mocha);
+        }else if(idcl.equals("갈색")){
+            dimage.setImageResource(R.drawable.wood);
+        }else if(idcl.equals("회색")){
+            dimage.setImageResource(R.drawable.gray);
+        }else if(idcl.equals("검정색")){
+            dimage.setImageResource(R.drawable.black);
+        }else if(idcl.equals("노란색")){
+            dimage.setImageResource(R.drawable.yellow);
+        }else if(idcl.equals("녹색")){
+            dimage.setImageResource(R.drawable.green);
+        }else if(idcl.equals("분홍색")){
+            dimage.setImageResource(R.drawable.pink);
+        }else if(idcl.equals("보라색")){
+            dimage.setImageResource(R.drawable.purple);
+        }else {
+            dimage.setImageResource(R.drawable.blue);
+        }
 
         dday.setText(Integer.toString((int)substract));
         dname.setText(idname);
