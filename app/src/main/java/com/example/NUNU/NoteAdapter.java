@@ -1,6 +1,7 @@
 package com.example.NUNU;
 
 import android.content.Context;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,10 +10,16 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
+import java.time.temporal.ChronoUnit;
+import java.time.LocalDate;
+import java.util.Calendar;
 
 public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {//implements OnPersonItemClickListener{
     //OnPersonItemClickListener listener;
@@ -37,6 +44,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {/
     }
 
     //item을 하나하나 보여주는 함수
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         if (mNotes != null) {
@@ -45,6 +53,19 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {/
             holder.lens_cnt.setText("보유개수 :" + current.getLens_cnt());
             holder.start_date.setText(current.getLens_start());
             holder.end_date.setText(current.getLens_end());
+            //디데이 계산
+            String str = current.getLens_end();
+            String[] array = str.split("/");
+            int cyear = Integer.parseInt(array[0]);
+            int cmonth = Integer.parseInt(array[1]);
+            int cday = Integer.parseInt(array[2]);
+
+            LocalDate fromDate = LocalDate.now();
+            LocalDate toDate = LocalDate.of(cyear, cmonth, cday);
+            long substract = ChronoUnit.DAYS.between(fromDate, toDate);
+
+            holder.dday.setText("D - "+Integer.toString((int) substract));
+
         } else {
             holder.lens_name.setText("No word");
             holder.lens_cnt.setText("No word");
@@ -79,6 +100,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {/
         private TextView lens_cnt;
         private TextView start_date;
         private TextView end_date;
+        private TextView dday;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -87,6 +109,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {/
             lens_cnt = itemView.findViewById(R.id.lens_cnt);
             start_date = itemView.findViewById(R.id.start_date);
             end_date = itemView.findViewById(R.id.end_date);
+            dday = itemView.findViewById(R.id.dday_text);
 
 
             itemView.setOnClickListener(new View.OnClickListener(){

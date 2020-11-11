@@ -21,6 +21,8 @@ import androidx.lifecycle.LiveData;
 import androidx.room.Room;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -36,6 +38,7 @@ public class Oneday extends AppCompatActivity  {
     private EditText one_name;
     private EditText one_cnt;
     private String clname;  // 렌즈 색
+    private String o_dday;
     private Button cancel; //X 버튼
     private EditText one_type; // 렌즈유형
     private LensDao mLensDao;
@@ -104,7 +107,6 @@ public class Oneday extends AppCompatActivity  {
             }
         });
          */
-
 
         //x 버튼
         cancel.setOnClickListener(new View.OnClickListener() {

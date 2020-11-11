@@ -113,6 +113,8 @@ public class Lens extends Fragment implements View.OnClickListener{
                     startActivityForResult(intent, EDIT_NOTE_REQUEST);
                 }
             });
+
+
             //이건 floating 버튼 애니메이션
             initFL(rootView);
             recyclerView.setAdapter(adapter);

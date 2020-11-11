@@ -85,6 +85,7 @@ public class Detail extends AppCompatActivity {
         LocalDate fromDate = LocalDate.now();
         LocalDate toDate = LocalDate.of(cyear, cmonth, cday);
         long substract = ChronoUnit.DAYS.between(fromDate, toDate);
+
         //원데이인지 / 먼슬리인지
         if (idtype_om.equals("1")) {
             idtype_om = "원데이 렌즈";
@@ -117,6 +118,7 @@ public class Detail extends AppCompatActivity {
         }
 
         dday.setText(Integer.toString((int) substract));
+
         dname.setText(idname);
         dtype.setText(idtype);
         dcnt.setText(idcnt);
