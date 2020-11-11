@@ -40,25 +40,6 @@ public class Oneday extends AppCompatActivity  {
     private EditText one_type; // 렌즈유형
     private LensDao mLensDao;
     Note note;
-    //private LiveData<List<Note>> mAllWords;
-    /*
-    public Oneday(Application application) {
-        AppDatabase db=AppDatabase.getAppDatabase(application);
-        //RoomDatabase에 있는 Dao를 가져온다.
-        mLensDao=db.lensDao();
-        //Dao의 쿼리를 이용하여 저장되어있는 모든 word를 가져온다.
-        mAllWords=mLensDao.getAllWords();
-    }
-    public Oneday() {
-    }
-    public LiveData<List<Note>> getAllWords() {
-        return mAllWords;
-    }
-    //word를 추가하는 함수
-    public void insert(Note note) {
-        new insertAsyncTask(mLensDao).execute(note);
-    }
-    */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

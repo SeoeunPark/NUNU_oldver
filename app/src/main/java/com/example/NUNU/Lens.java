@@ -110,63 +110,15 @@ public class Lens extends Fragment implements View.OnClickListener{
                     intent.putExtra("cl",note.getLens_color());
                     intent.putExtra("start",note.getLens_start());
                     intent.putExtra("end",note.getLens_end());
-                    //startActivity(intent);
                     startActivityForResult(intent, EDIT_NOTE_REQUEST);
-                    //getActivity().startActivityForResult(intent,EDIT_NOTE_REQUEST);
                 }
-
-
             });
-
-            //이건 데이터 삽입
-            //initUI(rootView);
             //이건 floating 버튼 애니메이션
             initFL(rootView);
-            //loadNoteListData();
             recyclerView.setAdapter(adapter);
             return rootView;
         } // end of onCreateView
 
-
-    /*
-        //데이터 삽입 test
-        private void initUI(ViewGroup rootView) {
-            NoteAdapter mListAdapter;
-            //Intent intent = new Intent(rootView.getContext(), Oneday.class);
-            Context context = rootView.getContext();
-            OnListFragmentInteractionListener mListener = null;
-            //LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
-            //RecyclerView recyclerView = rootView.findViewById(R.id.recyclerView);
-            //recyclerView.setAdapter(adapter);
-            recyclerView.setLayoutManager(new LinearLayoutManager(context));
-            mListAdapter = new NoteAdapter(mListener);
-
-            //Model Provider
-            mWordViewModel= ViewModelProviders.of(this).get(WordViewModel.class);
-
-            //observe : model의 LiveData를 관찰한다.
-            /*
-            mWordViewModel.getAllWords().observe(getViewLifecycleOwner(), notes -> {
-                // Update the cached copy of the words in the adapter.
-                adapter.setItems(notes);
-            });
-
-
-            mWordViewModel.getAllWords().observe(this, new Observer<List<Note>>() {
-                @Override
-                public void onChanged(List<Note> notes) {
-                    adapter.setItems(notes);
-                }
-            });
-
-            //adapter.addItem(new Note( "칵테일 먼슬리", "미용렌즈", 1, 1,"yellow","2020.09.02","2020.10.28"));
-            //adapter.addItem(new Note( "칵테일 먼슬리", "미용렌즈", 1, 1,"yellow","2020.09.02","2020.10.28"));
-            //adapter.addItem(new Note("칵테일 먼슬리", "미용렌즈", 1, 1,"yellow","2020.09.02","2020.10.28"));
-
-            recyclerView.setAdapter(adapter);
-        }
-
-     */
         public void onActivityResult(int requestCode, int resultCode, Intent data) {
                 super.onActivityResult(requestCode, resultCode, data);
             if (requestCode == NEW_WORD_ACTIVITY_REQUEST_CODE && resultCode == Activity.RESULT_OK) {

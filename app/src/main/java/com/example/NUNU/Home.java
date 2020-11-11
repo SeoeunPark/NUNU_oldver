@@ -35,6 +35,7 @@ public class Home extends Fragment {
      * @param param2 Parameter 2.ㅜ
      * @return A new instance of fragment Home.
      */
+
     // TODO: Rename and change types and number of parameters
     public static Home newInstance(String param1, String param2) {
         Home fragment = new Home();

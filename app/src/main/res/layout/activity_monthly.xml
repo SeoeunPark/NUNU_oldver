@@ -114,10 +114,10 @@
                         android:hint="ex)소프트렌즈"
                         android:textColor="#29367A"
                         android:textSize="20sp"
-                        app:layout_constraintBottom_toTopOf="@id/month_period_text"
+                        app:layout_constraintBottom_toTopOf="@id/month_cnt_text"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/month_type_text" />
-                    <!--
+
                     <TextView
                         android:id="@+id/month_cnt_text"
                         android:layout_width="wrap_content"
@@ -143,22 +143,21 @@
                         app:layout_constraintBottom_toTopOf="@id/month_period_text"
                         app:layout_constraintTop_toBottomOf="@id/month_cnt_text"/>
                     />
-                    -->
 
                     <TextView
                         android:id="@+id/month_period_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:text="착용기간"
+                        android:text="유효기간"
                         android:textColor="@color/dartblue"
                         android:textSize="24sp"
-                        app:layout_constraintBottom_toTopOf="@id/Monthly_start"
+                        app:layout_constraintBottom_toTopOf="@id/Monthly_end"
                         app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/Monthly_start" />
+                        app:layout_constraintTop_toBottomOf="@id/Monthly_end" />
 
                     <EditText
-                        android:id="@+id/Monthly_start"
+                        android:id="@+id/Monthly_end"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:clickable="true"
@@ -170,7 +169,7 @@
                         app:layout_constraintBottom_toTopOf="@id/month_color_text"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/month_period_text" />
-
+                    <!--
                     <TextView
                         android:id="@+id/wave_text"
                         android:layout_width="wrap_content"
@@ -196,6 +195,8 @@
                         app:layout_constraintLeft_toRightOf="@id/wave_text"
                         app:layout_constraintStart_toEndOf="@id/wave_text"
                         app:layout_constraintTop_toTopOf="@id/Monthly_start"/>
+                   -->
+
                     <TextView
                         android:id="@+id/month_color_text"
                         android:layout_width="wrap_content"
@@ -206,7 +207,7 @@
                         android:textSize="23sp"
                         app:layout_constraintBottom_toTopOf="@id/Monthly_color"
                         app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/Monthly_start" />
+                        app:layout_constraintTop_toBottomOf="@id/Monthly_end" />
 
                     <Button
                         android:id="@+id/Monthly_color"

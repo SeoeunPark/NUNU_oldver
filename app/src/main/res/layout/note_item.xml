@@ -20,9 +20,27 @@
         <!-- f7ab-->
         <LinearLayout
             android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:weightSum="9"
+            >
+            <TextView
+                android:id="@+id/dday_text"
+                android:layout_marginLeft="10dp"
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="D - "
+                android:textColor="#004182"
+                android:textStyle="bold"
+                android:textSize="25sp"
+                android:layout_weight="7"/>
+
+            <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:layout_weight="1"
+            android:layout_weight="2"
             android:orientation="vertical">
 
             <TextView
@@ -42,6 +60,16 @@
 
                 <TextView
                     android:id="@+id/lens_cnt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="20dp"
+                    android:textColor="#005282"
+                    android:text="보유개수:"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/lens_ct"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
@@ -85,8 +113,8 @@
                     android:text="2020.10.09"
                     android:textSize="16sp"  />
 
-            </RelativeLayout>
-
+                    </RelativeLayout>
+                </LinearLayout>
         </LinearLayout>
 
     </LinearLayout>

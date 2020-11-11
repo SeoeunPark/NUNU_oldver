@@ -33,7 +33,7 @@ public class Monthly extends AppCompatActivity {
     private Button cancel; //X 버튼
     private EditText mon_type; // 렌즈유형
     String imon;
-    //private EditText mon_cnt;
+    private EditText mon_cnt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,12 +41,12 @@ public class Monthly extends AppCompatActivity {
         setContentView(R.layout.activity_monthly);
 
         EditText mon_name = (EditText)findViewById(R.id.Monthly_name);
-        final EditText monthly_start = (EditText) findViewById(R.id.Monthly_start);
+        //final EditText monthly_start = (EditText) findViewById(R.id.Monthly_start);
         final EditText monthly_end = (EditText) findViewById(R.id.Monthly_end);
         pallete = (Button) findViewById(R.id.Monthly_color);
         cancel = (Button) findViewById(R.id.to_main);
         mon_type = (EditText)findViewById(R.id.Monthly_type);
-        //mon_cnt = (EditText)findViewById(R.id.Monthly_cnt);
+        mon_cnt = (EditText)findViewById(R.id.Monthly_cnt);
         Button m_save =findViewById(R.id.Monthly_save);
         final Context context = this;
         //렌즈 유형
@@ -60,8 +60,8 @@ public class Monthly extends AppCompatActivity {
             public void onClick(View view) {
                 Intent replyIntent = new Intent();
                 if (TextUtils.isEmpty(mon_name.getText()) || TextUtils.isEmpty(mon_type.getText()) ||
-                    TextUtils.isEmpty(clname) || TextUtils.isEmpty(monthly_start.getText()) ||
-                    TextUtils.isEmpty(monthly_end.getText())) {
+                    TextUtils.isEmpty(clname)// || TextUtils.isEmpty(monthly_start.getText()) ||
+                    || TextUtils.isEmpty(monthly_end.getText())) {
                     Toast.makeText(context, "값을 모두 입력해주세요.", Toast.LENGTH_SHORT).show();
                     setResult(RESULT_CANCELED, replyIntent);
                 }
@@ -69,10 +69,10 @@ public class Monthly extends AppCompatActivity {
                     //String word = mEditWordView.getText().toString();
                     replyIntent.putExtra("name",mon_name.getText().toString()); //name 이란 이름으로 one_name에 들어간 text 저장
                     replyIntent.putExtra("type",mon_type.getText().toString());
-                    replyIntent.putExtra("cnt",1);//Integer.parseInt(mon_cnt.getText().toString()));
+                    replyIntent.putExtra("cnt",Integer.parseInt(mon_cnt.getText().toString()));
                     replyIntent.putExtra("period",2);
                     replyIntent.putExtra("cl",clname);
-                    replyIntent.putExtra("start",monthly_start.getText().toString());
+                    replyIntent.putExtra("start","");
                     replyIntent.putExtra("end",monthly_end.getText().toString());
                     setResult(RESULT_OK, replyIntent);
                     finish();
@@ -80,23 +80,26 @@ public class Monthly extends AppCompatActivity {
             }
         });
 
-
+        /*
         //유효기간
         monthly_start.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 new DatePickerDialog(Monthly.this, myDatePicker_start,myCalendar.get(Calendar.YEAR), myCalendar.get(Calendar.MONTH), myCalendar.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
-
+*/
         monthly_end.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                if(monthly_start.getText().toString().length()!=0) {
+                //if(monthly_start.getText().toString().length()!=0) {
                     new DatePickerDialog(Monthly.this, myDatePicker_end, myCalendar.get(Calendar.YEAR), myCalendar.get(Calendar.MONTH), myCalendar.get(Calendar.DAY_OF_MONTH)).show();
-                }else if(monthly_start.getText().toString().length()==0){
-                    Toast.makeText(getApplicationContext(),"시작일부터 입력해주세요.", Toast.LENGTH_SHORT).show();
-                }
+                //}else if(monthly_start.getText().toString().length()==0){
+                    //Toast.makeText(getApplicationContext(),"시작일부터 입력해주세요.", Toast.LENGTH_SHORT).show();
+                //}
             }
         });
+
+
+
         //x 버튼
         cancel.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -113,6 +116,7 @@ public class Monthly extends AppCompatActivity {
     } //end of onCreate
 
     //날짜 입력
+    /*
     DatePickerDialog.OnDateSetListener myDatePicker_start = new DatePickerDialog.OnDateSetListener(){
         @Override
         public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
@@ -122,6 +126,7 @@ public class Monthly extends AppCompatActivity {
             updateLabel_start();
         }
     };
+     */
 
     DatePickerDialog.OnDateSetListener myDatePicker_end = new DatePickerDialog.OnDateSetListener(){
         @Override
@@ -133,12 +138,14 @@ public class Monthly extends AppCompatActivity {
         }
     };
 
+    /*
     private void updateLabel_start() {
         String myFormat = "yyyy/MM/dd";    // 출력형식   2018/11/28
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.KOREA);
         EditText monthly_start = (EditText) findViewById(R.id.Monthly_start);
         monthly_start.setText(sdf.format(myCalendar.getTime()));
     }
+     */
 
     private void updateLabel_end() {
         String myFormat = "yyyy/MM/dd";    // 출력형식   2018/11/28
