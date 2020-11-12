@@ -38,7 +38,6 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
-
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -192,7 +191,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:text="원데이 렌즈"
             android:textColor="@color/dartblue"
             android:textSize="25sp"
@@ -254,11 +253,12 @@
             app:layout_constraintTop_toBottomOf="@+id/day_text" />
             -->
         <TextView
-            android:id="@+id/wave_text"
+            android:id="@+id/detail_period_start"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
-            android:text="~"
+            android:layout_marginTop="5dp"
+            android:text="착용 주기 : "
             android:textColor="@color/dartblue"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -274,7 +274,7 @@
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="@id/wave_text"
             app:layout_constraintLeft_toRightOf="@id/wave_text" />
-
+        <!--
         <TextView
             android:id="@+id/detail_period_start"
             android:layout_width="wrap_content"
@@ -288,6 +288,20 @@
             app:layout_constraintBottom_toBottomOf="@id/detail_period_end"
             app:layout_constraintLeft_toRightOf="@id/detail_period_end"
             />
+            -->
+        <TextView
+            android:id="@+id/wave_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="500dp"
+            android:layout_marginTop="5dp"
+            android:text="~"
+            android:textColor="@color/dartblue"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/detail_period_start"
+            />
 
         <TextView
             android:id="@+id/detail_info"
@@ -295,11 +309,11 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="5dp"
             android:text="원데이 렌즈는 반드시 한번만 사용해주세요.\n일반형 1회용 렌즈는 보통 8시간의 착용시간을 권장합니다.\n실리콘 하이드로겔 소재의 렌즈는 12시간에서 14시까지도\n 착용이 가능합니다."
             android:textSize="15sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/detail_period_start" />
+            app:layout_constraintTop_toBottomOf="@+id/wave_text" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

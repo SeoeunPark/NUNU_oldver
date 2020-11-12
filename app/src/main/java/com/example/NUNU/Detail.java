@@ -138,23 +138,38 @@ public class Detail extends AppCompatActivity {
             popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                 @Override
                 public boolean onMenuItemClick(MenuItem menuItem) {
+                    //Intent intent2 = getIntent();
+                    //idtype_om = Integer.toString(intent2.getExtras().getInt("period"));
                     switch (menuItem.getItemId()){
                         case R.id.edit:
-                            if(idtype_om.equals("1")==true) {
-                                Intent intent = new Intent(Detail.this, EditLensActivity.class);
-                                intent.putExtra("id", idid);
-                                intent.putExtra("name", idname); //name 이란 이름으로 one_name에 들어간 text 저장
-                                intent.putExtra("type", idtype);
-                                intent.putExtra("cnt", idcnt);
-                                intent.putExtra("period", idtype_om);
-                                intent.putExtra("cl", idcl);
-                                intent.putExtra("start", idperiod_s);
-                                intent.putExtra("end", idperiod_e);
-                                startActivityForResult(intent, EDIT_NOTE_REQUEST);
-                            }else if(idtype_om.equals("2")==true){
-
+                            //if (idtype_om.equals("1")) {
+                                Intent intento = new Intent(Detail.this, EditOneday.class);
+                                intento.putExtra("id", idid);
+                                intento.putExtra("name", idname); //name 이란 이름으로 one_name에 들어간 text 저장
+                                intento.putExtra("type", idtype);
+                                intento.putExtra("cnt", idcnt);
+                                intento.putExtra("period", idtype_om);
+                                intento.putExtra("cl", idcl);
+                                intento.putExtra("start", idperiod_s);
+                                intento.putExtra("end", idperiod_e);
+                                startActivity(intento);
+                                break;
+                                /*
+                            } else {
+                                Intent intentm = new Intent(Detail.this, EditMonthly.class);
+                                intentm.putExtra("id", idid);
+                                intentm.putExtra("name", idname); //name 이란 이름으로 one_name에 들어간 text 저장
+                                intentm.putExtra("type", idtype);
+                                intentm.putExtra("cnt", idcnt);
+                                intentm.putExtra("period", idtype_om);
+                                intentm.putExtra("cl", idcl);
+                                intentm.putExtra("start", idperiod_s);
+                                intentm.putExtra("end", idperiod_e);
+                                startActivityForResult(intentm, EDIT_NOTE_REQUEST);
                             }
                             break;
+
+                                 */
                         case R.id.delete:
                             Toast.makeText(Detail.this, "delete", Toast.LENGTH_SHORT).show();
                             break;
