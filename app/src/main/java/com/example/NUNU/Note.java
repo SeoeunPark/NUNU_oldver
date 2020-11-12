@@ -17,7 +17,6 @@ public class Note {
     String lens_color;
     String lens_start;
     String lens_end;
-    //String lens_dday;
 
     public Note(String lens_name, String lens_type, int lens_cnt, int lens_period, String lens_color, String lens_start, String lens_end) {
         this._id = _id;
@@ -28,7 +27,6 @@ public class Note {
         this.lens_color = lens_color;
         this.lens_start = lens_start;
         this.lens_end = lens_end;
-        //this.lens_dday = lens_dday;
     }
 
     public int get_id() {

@@ -73,7 +73,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp">
-
+                <!--
                 <TextView
                     android:id="@+id/start_date"
                     android:layout_width="wrap_content"
@@ -83,13 +83,14 @@
                     android:layout_marginLeft="20dp"
                     android:text="2020.08.09"
                     android:textSize="16sp" />
+                    -->
                 <TextView
                     android:id="@+id/st_en"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
+                    android:layout_alignParentLeft="true"
                     android:textColor="#005282"
-                    android:layout_toRightOf="@id/start_date"
+                    android:layout_marginLeft="20dp"
                     android:text="~"
                     android:textSize="16sp"  />
                 <TextView

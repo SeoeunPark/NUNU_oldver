@@ -254,28 +254,15 @@
             app:layout_constraintTop_toBottomOf="@+id/day_text" />
             -->
         <TextView
-            android:id="@+id/detail_period_start"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="10dp"
-            android:text="2020.01.01"
-            android:textColor="@color/dartblue"
-            android:textSize="20sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/type_om" />
-
-        <TextView
             android:id="@+id/wave_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="4dp"
+            android:layout_marginLeft="16dp"
             android:text="~"
             android:textColor="@color/dartblue"
             android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="@id/detail_period_start"
-            app:layout_constraintLeft_toRightOf="@id/detail_period_start" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/type_om"  />
 
         <TextView
             android:id="@+id/detail_period_end"
@@ -287,6 +274,20 @@
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="@id/wave_text"
             app:layout_constraintLeft_toRightOf="@id/wave_text" />
+
+        <TextView
+            android:id="@+id/detail_period_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginLeft="500dp"
+            android:layout_marginTop="10dp"
+            android:text="착용 주기 : "
+            android:textColor="@color/dartblue"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@id/detail_period_end"
+            app:layout_constraintLeft_toRightOf="@id/detail_period_end"
+            />
 
         <TextView
             android:id="@+id/detail_info"

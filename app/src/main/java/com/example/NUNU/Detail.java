@@ -122,7 +122,7 @@ public class Detail extends AppCompatActivity {
         dtype.setText(idtype);
         dcnt.setText(idcnt);
         dtype_om.setText(idtype_om);
-        dperiod_s.setText(idperiod_s);
+        dperiod_s.setText("착용 주기: "+idperiod_s);
         dperiod_e.setText(idperiod_e);
 
         cancel.setOnClickListener(new View.OnClickListener() {
@@ -140,16 +140,20 @@ public class Detail extends AppCompatActivity {
                 public boolean onMenuItemClick(MenuItem menuItem) {
                     switch (menuItem.getItemId()){
                         case R.id.edit:
-                                    Intent intent = new Intent(Detail.this,EditLensActivity.class);
-                                    intent.putExtra("id",idid);
-                                    intent.putExtra("name",idname); //name 이란 이름으로 one_name에 들어간 text 저장
-                                    intent.putExtra("type",idtype);
-                                    intent.putExtra("cnt",idcnt);
-                                    intent.putExtra("period",idtype_om);
-                                    intent.putExtra("cl",idcl);
-                                    intent.putExtra("start",idperiod_s);
-                                    intent.putExtra("end",idperiod_e);
-                                    startActivityForResult(intent, EDIT_NOTE_REQUEST);
+                            if(idtype_om.equals("1")==true) {
+                                Intent intent = new Intent(Detail.this, EditLensActivity.class);
+                                intent.putExtra("id", idid);
+                                intent.putExtra("name", idname); //name 이란 이름으로 one_name에 들어간 text 저장
+                                intent.putExtra("type", idtype);
+                                intent.putExtra("cnt", idcnt);
+                                intent.putExtra("period", idtype_om);
+                                intent.putExtra("cl", idcl);
+                                intent.putExtra("start", idperiod_s);
+                                intent.putExtra("end", idperiod_e);
+                                startActivityForResult(intent, EDIT_NOTE_REQUEST);
+                            }else if(idtype_om.equals("2")==true){
+
+                            }
                             break;
                         case R.id.delete:
                             Toast.makeText(Detail.this, "delete", Toast.LENGTH_SHORT).show();

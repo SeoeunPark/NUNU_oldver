@@ -51,7 +51,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {/
             Note current = mNotes.get(position);
             holder.lens_name.setText(current.getLens_name());
             holder.lens_cnt.setText("보유개수 :" + current.getLens_cnt());
-            holder.start_date.setText(current.getLens_start());
+            //holder.start_date.setText(current.getLens_start());
             holder.end_date.setText(current.getLens_end());
             //디데이 계산ㄴ
             String str = current.getLens_end();
@@ -69,7 +69,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {/
         } else {
             holder.lens_name.setText("No word");
             holder.lens_cnt.setText("No word");
-            holder.start_date.setText("No word");
+            //holder.start_date.setText("No word");
             holder.end_date.setText("No word");
         }
         //Note item = items.get(position);
@@ -107,7 +107,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {/
             layout1 = itemView.findViewById(R.id.layout1);
             lens_name = itemView.findViewById(R.id.lens_name);
             lens_cnt = itemView.findViewById(R.id.lens_cnt);
-            start_date = itemView.findViewById(R.id.start_date);
+            //start_date = itemView.findViewById(R.id.start_date);
             end_date = itemView.findViewById(R.id.end_date);
             dday = itemView.findViewById(R.id.dday_text);
 
@@ -129,7 +129,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {/
         public void setItem(Note item) {
             lens_name.setText(item.getLens_name());
             lens_cnt.setText("보유개수 :" + item.getLens_cnt());
-            start_date.setText(item.getLens_start());
+            //start_date.setText(item.getLens_start());
             end_date.setText(item.getLens_end());
         }
     }

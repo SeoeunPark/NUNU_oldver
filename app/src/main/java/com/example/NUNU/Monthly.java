@@ -34,6 +34,7 @@ public class Monthly extends AppCompatActivity {
     private EditText mon_type; // 렌즈유형
     String imon;
     private EditText mon_cnt;
+    private EditText mon_cycle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +48,9 @@ public class Monthly extends AppCompatActivity {
         cancel = (Button) findViewById(R.id.to_main);
         mon_type = (EditText)findViewById(R.id.Monthly_type);
         mon_cnt = (EditText)findViewById(R.id.Monthly_cnt);
+        mon_cycle = (EditText)findViewById(R.id.Monthly_cycle);
         Button m_save =findViewById(R.id.Monthly_save);
+
         final Context context = this;
         //렌즈 유형
         mon_type.setOnClickListener(new View.OnClickListener() {
@@ -61,7 +64,7 @@ public class Monthly extends AppCompatActivity {
                 Intent replyIntent = new Intent();
                 if (TextUtils.isEmpty(mon_name.getText()) || TextUtils.isEmpty(mon_type.getText()) ||
                     TextUtils.isEmpty(clname)// || TextUtils.isEmpty(monthly_start.getText()) ||
-                    || TextUtils.isEmpty(monthly_end.getText())) {
+                    || TextUtils.isEmpty(monthly_end.getText()) || TextUtils.isEmpty(mon_cycle.getText()) ) {
                     Toast.makeText(context, "값을 모두 입력해주세요.", Toast.LENGTH_SHORT).show();
                     setResult(RESULT_CANCELED, replyIntent);
                 }
@@ -72,7 +75,7 @@ public class Monthly extends AppCompatActivity {
                     replyIntent.putExtra("cnt",Integer.parseInt(mon_cnt.getText().toString()));
                     replyIntent.putExtra("period",2);
                     replyIntent.putExtra("cl",clname);
-                    replyIntent.putExtra("start","");
+                    replyIntent.putExtra("start",mon_cycle.getText().toString());
                     replyIntent.putExtra("end",monthly_end.getText().toString());
                     setResult(RESULT_OK, replyIntent);
                     finish();

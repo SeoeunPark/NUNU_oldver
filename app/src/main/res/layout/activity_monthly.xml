@@ -111,7 +111,7 @@
                         android:clickable="true"
                         android:editable="false"
                         android:focusable="false"
-                        android:hint="ex)소프트렌즈"
+                        android:hint="ex) 소프트렌즈"
                         android:textColor="#29367A"
                         android:textSize="20sp"
                         app:layout_constraintBottom_toTopOf="@id/month_cnt_text"
@@ -129,7 +129,7 @@
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintBottom_toTopOf="@id/Monthly_cnt"
                         app:layout_constraintTop_toBottomOf="@id/Monthly_type" />
-                    />
+
                     <EditText
                         android:id="@+id/Monthly_cnt"
                         android:layout_width="100dp"
@@ -140,9 +140,34 @@
                         android:textColor="#29367A"
                         android:textSize="20sp"
                         app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintBottom_toTopOf="@id/month_period_text"
+                        app:layout_constraintBottom_toTopOf="@id/month_cycle_text"
                         app:layout_constraintTop_toBottomOf="@id/month_cnt_text"/>
-                    />
+
+                    <TextView
+                        android:id="@+id/month_cycle_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="착용 주기"
+                        android:textColor="@color/dartblue"
+                        android:textSize="23sp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintBottom_toTopOf="@id/Monthly_cycle"
+                        app:layout_constraintTop_toBottomOf="@id/Monthly_cnt" />
+
+                    <EditText
+                        android:id="@+id/Monthly_cycle"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:hint="ex) 2주 "
+                        android:inputType="text"
+                        android:textColor="#29367A"
+                        android:textSize="20sp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintBottom_toTopOf="@id/month_period_text"
+                        app:layout_constraintTop_toBottomOf="@id/month_cycle_text"/>
+
 
                     <TextView
                         android:id="@+id/month_period_text"
