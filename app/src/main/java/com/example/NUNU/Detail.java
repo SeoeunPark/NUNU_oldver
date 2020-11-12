@@ -118,7 +118,6 @@ public class Detail extends AppCompatActivity {
         }
 
         dday.setText(Integer.toString((int) substract));
-
         dname.setText(idname);
         dtype.setText(idtype);
         dcnt.setText(idcnt);

@@ -53,7 +53,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {/
             holder.lens_cnt.setText("보유개수 :" + current.getLens_cnt());
             holder.start_date.setText(current.getLens_start());
             holder.end_date.setText(current.getLens_end());
-            //디데이 계산
+            //디데이 계산ㄴ
             String str = current.getLens_end();
             String[] array = str.split("/");
             int cyear = Integer.parseInt(array[0]);
