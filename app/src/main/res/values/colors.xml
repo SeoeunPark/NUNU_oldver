@@ -6,4 +6,8 @@
     <color name ="color">#3498DB</color>
     <color name ="mint">#59deba</color>
     <color name ="dartblue">#004182</color>
+    <color name ="black">#000000</color>
+    <color name ="red">#ED1000</color>
+    <color name = "green">#4CAF50</color>
+
 </resources>

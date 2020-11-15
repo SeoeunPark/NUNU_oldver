@@ -3,6 +3,7 @@ package com.example.NUNU;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Canvas;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -19,6 +20,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
@@ -30,6 +32,8 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator;
 
 public class Lens extends Fragment implements View.OnClickListener{
         private static final String TAG= "Lens";
@@ -43,6 +47,7 @@ public class Lens extends Fragment implements View.OnClickListener{
         Context context;
         Oneday oneday;
         Monthly monthly;
+
 
         public static final int NEW_WORD_ACTIVITY_REQUEST_CODE = 1;
         public static final int EDIT_NOTE_REQUEST =2;
@@ -82,20 +87,46 @@ public class Lens extends Fragment implements View.OnClickListener{
                     adapter.setItems(notes);
                 }
             });
+
+            //ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleCallback);
+
             //스와이프해서 삭제
+
             new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0,
                     ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
                 @Override
                 public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
                     return false;
                 }
-
                 @Override
                 public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-                        mWordViewModel.delete(adapter.getNoteAt(viewHolder.getAdapterPosition()));
-                    Toast.makeText(getActivity(), "렌즈가 삭제되었습니다.", Toast.LENGTH_SHORT).show();
+
+                    switch (direction){
+                        case ItemTouchHelper.LEFT:
+                            mWordViewModel.delete(adapter.getNoteAt(viewHolder.getAdapterPosition()));
+                            Toast.makeText(getActivity(), "렌즈가 삭제되었습니다.", Toast.LENGTH_SHORT).show();
+                            break;
+                        case ItemTouchHelper.RIGHT:
+                            break;
+                    }
                 }
-            }).attachToRecyclerView(recyclerView);
+
+                @Override
+                public void onChildDraw(@NonNull Canvas c, @NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
+                    new RecyclerViewSwipeDecorator.Builder(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
+                            .addSwipeLeftBackgroundColor(ContextCompat.getColor(getActivity(),R.color.red))
+                            .addSwipeLeftActionIcon(R.drawable.ic_baseline_delete_24)
+                            .addSwipeRightBackgroundColor(ContextCompat.getColor(getActivity(),R.color.green))
+                            .addSwipeRightActionIcon(R.drawable.ic_baseline_edit_24)
+                            .create()
+                            .decorate();
+
+                    super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
+                }
+            }
+
+            ).attachToRecyclerView(recyclerView);
+
             //클릭했을 때의 이벤트
 
             adapter.setOnItemClickListener(new NoteAdapter.OnItemClickListener(){
@@ -125,10 +156,19 @@ public class Lens extends Fragment implements View.OnClickListener{
                 super.onActivityResult(requestCode, resultCode, data);
             if (requestCode == NEW_WORD_ACTIVITY_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
                 Note word = new Note(data.getExtras().getString("name"),data.getExtras().getString("type"),data.getExtras().getInt("cnt"),data.getExtras().getInt("period"),data.getExtras().getString("cl"),data.getExtras().getString("start"),data.getExtras().getString("end"));
-                mWordViewModel.insert(word);
-            } else {
+                mWordViewModel.insert(word); //갑 저장
+
+            }/*
+            else if(requestCode == EDIT_NOTE_REQUEST){
+                    //int id = data.getIntExtra(EditOneday.EXTRA_ID,-1);
+                //int id = Integer.parseInt(i.getExtras().getString("eid"));
+                Note word = new Note(data.getExtras().getString(EditOneday.EXTRA_NAME),data.getExtras().getString(EditOneday.EXTRA_TYPE),data.getExtras().getInt(EditOneday.EXTRA_CNT),data.getExtras().getInt(EditOneday.EXTRA_PERIOD),data.getExtras().getString(EditOneday.EXTRA_CL),data.getExtras().getString(EditOneday.EXTRA_START),data.getExtras().getString(EditOneday.EXTRA_END));
+                //Note word = new Note(data.getStringExtra(EditOneday.EXTRA_NAME),data.getStringExtra(EditOneday.EXTRA_TYPE),data.getIntExtra(EditOneday.EXTRA_CNT,1),data.getIntExtra(EditOneday.EXTRA_PERIOD,1),data.getStringExtra(EditOneday.EXTRA_CL),data.getStringExtra(EditOneday.EXTRA_START),data.getStringExtra(EditOneday.EXTRA_END));
+                     //word.set_id(id);
+                     mWordViewModel.update(word);
                 //Toast.makeText(getActivity(), "저장되어 있는 단어가 없습니다.", Toast.LENGTH_LONG).show();
             }
+            */
         }
             //adapter = new NoteAdapter();
 

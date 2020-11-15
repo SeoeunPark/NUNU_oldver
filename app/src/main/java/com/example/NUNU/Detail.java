@@ -131,6 +131,7 @@ public class Detail extends AppCompatActivity {
             }
         });
     } //onCreate
+    /*
        public void onPopupButtonClick(View button){
             PopupMenu popup = new PopupMenu(this,button);
             popup.getMenuInflater().inflate(R.menu.detail_popup,popup.getMenu());
@@ -152,7 +153,9 @@ public class Detail extends AppCompatActivity {
                                 intento.putExtra("cl", idcl);
                                 intento.putExtra("start", idperiod_s);
                                 intento.putExtra("end", idperiod_e);
-                                startActivity(intento);
+                                //startActivity(intento);
+                                startActivityForResult(intento,EDIT_NOTE_REQUEST);
+                            finish();
                                 break;
                                 /*
                             } else {
@@ -169,14 +172,16 @@ public class Detail extends AppCompatActivity {
                             }
                             break;
 
-                                 */
+
                         case R.id.delete:
+
                             Toast.makeText(Detail.this, "delete", Toast.LENGTH_SHORT).show();
                             break;
                     }
                     return true;
                 }
+
             });
             popup.show();
-       }
+       }*/
     }
