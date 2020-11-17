@@ -66,7 +66,7 @@ public class Detail extends AppCompatActivity {
         dimage = (ImageView) findViewById(R.id.nunu_ch); //누누 캐릭터
 
         //intent로 값 받아오기
-        idid = intent.getExtras().getString("id");
+        idid =  Integer.toString(intent.getExtras().getInt("id"));
         idname = intent.getExtras().getString("name");
         idtype = intent.getExtras().getString("type");
         idcnt = Integer.toString(intent.getExtras().getInt("cnt"));

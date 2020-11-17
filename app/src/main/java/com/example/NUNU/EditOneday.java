@@ -45,10 +45,9 @@ public class EditOneday extends AppCompatActivity  {
     private Button ecancel; //X 버튼
     private EditText eone_type; // 렌즈유형
     private LensDao mLensDao;
-    private String bcolor;
     private String bcolorhex;
     private int eperiod;
-    private String eid;
+    private int eid;
     Note note;
 
     @Override
@@ -69,41 +68,55 @@ public class EditOneday extends AppCompatActivity  {
         //값 받아오기
         Intent intent = getIntent();
 
-        bcolor = intent.getExtras().getString("cl");
+        eclname = intent.getExtras().getString("cl");
 
-        if (bcolor.equals("오렌지")) {
-            epallete.setBackgroundColor(Color.parseColor("#c35817"));
-        } else if (bcolor.equals("연갈색")) {
-            epallete.setBackgroundColor(Color.parseColor("#966f33"));
-        } else if (bcolor.equals("갈색")) {
-            epallete.setBackgroundColor(Color.parseColor("#493d26"));
-        } else if (bcolor.equals("회색")) {
-            epallete.setBackgroundColor(Color.parseColor("#657383"));
-        } else if (bcolor.equals("검정색")) {
-            epallete.setBackgroundColor(Color.parseColor("#000000"));
-        } else if (bcolor.equals("노란색")) {
-            epallete.setBackgroundColor(Color.parseColor("#fff380"));
-        } else if (bcolor.equals("녹색")) {
-            epallete.setBackgroundColor(Color.parseColor("#387c44"));
-
-        } else if (bcolor.equals("분홍색")) {
-            epallete.setBackgroundColor(Color.parseColor("#e38aae"));
-
-        } else if (bcolor.equals("보라색")) {
-            epallete.setBackgroundColor(Color.parseColor("#9172ec"));
-
+        if (eclname.equals("오렌지")) {
+           // epallete.setBackgroundColor(Color.parseColor("#c35817"));
+            epallete.setBackgroundColor(Color.rgb(195,88,23));
+            eclname ="오렌지";
+        } else if (eclname.equals("연갈색")) {
+            //epallete.setBackgroundColor(Color.parseColor("#966f33"));
+            epallete.setBackgroundColor(Color.rgb(150,111,51));
+            eclname ="연갈색";
+        } else if (eclname.equals("갈색")) {
+            //epallete.setBackgroundColor(Color.parseColor("#493d26"));
+            epallete.setBackgroundColor(Color.rgb(173,61,38));
+            eclname ="갈색";
+        } else if (eclname.equals("회색")) {
+            //epallete.setBackgroundColor(Color.parseColor("#657383"));
+            epallete.setBackgroundColor(Color.rgb(101,115,131));
+            eclname ="회색";
+        } else if (eclname.equals("검정색")) {
+            //epallete.setBackgroundColor(Color.parseColor("#000000"));
+            epallete.setBackgroundColor(Color.rgb(0,0,0));
+            eclname ="검정색";
+        } else if (eclname.equals("노란색")) {
+            //epallete.setBackgroundColor(Color.parseColor("#fff380"));
+            epallete.setBackgroundColor(Color.rgb(195,88,23));
+            eclname ="노란색";
+        } else if (eclname.equals("녹색")) {
+            //epallete.setBackgroundColor(Color.parseColor("#387c44"));
+            epallete.setBackgroundColor(Color.rgb(56,124,68));
+            eclname ="녹색";
+        } else if (eclname.equals("분홍색")) {
+            //epallete.setBackgroundColor(Color.parseColor("#e38aae"));
+            epallete.setBackgroundColor(Color.rgb(227,138,174));
+            eclname ="분홍색";
+        } else if (eclname.equals("보라색")) {
+            //epallete.setBackgroundColor(Color.parseColor("#9172ec"));
+            epallete.setBackgroundColor(Color.rgb(145,114,236));
+            eclname ="보라색";
         } else {
-            epallete.setBackgroundColor(Color.parseColor("#4863ad"));
-
+            //epallete.setBackgroundColor(Color.parseColor("#4863ad"));
+            epallete.setBackgroundColor(Color.rgb(72,99,173));
+            eclname ="파랑색";
         }
             //detail에서 받아온 값 보여주기
-            eid = intent.getExtras().getString("id"); //id 값
+            eid = intent.getExtras().getInt("id"); //id 값
             eone_name.setText(intent.getExtras().getString("name"));
             eone_type.setText(intent.getExtras().getString("type"));
-            eone_cnt.setText(intent.getExtras().getString("cnt"));
+            eone_cnt.setText(Integer.toString(intent.getExtras().getInt("cnt")));
             eperiod = intent.getExtras().getInt("period"); //1 이면 원데이 2이면 먼슬리
-            //epallete.setBackgroundColor(Integer.parseInt(bcolorhex)); //색상에 맞는 값 버튼 색상 변경
-            //eone_name.setText(intent.getExtras().getString("start"));
             et_Date.setText(intent.getExtras().getString("end"));
 
         eone_type.setOnClickListener(new View.OnClickListener() {
@@ -122,19 +135,15 @@ public class EditOneday extends AppCompatActivity  {
                     setResult(RESULT_CANCELED, replyIntent);
                 } else {
                     //String word = mEditWordView.getText().toString();
+                    replyIntent.putExtra("eid",eid);
+                    replyIntent.putExtra("ename", eone_name.getText().toString()); //name 이란 이름으로 one_name에 들어간 text 저장
+                    replyIntent.putExtra("etype", eone_type.getText().toString());
+                    replyIntent.putExtra("ecnt",Integer.parseInt(eone_cnt.getText().toString()));
+                    replyIntent.putExtra("eperiod",eperiod); //1 이면 원데이 2이면 먼슬리
+                    replyIntent.putExtra("estart","");
+                    replyIntent.putExtra("ecl", eclname);
+                    replyIntent.putExtra("eend",et_Date.getText().toString());
                     /*
-                    replyIntent.putExtra(EXTRA_ID,eid);
-                    replyIntent.putExtra(EXTRA_NAME, eone_name.getText().toString()); //name 이란 이름으로 one_name에 들어간 text 저장
-                    replyIntent.putExtra(EXTRA_TYPE, eone_type.getText().toString());
-                    replyIntent.putExtra(EXTRA_CNT,Integer.parseInt(eone_cnt.getText().toString()));
-                    replyIntent.putExtra(EXTRA_PERIOD,eperiod); //1 이면 원데이 2이면 먼슬리
-                    replyIntent.putExtra(EXTRA_NAME, eclname);
-                    replyIntent.putExtra(EXTRA_START,"");
-                    replyIntent.putExtra(EXTRA_CL,"분홍색");
-                    replyIntent.putExtra(EXTRA_END,et_Date.getText().toString());
-
-                     */
-
                     //replyIntent.putExtra(EXTRA_ID,eid);
                     replyIntent.putExtra(EXTRA_NAME, "please"); //name 이란 이름으로 one_name에 들어간 text 저장
                     replyIntent.putExtra(EXTRA_TYPE, "미용렌즈");
@@ -143,10 +152,11 @@ public class EditOneday extends AppCompatActivity  {
                    // replyIntent.putExtra(EXTRA_NAME, eclname);
                     replyIntent.putExtra(EXTRA_START,"");
                     replyIntent.putExtra(EXTRA_CL,"분홍색");
+
                     int id = getIntent().getIntExtra("id",-1);
                     if (eid != "-1"){
-                        replyIntent.putExtra(EXTRA_ID,eid);
-                    }
+                        replyIntent.putExtra(,eid);
+                    }*/
                     setResult(RESULT_OK, replyIntent);
                     finish();
                 }
