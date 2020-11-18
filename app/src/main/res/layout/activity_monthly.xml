@@ -55,7 +55,7 @@
                     android:layout_marginLeft="20dp">
 
                     <TextView
-                        android:id="@+id/month_title_text"
+                        android:id="@+id/emonth_title_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
@@ -76,7 +76,7 @@
                         android:textSize="23sp"
                         app:layout_constraintBottom_toTopOf="@id/Monthly_name"
                         app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/month_title_text" />
+                        app:layout_constraintTop_toBottomOf="@id/emonth_title_text" />
 
                     <EditText
                         android:id="@+id/Monthly_name"

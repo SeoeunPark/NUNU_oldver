@@ -64,7 +64,6 @@ public class EditOneday extends AppCompatActivity  {
         Button o_save = findViewById(R.id.eOneday_save);
 
 
-
         //값 받아오기
         Intent intent = getIntent();
 
@@ -157,35 +156,18 @@ public class EditOneday extends AppCompatActivity  {
                     if (eid != "-1"){
                         replyIntent.putExtra(,eid);
                     }*/
+
                     setResult(RESULT_OK, replyIntent);
                     finish();
                 }
             }
         });
-
-
-
         //유효기간
         et_Date.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 new DatePickerDialog(EditOneday.this,myDatePicker,myCalendar.get(Calendar.YEAR), myCalendar.get(Calendar.MONTH), myCalendar.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
-        /*
-        //추가버튼시 DB에 데이터 INSERT
-        findViewById(R.id.Oneday_save).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                    new insertAsyncTask(db.LensDao()).execute(new Note(one_name.getText().toString(),one_type.getText().toString(),
-                    Integer.parseInt(one_cnt.getText().toString()),1,clname,"0",et_Date.getText().toString()));
-                    one_name.setText("");
-                    one_type.setText("");
-                    one_cnt.setText("");
-                    et_Date.setText("");
-                    pallete.setText("");
-            }
-        });
-         */
 
         //x 버튼
         ecancel.setOnClickListener(new View.OnClickListener() {

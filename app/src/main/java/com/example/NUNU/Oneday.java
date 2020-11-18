@@ -171,7 +171,6 @@ public class Oneday extends AppCompatActivity  {
                         pallete.setBackgroundColor(color);
                         posi = position;
                         //
-
                         if(posi == 0){
                             clname = "오렌지";
                         }else if(posi == 1){

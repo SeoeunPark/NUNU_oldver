@@ -108,21 +108,32 @@ public class Lens extends Fragment implements View.OnClickListener{
                             Toast.makeText(getActivity(), "렌즈가 삭제되었습니다.", Toast.LENGTH_SHORT).show();
                             break;
                         case ItemTouchHelper.RIGHT:
-                                    Intent intent = new Intent(getActivity(),EditOneday.class);
-                                    intent.putExtra("id", adapter.getNoteAt(viewHolder.getAdapterPosition()).get_id());
-                                    intent.putExtra("name", adapter.getNoteAt(viewHolder.getAdapterPosition()).getLens_name()); //name 이란 이름으로 one_name에 들어간 text 저장
-                                    intent.putExtra("type", adapter.getNoteAt(viewHolder.getAdapterPosition()).getLens_type());
-                                    intent.putExtra("cnt", adapter.getNoteAt(viewHolder.getAdapterPosition()).getLens_cnt());
-                                    intent.putExtra("period", adapter.getNoteAt(viewHolder.getAdapterPosition()).getLens_period());
-                                    intent.putExtra("cl", adapter.getNoteAt(viewHolder.getAdapterPosition()).getLens_color());
-                                    intent.putExtra("start", adapter.getNoteAt(viewHolder.getAdapterPosition()).getLens_start());
-                                    intent.putExtra("end", adapter.getNoteAt(viewHolder.getAdapterPosition()).getLens_end());
-                                    startActivityForResult(intent, ED_NOTE_REQUEST);
-                                    //Toast.makeText(getActivity(), "렌즈가 수정되었습니다.", Toast.LENGTH_SHORT).show();
+                                    if(adapter.getNoteAt(viewHolder.getAdapterPosition()).getLens_period()==1){
+                                        Intent intent = new Intent(getActivity(),EditOneday.class);
+                                        intent.putExtra("id", adapter.getNoteAt(viewHolder.getAdapterPosition()).get_id());
+                                        intent.putExtra("name", adapter.getNoteAt(viewHolder.getAdapterPosition()).getLens_name()); //name 이란 이름으로 one_name에 들어간 text 저장
+                                        intent.putExtra("type", adapter.getNoteAt(viewHolder.getAdapterPosition()).getLens_type());
+                                        intent.putExtra("cnt", adapter.getNoteAt(viewHolder.getAdapterPosition()).getLens_cnt());
+                                        intent.putExtra("period", adapter.getNoteAt(viewHolder.getAdapterPosition()).getLens_period());
+                                        intent.putExtra("cl", adapter.getNoteAt(viewHolder.getAdapterPosition()).getLens_color());
+                                        intent.putExtra("start", adapter.getNoteAt(viewHolder.getAdapterPosition()).getLens_start());
+                                        intent.putExtra("end", adapter.getNoteAt(viewHolder.getAdapterPosition()).getLens_end());
+                                        startActivityForResult(intent, ED_NOTE_REQUEST);
+                                    }else if(adapter.getNoteAt(viewHolder.getAdapterPosition()).getLens_period()==2) {
+                                        Intent intent = new Intent(getActivity(),EditMonthly.class);
+                                        intent.putExtra("id", adapter.getNoteAt(viewHolder.getAdapterPosition()).get_id());
+                                        intent.putExtra("name", adapter.getNoteAt(viewHolder.getAdapterPosition()).getLens_name()); //name 이란 이름으로 one_name에 들어간 text 저장
+                                        intent.putExtra("type", adapter.getNoteAt(viewHolder.getAdapterPosition()).getLens_type());
+                                        intent.putExtra("cnt", adapter.getNoteAt(viewHolder.getAdapterPosition()).getLens_cnt());
+                                        intent.putExtra("period", adapter.getNoteAt(viewHolder.getAdapterPosition()).getLens_period());
+                                        intent.putExtra("cl", adapter.getNoteAt(viewHolder.getAdapterPosition()).getLens_color());
+                                        intent.putExtra("start", adapter.getNoteAt(viewHolder.getAdapterPosition()).getLens_start());
+                                        intent.putExtra("end", adapter.getNoteAt(viewHolder.getAdapterPosition()).getLens_end());
+                                        startActivityForResult(intent, ED_NOTE_REQUEST);
+                                    }
                             break;
                     }
                 }
-
                 @Override
                 public void onChildDraw(@NonNull Canvas c, @NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
                     new RecyclerViewSwipeDecorator.Builder(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
@@ -169,10 +180,10 @@ public class Lens extends Fragment implements View.OnClickListener{
                 Note word = new Note(data.getExtras().getString("name"),data.getExtras().getString("type"),data.getExtras().getInt("cnt"),data.getExtras().getInt("period"),data.getExtras().getString("cl"),data.getExtras().getString("start"),data.getExtras().getString("end"));
                 mWordViewModel.insert(word); //갑 저장
             }
-            else if(requestCode == ED_NOTE_REQUEST ){
+            else if(requestCode == ED_NOTE_REQUEST && resultCode == Activity.RESULT_OK) {
                 int id = data.getExtras().getInt("eid");
                 //int id = Integer.parseInt(i.getExtras().getString("eid"));
-                Note word = new Note(data.getExtras().getString("ename"),data.getExtras().getString("etype"),data.getExtras().getInt("ecnt"),data.getExtras().getInt("eperiod"),data.getExtras().getString("ecl"),data.getExtras().getString("estart"),data.getExtras().getString("eend"));
+                Note word = new Note(data.getExtras().getString("ename"), data.getExtras().getString("etype"), data.getExtras().getInt("ecnt"), data.getExtras().getInt("eperiod"), data.getExtras().getString("ecl"), data.getExtras().getString("estart"), data.getExtras().getString("eend"));
                 //Note word = new Note(data.getStringExtra(EditOneday.EXTRA_NAME),data.getStringExtra(EditOneday.EXTRA_TYPE),data.getIntExtra(EditOneday.EXTRA_CNT,1),data.getIntExtra(EditOneday.EXTRA_PERIOD,1),data.getStringExtra(EditOneday.EXTRA_CL),data.getStringExtra(EditOneday.EXTRA_START),data.getStringExtra(EditOneday.EXTRA_END));
                 word.set_id(id);
                 mWordViewModel.update(word);
