@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -66,6 +67,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {/
 
             holder.dday.setText("D - "+Integer.toString((int) substract));
 
+
         } else {
             holder.lens_name.setText("No word");
             holder.lens_cnt.setText("No word");
@@ -75,7 +77,6 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {/
         //Note item = items.get(position);
         //viewHolder.setItem(item);  //이게 추가하는 거
     }
-
     @Override
     public int getItemCount() {
         if (mNotes != null)
