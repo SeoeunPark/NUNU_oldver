@@ -24,6 +24,7 @@ public class InitSetting extends Fragment {
     public EditText set_left;
     public EditText set_right;
     private TextView show_data;
+    User user = new User();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -104,13 +105,16 @@ public class InitSetting extends Fragment {
                 }else{
                     Toast.makeText(context,"Done",Toast.LENGTH_SHORT).show();
                     db.UserDao().insert(new UserInfo(set_name.getText().toString(),set_left.getText().toString(),set_right.getText().toString(),fdate.format(date)));
+                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_layout, user).commitAllowingStateLoss();
                 }
 
 
                 String text = db.UserDao().getAll().toString();
                 show_data.setText(text);
+
                 //show_data.setText(db.todoDao().getAll().get(5).toString()); getAll().get(숫자) 하면 원하는 거 가져올 수 있음
             }
+
         });
         rootView.findViewById(R.id.delete_button).setOnClickListener(new View.OnClickListener() {
             @Override
