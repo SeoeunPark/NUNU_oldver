@@ -22,16 +22,20 @@ import java.util.List;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+
 public class User extends Fragment {
-    View view;
     private LineChart lineChart;
     UserInfo user;
     Option option;
     TextView userTextView;
+    TextView count_lens;
     TextView leftSightTextView;
     TextView rightSightTextView;
     InitSetting initSetting;
+    public static List<NoteAdapter> mNotes = new ArrayList<>();
+    NoteAdapter noteAdapter;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,15 +54,23 @@ public class User extends Fragment {
         return rootView;
     }
 
+
     private void initInfo(ViewGroup rootView){
         Context context = getContext();
         final AppDatabase db = Room.databaseBuilder(context,AppDatabase.class,"userinfo-db")
                 .fallbackToDestructiveMigration ()
                 .allowMainThreadQueries()
                 .build();
+
         userTextView = rootView.findViewById(R.id.username);
         String name = db.UserDao().getName();
         userTextView.setText(name+"님");
+        count_lens = rootView.findViewById(R.id.count_lens);
+       // String size = Integer.toString(noteAdapter.getItemCount());
+       // String size = Integer.toString(noteAdapter.getItemCount());
+        int size = 0;
+
+        count_lens.setText(Integer.toString(size));
         leftSightTextView = rootView.findViewById(R.id.leftSight);
         String leftSight = db.UserDao().getLeft();
         leftSightTextView.setText(leftSight);
@@ -134,7 +146,7 @@ public class User extends Fragment {
     }
 
     private void initButton(ViewGroup rootView){
-        FloatingActionButton setting = rootView.findViewById(R.id.setting);
+        ImageView setting = rootView.findViewById(R.id.goOption);
         setting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

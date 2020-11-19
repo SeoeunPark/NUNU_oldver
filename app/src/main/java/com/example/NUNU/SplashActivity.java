@@ -12,7 +12,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 public class SplashActivity extends AppCompatActivity {
     public SharedPreferences prefs; // 선언하기
-    Fragment InitSetting = new InitSetting();
+    //Fragment InitSetting = new InitSetting();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,9 +32,9 @@ public class SplashActivity extends AppCompatActivity {
     public void checkFirstRun() {
         boolean isFirstRun = prefs.getBoolean("isFirstRun", true);
         if (isFirstRun) {
-            Intent newIntent = new Intent(this, MainActivity.class);
+            Intent newIntent = new Intent(this, InitInfo.class);
             startActivity(newIntent);
-          //  getSupportFragmentManager().beginTransaction().replace(R.id.main_layout, InitSetting).commitAllowingStateLoss();
+            //getSupportFragmentManager().beginTransaction().replace(R.id.main_layout, InitInfo).commitAllowingStateLoss();
             prefs.edit().putBoolean("isFirstRun", false).apply();
         }else{
             Intent newIntent = new Intent(this, MainActivity.class);

@@ -20,8 +20,7 @@ public class Option extends Fragment {
     User User = new User();
     ChangeName ChangeName = new ChangeName();
     ChangeSight ChangeSight = new ChangeSight();
-    InitSetting GoInitSetting = new InitSetting();
-    InitInfo InitInfo = new InitInfo();
+    InitSetting ChangeAll = new InitSetting();
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,12 +74,20 @@ public class Option extends Fragment {
                         Toast.makeText(context,"데이터가 초기화 되었습니다.",Toast.LENGTH_SHORT).show();
                       //  Intent intent = new Intent(getActivity(),InitInfo.class);
                         //startActivity(intent);
-                        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_layout, GoInitSetting).commitAllowingStateLoss();
+                        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_layout, ChangeAll).commitAllowingStateLoss();
                     }
                 });
                 builder.setNegativeButton("아니오",null);
                 builder.setNeutralButton("취소",null);
                 builder.create().show();
+            }
+        });
+
+        Button updateAll = (Button)view.findViewById(R.id.updateAll_btn);
+        updateAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_layout, ChangeAll).commitAllowingStateLoss();
             }
         });
         return view;
