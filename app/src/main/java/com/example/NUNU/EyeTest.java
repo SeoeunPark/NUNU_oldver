@@ -8,14 +8,14 @@ import android.view.ViewGroup;
 import androidx.fragment.app.Fragment;
 import com.google.android.material.tabs.TabLayout;
 
-public class Home extends Fragment {
+public class EyeTest extends Fragment {
     TabLayout tabs;
     Fragment sightTest;
     Fragment otherTest;
     Fragment numTest;
     Fragment selected = null;
 
-    public Home() {
+    public EyeTest() {
         // Required empty public constructor
     }
 
@@ -29,7 +29,7 @@ public class Home extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View mView = inflater.inflate(R.layout.fragment_home, container, false);
+        View mView = inflater.inflate(R.layout.fragment_eye_test, container, false);
         sightTest = new sightTest();
         otherTest = new otherTest();
         numTest = new numTest();
