@@ -32,9 +32,9 @@ public class SplashActivity extends AppCompatActivity {
     public void checkFirstRun() {
         boolean isFirstRun = prefs.getBoolean("isFirstRun", true);
         if (isFirstRun) {
-            Intent newIntent = new Intent(this, MainActivity.class);
+            Intent newIntent = new Intent(this, InitInfo.class);
             startActivity(newIntent);
-          //  getSupportFragmentManager().beginTransaction().replace(R.id.main_layout, InitSetting).commitAllowingStateLoss();
+            //getSupportFragmentManager().beginTransaction().replace(R.id.main_layout, InitSetting).commitAllowingStateLoss();
             prefs.edit().putBoolean("isFirstRun", false).apply();
         }else{
             Intent newIntent = new Intent(this, MainActivity.class);

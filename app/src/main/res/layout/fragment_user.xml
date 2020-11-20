@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/setting"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".User">
 
     <!--
@@ -85,6 +86,24 @@
         android:layout_marginTop="15dp">
 
         <ImageView
+            android:id="@+id/goOption"
+            android:layout_width="49dp"
+            android:layout_height="54dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="false"
+            android:layout_marginStart="145dp"
+            android:layout_marginLeft="145dp"
+            android:layout_marginTop="1dp"
+            android:layout_marginEnd="6dp"
+            android:layout_marginRight="6dp"
+            android:layout_marginBottom="47dp"
+            android:layout_toEndOf="@+id/username"
+            android:layout_toRightOf="@+id/username"
+            android:src="@drawable/ic_baseline_settings_24" />
+
+        <ImageView
             android:id="@+id/account_iv_profile"
             android:layout_width="100dp"
             android:layout_height="100dp"
@@ -122,23 +141,6 @@
             android:text="안녕하세요"
             android:textColor="#004182"
             android:textSize="24sp" />
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/setting"
-            android:layout_width="102dp"
-            android:layout_height="84dp"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="12dp"
-            android:layout_marginRight="12dp"
-            android:clickable="true"
-            android:src="@drawable/ic_baseline_settings_24"
-            app:backgroundTint="#FFFFFF"
-            app:elevation="6dp"
-            app:maxImageSize="38dp"
-            app:pressedTranslationZ="12dp" />
 
     </RelativeLayout>
 
