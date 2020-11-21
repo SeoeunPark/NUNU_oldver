@@ -56,8 +56,6 @@ public class InitSetting extends Fragment {
         rootView.findViewById(R.id.add_button).setOnClickListener(new View.OnClickListener() {
             SimpleDateFormat fdate = new SimpleDateFormat("MM-dd");
             Date date = new Date();
-            Boolean check = true;
-            Boolean check2 = true;
             @Override
             public void onClick(View view) {
                 if(TextUtils.isEmpty(set_name.getText().toString())){
@@ -66,7 +64,28 @@ public class InitSetting extends Fragment {
                     Toast.makeText(context,"좌안 시력을 입력해주세요.",Toast.LENGTH_SHORT).show();
                 }else if(TextUtils.isEmpty(set_right.getText().toString())) {
                     Toast.makeText(context, "우안 시력을 입력해주세요.", Toast.LENGTH_SHORT).show();
-                }else if(check){
+                }else if((Float.valueOf(set_left.getText().toString())>=-20.0 && Float.valueOf(set_left.getText().toString())<=10.0)==false) {
+                    Toast.makeText(context, "좌안 시력이 범위를 벗어났습니다.", Toast.LENGTH_SHORT).show();
+                }else if((Float.valueOf(set_right.getText().toString())>=-20.0 && Float.valueOf(set_right.getText().toString())<=10.0)==false) {
+                    Toast.makeText(context, "우안 시력이 범위를 벗어났습니다.", Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(context,"Done",Toast.LENGTH_SHORT).show();
+                    db.UserDao().insert(new UserInfo(set_name.getText().toString(),set_left.getText().toString(),set_right.getText().toString(),fdate.format(date)));
+                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_layout, user).commitAllowingStateLoss();
+                }
+
+               insertNum();
+
+                String text = db.UserDao().getAll().toString();
+                show_data.setText(text);
+
+                //show_data.setText(db.todoDao().getAll().get(5).toString()); getAll().get(숫자) 하면 원하는 거 가져올 수 있음
+            }
+
+            public void insertNum(){
+                Boolean check = true;
+                Boolean check2 = true;
+                if(check){
                     char tmp;
                     int count = 0;
                     for(int i=0; i<set_left.getText().toString().length();i++) {
@@ -98,21 +117,7 @@ public class InitSetting extends Fragment {
                     }else{
                         check2 = false;
                     }
-                }else if((Float.valueOf(set_left.getText().toString())>=-20.0 && Float.valueOf(set_left.getText().toString())<=10.0)==false) {
-                    Toast.makeText(context, "좌안 시력이 범위를 벗어났습니다.", Toast.LENGTH_SHORT).show();
-                }else if((Float.valueOf(set_right.getText().toString())>=-20.0 && Float.valueOf(set_right.getText().toString())<=10.0)==false) {
-                    Toast.makeText(context, "우안 시력이 범위를 벗어났습니다.", Toast.LENGTH_SHORT).show();
-                }else{
-                    Toast.makeText(context,"Done",Toast.LENGTH_SHORT).show();
-                    db.UserDao().insert(new UserInfo(set_name.getText().toString(),set_left.getText().toString(),set_right.getText().toString(),fdate.format(date)));
-                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_layout, user).commitAllowingStateLoss();
                 }
-
-
-                String text = db.UserDao().getAll().toString();
-                show_data.setText(text);
-
-                //show_data.setText(db.todoDao().getAll().get(5).toString()); getAll().get(숫자) 하면 원하는 거 가져올 수 있음
             }
 
         });
