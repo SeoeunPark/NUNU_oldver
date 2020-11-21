@@ -73,7 +73,6 @@ public class InitSetting extends Fragment {
                     db.UserDao().insert(new UserInfo(set_name.getText().toString(),set_left.getText().toString(),set_right.getText().toString(),fdate.format(date)));
                     getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_layout, user).commitAllowingStateLoss();
                 }
-
                insertNum();
 
                 String text = db.UserDao().getAll().toString();
