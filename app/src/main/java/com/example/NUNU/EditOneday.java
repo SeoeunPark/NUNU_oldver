@@ -77,9 +77,9 @@ public class EditOneday extends AppCompatActivity  {
             //epallete.setBackgroundColor(Color.parseColor("#966f33"));
             epallete.setBackgroundColor(Color.rgb(150,111,51));
             eclname ="연갈색";
-        } else if (eclname.equals("갈색")) {
+        }  else if (eclname.equals("갈색")) {
             //epallete.setBackgroundColor(Color.parseColor("#493d26"));
-            epallete.setBackgroundColor(Color.rgb(173,61,38));
+            epallete.setBackgroundColor(Color.rgb(73,61,38));
             eclname ="갈색";
         } else if (eclname.equals("회색")) {
             //epallete.setBackgroundColor(Color.parseColor("#657383"));
@@ -89,9 +89,9 @@ public class EditOneday extends AppCompatActivity  {
             //epallete.setBackgroundColor(Color.parseColor("#000000"));
             epallete.setBackgroundColor(Color.rgb(0,0,0));
             eclname ="검정색";
-        } else if (eclname.equals("노란색")) {
+        }  else if (eclname.equals("노란색")) {
             //epallete.setBackgroundColor(Color.parseColor("#fff380"));
-            epallete.setBackgroundColor(Color.rgb(195,88,23));
+            epallete.setBackgroundColor(Color.rgb(255,243,128));
             eclname ="노란색";
         } else if (eclname.equals("녹색")) {
             //epallete.setBackgroundColor(Color.parseColor("#387c44"));

@@ -72,6 +72,7 @@ public class EditMonthly extends AppCompatActivity {
         private String bcolorhex;
         private int eperiod;
         private int eid;
+        Lens lens = new Lens();
         Note note;
 
         @Override
@@ -101,9 +102,9 @@ public class EditMonthly extends AppCompatActivity {
                 //epallete.setBackgroundColor(Color.parseColor("#966f33"));
                 epallete.setBackgroundColor(Color.rgb(150,111,51));
                 eclname ="연갈색";
-            } else if (eclname.equals("갈색")) {
+            }  else if (eclname.equals("갈색")) {
                 //epallete.setBackgroundColor(Color.parseColor("#493d26"));
-                epallete.setBackgroundColor(Color.rgb(173,61,38));
+                epallete.setBackgroundColor(Color.rgb(73,61,38));
                 eclname ="갈색";
             } else if (eclname.equals("회색")) {
                 //epallete.setBackgroundColor(Color.parseColor("#657383"));
@@ -113,9 +114,9 @@ public class EditMonthly extends AppCompatActivity {
                 //epallete.setBackgroundColor(Color.parseColor("#000000"));
                 epallete.setBackgroundColor(Color.rgb(0,0,0));
                 eclname ="검정색";
-            } else if (eclname.equals("노란색")) {
+            }  else if (eclname.equals("노란색")) {
                 //epallete.setBackgroundColor(Color.parseColor("#fff380"));
-                epallete.setBackgroundColor(Color.rgb(195,88,23));
+                epallete.setBackgroundColor(Color.rgb(255,243,128));
                 eclname ="노란색";
             } else if (eclname.equals("녹색")) {
                 //epallete.setBackgroundColor(Color.parseColor("#387c44"));
@@ -229,11 +230,6 @@ public class EditMonthly extends AppCompatActivity {
             colors.add("#4863ad"); //blue
             colors.add("#e38aae"); //pink
             colors.add("#9172ec"); //purple
-            //colors.add("#e6ee9c");
-            //colors.add("#fff59d");
-            //colors.add("#ffe082");
-            //colors.add("#ffcc80");
-            //colors.add("#bcaaa4");
             colorPicker.setColors(colors)  // 만들어둔 list 적용
                     .setColumns(5)  // 5열로 설정
                     .setRoundColorButton(true)  // 원형 버튼으로 설정

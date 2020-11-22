@@ -23,11 +23,11 @@ public class Detail extends AppCompatActivity {
     private static final String TAG= "Detail";
     public static final int EDIT_NOTE_REQUEST =2;
     private Button cancel;
-    private ImageView more;
     private ImageView dimage;
     private TextView dday;
     private TextView dname;
     private TextView dtype;
+    private TextView dminus;
     private TextView dcnt;
     private TextView dtype_om;
     private TextView dperiod_s;
@@ -54,7 +54,7 @@ public class Detail extends AppCompatActivity {
 
         setContentView(R.layout.activity_detail);
         cancel = (Button) findViewById(R.id.go_out);
-        more = (ImageView) findViewById(R.id.more);
+        dminus =(TextView) findViewById(R.id.d_day_text2); // - 표시
         dday = (TextView) findViewById(R.id.d_day_text3); //d-day 남은 기간 text
         dname = (TextView) findViewById(R.id.detail_name); //렌즈 이름
         dtype = (TextView) findViewById(R.id.detail_type); //소프트/하드/미용
@@ -85,6 +85,18 @@ public class Detail extends AppCompatActivity {
         LocalDate fromDate = LocalDate.now();
         LocalDate toDate = LocalDate.of(cyear, cmonth, cday);
         long substract = ChronoUnit.DAYS.between(fromDate, toDate);
+
+        //-
+        if(substract<0){
+            dminus.setText("+");
+            dday.setText(Integer.toString(Math.abs((int)substract)));
+        }else if(substract==0){
+            dminus.setText("-");
+            dday.setText("DAY");
+        }else{
+            dminus.setText("-");
+            dday.setText(Integer.toString((int)substract));
+        }
 
         //원데이인지 / 먼슬리인지
         if (idtype_om.equals("1")) {
@@ -117,7 +129,6 @@ public class Detail extends AppCompatActivity {
             dimage.setImageResource(R.drawable.blue);
         }
 
-        dday.setText(Integer.toString((int) substract));
         dname.setText(idname);
         dtype.setText(idtype);
         dcnt.setText(idcnt);
@@ -130,58 +141,5 @@ public class Detail extends AppCompatActivity {
                 finish();
             }
         });
-    } //onCreate
-    /*
-       public void onPopupButtonClick(View button){
-            PopupMenu popup = new PopupMenu(this,button);
-            popup.getMenuInflater().inflate(R.menu.detail_popup,popup.getMenu());
-
-            popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-                @Override
-                public boolean onMenuItemClick(MenuItem menuItem) {
-                    //Intent intent2 = getIntent();
-                    //idtype_om = Integer.toString(intent2.getExtras().getInt("period"));
-                    switch (menuItem.getItemId()){
-                        case R.id.edit:
-                            //if (idtype_om.equals("1")) {
-                                Intent intento = new Intent(Detail.this, EditOneday.class);
-                                intento.putExtra("id", idid);
-                                intento.putExtra("name", idname); //name 이란 이름으로 one_name에 들어간 text 저장
-                                intento.putExtra("type", idtype);
-                                intento.putExtra("cnt", idcnt);
-                                intento.putExtra("period", idtype_om);
-                                intento.putExtra("cl", idcl);
-                                intento.putExtra("start", idperiod_s);
-                                intento.putExtra("end", idperiod_e);
-                                //startActivity(intento);
-                                startActivityForResult(intento,EDIT_NOTE_REQUEST);
-                            finish();
-                                break;
-                                /*
-                            } else {
-                                Intent intentm = new Intent(Detail.this, EditMonthly.class);
-                                intentm.putExtra("id", idid);
-                                intentm.putExtra("name", idname); //name 이란 이름으로 one_name에 들어간 text 저장
-                                intentm.putExtra("type", idtype);
-                                intentm.putExtra("cnt", idcnt);
-                                intentm.putExtra("period", idtype_om);
-                                intentm.putExtra("cl", idcl);
-                                intentm.putExtra("start", idperiod_s);
-                                intentm.putExtra("end", idperiod_e);
-                                startActivityForResult(intentm, EDIT_NOTE_REQUEST);
-                            }
-                            break;
-
-
-                        case R.id.delete:
-
-                            Toast.makeText(Detail.this, "delete", Toast.LENGTH_SHORT).show();
-                            break;
-                    }
-                    return true;
-                }
-
-            });
-            popup.show();
-       }*/
+    }
     }

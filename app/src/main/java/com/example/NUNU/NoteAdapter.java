@@ -55,7 +55,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {/
             holder.lens_cnt.setText("보유개수 :" + current.getLens_cnt());
             //holder.start_date.setText(current.getLens_start());
             holder.end_date.setText(current.getLens_end());
-            //디데이 계산ㄴ
+            //디데이 계산
             String str = current.getLens_end();
             String[] array = str.split("/");
             int cyear = Integer.parseInt(array[0]);
@@ -66,7 +66,14 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {/
             LocalDate toDate = LocalDate.of(cyear, cmonth, cday);
             long substract = ChronoUnit.DAYS.between(fromDate, toDate);
 
-            holder.dday.setText("D - "+Integer.toString((int) substract));
+            if(substract<0){
+                holder.dday.setText("D + "+Integer.toString(Math.abs((int) substract)));
+            }else if(substract==0){
+                holder.dday.setText("D - DAY");
+            }else{
+                holder.dday.setText("D - " + Integer.toString((int) substract));
+            }
+
         } else {
             holder.lens_name.setText("No word");
             holder.lens_cnt.setText("No word");
