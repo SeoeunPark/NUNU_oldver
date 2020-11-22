@@ -48,6 +48,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {/
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+
         if (mNotes != null) {
             Note current = mNotes.get(position);
             holder.lens_name.setText(current.getLens_name());
@@ -66,8 +67,6 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {/
             long substract = ChronoUnit.DAYS.between(fromDate, toDate);
 
             holder.dday.setText("D - "+Integer.toString((int) substract));
-
-
         } else {
             holder.lens_name.setText("No word");
             holder.lens_cnt.setText("No word");
@@ -76,7 +75,11 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {/
         }
         //Note item = items.get(position);
         //viewHolder.setItem(item);  //이게 추가하는 거
+
     }
+
+
+
     @Override
     public int getItemCount() {
         if (mNotes != null)
@@ -133,6 +136,8 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {/
             //start_date.setText(item.getLens_start());
             end_date.setText(item.getLens_end());
         }
+
+
     }
 
     public interface OnItemClickListener {

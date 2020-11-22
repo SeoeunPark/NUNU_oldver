@@ -61,16 +61,17 @@ public class User extends Fragment {
                 .fallbackToDestructiveMigration ()
                 .allowMainThreadQueries()
                 .build();
-
+        final AppDatabase db2 = Room.databaseBuilder(context,AppDatabase.class,"lens_database")
+                .fallbackToDestructiveMigration ()
+                .allowMainThreadQueries()
+                .build();
         userTextView = rootView.findViewById(R.id.username);
         String name = db.UserDao().getName();
         userTextView.setText(name+"님");
         count_lens = rootView.findViewById(R.id.count_lens);
-       // String size = Integer.toString(noteAdapter.getItemCount());
-       // String size = Integer.toString(noteAdapter.getItemCount());
-        int size = 0;
-
+        int size = db2.LensDao().getNum();
         count_lens.setText(Integer.toString(size));
+
         leftSightTextView = rootView.findViewById(R.id.leftSight);
         String leftSight = db.UserDao().getLeft();
         leftSightTextView.setText(leftSight);
