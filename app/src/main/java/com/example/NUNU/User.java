@@ -1,5 +1,6 @@
 package com.example.NUNU;
 
+import android.app.Application;
 import android.content.Context;
 import android.os.Bundle;
 
@@ -27,6 +28,8 @@ import android.widget.TextView;
 
 public class User extends Fragment {
     private LineChart lineChart;
+    private int lensnum;
+    private LensDao lensdao;
     UserInfo user;
     Option option;
     TextView userTextView;
@@ -36,6 +39,14 @@ public class User extends Fragment {
     InitSetting initSetting;
     public static List<NoteAdapter> mNotes = new ArrayList<>();
     NoteAdapter noteAdapter;
+    public User(){
+
+    }
+    public User(Application application){
+        LensDatabase lensdb = LensDatabase.getDatabase(application);
+        lensdao = lensdb.lensDao();
+        lensnum = lensdao.getNum();
+    }
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,20 +72,19 @@ public class User extends Fragment {
                 .fallbackToDestructiveMigration ()
                 .allowMainThreadQueries()
                 .build();
-        final AppDatabase db2 = Room.databaseBuilder(context,AppDatabase.class,"lens_database")
-                .fallbackToDestructiveMigration ()
-                .allowMainThreadQueries()
-                .build();
+
         userTextView = rootView.findViewById(R.id.username);
         String name = db.UserDao().getName();
         userTextView.setText(name+"님");
-        count_lens = rootView.findViewById(R.id.count_lens);
-        int size = db2.LensDao().getNum();
-        count_lens.setText(Integer.toString(size));
+
+//        count_lens = rootView.findViewById(R.id.count_lens);
+//        int size = lensnum;
+//        count_lens.setText(Integer.toString(size));
 
         leftSightTextView = rootView.findViewById(R.id.leftSight);
         String leftSight = db.UserDao().getLeft();
         leftSightTextView.setText(leftSight);
+
         rightSightTextView = rootView.findViewById(R.id.rightSight);
         String rightSight = db.UserDao().getRight();
         rightSightTextView.setText(rightSight);

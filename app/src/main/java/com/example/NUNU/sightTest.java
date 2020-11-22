@@ -34,7 +34,7 @@ public class sightTest extends Fragment {
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_sight_test, container, false);
-        Context context = container.getContext();
+        Context context = getContext();
         ImageView near = (ImageView) view.findViewById(R.id.nearsighted);
         near.setOnClickListener(new View.OnClickListener() {
             @Override

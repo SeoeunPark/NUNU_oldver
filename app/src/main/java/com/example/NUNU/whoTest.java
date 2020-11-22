@@ -40,7 +40,7 @@ public class whoTest extends Fragment {
             @Override
             public void onClick(View view) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(context);
-                builder.setTitle("근시일까? 난시일까?");
+                builder.setTitle("정상일까? 난시일까?");
                 builder.setMessage("당신은 난시입니다!");
                 builder.setPositiveButton("확인", new DialogInterface.OnClickListener() {
                     @Override

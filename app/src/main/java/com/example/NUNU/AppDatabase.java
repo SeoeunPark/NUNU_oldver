@@ -10,9 +10,9 @@ import androidx.room.TypeConverters;
 @Database(entities = {UserInfo.class,Note.class}, version = 6, exportSchema = false)
 @TypeConverters({Converters.class})
 public abstract class AppDatabase extends RoomDatabase {
-    private static AppDatabase INSTANCE;
+    public static AppDatabase INSTANCE;
     public abstract UserDao UserDao(); //UserDao 인터페이스
-    public abstract LensDao LensDao(); //LensDao 인터페이스
+    public abstract LensDao lensDao(); //LensDao 인터페이스
 
     public static AppDatabase getAppDatabase(Context context){
         if(INSTANCE ==null) {
