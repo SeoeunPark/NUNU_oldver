@@ -45,6 +45,7 @@ dependencies {
     implementation 'com.android.support:design:30.1.0'
     compile 'com.github.clans:fab:1.6.4'
     implementation 'petrov.kristiyan:colorpicker-library:1.1.10'
+    implementation 'com.airbnb.android:lottie:3.4.2'
     annotationProcessor 'androidx.room:room-compiler:2.2.5'
     // Room components
     implementation "android.arch.persistence.room:runtime:1.1.1"
