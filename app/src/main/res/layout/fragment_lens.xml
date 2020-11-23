@@ -41,7 +41,6 @@
             app:elevation="6dp"
             app:maxImageSize="36dp"
             app:pressedTranslationZ="12dp" />
-        W
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab2"
