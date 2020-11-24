@@ -68,6 +68,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {/
 
             if(substract<0){
                 holder.dday.setText("D + "+Integer.toString(Math.abs((int) substract)));
+
             }else if(substract==0){
                 holder.dday.setText("D - DAY");
             }else{
