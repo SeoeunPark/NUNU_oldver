@@ -6,8 +6,8 @@
     android:layout_marginLeft="4dp"
     android:layout_marginRight="4dp"
     android:layout_marginBottom="4dp"
-    app:cardBackgroundColor="#FFFFFFFF"
-    app:cardCornerRadius="10dp"
+    app:cardBackgroundColor="#ffffff"
+    app:cardCornerRadius="15dp"
     app:cardElevation="5dp">
 
     <LinearLayout
@@ -16,7 +16,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:visibility="visible"
-        android:background="#ffffff">
+        android:background="@drawable/round_background">
         <!-- f7ab-->
         <LinearLayout
             android:layout_width="match_parent"
