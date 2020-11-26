@@ -69,7 +69,7 @@ public class InitSetting extends Fragment {
                 }else if((Float.valueOf(set_right.getText().toString())>=-20.0 && Float.valueOf(set_right.getText().toString())<=10.0)==false) {
                     Toast.makeText(context, "우안 시력이 범위를 벗어났습니다.", Toast.LENGTH_SHORT).show();
                 }else{
-                    Toast.makeText(context,"Done",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context,"정보가 입력되었습니다.",Toast.LENGTH_SHORT).show();
                     db.UserDao().insert(new UserInfo(set_name.getText().toString(),set_left.getText().toString(),set_right.getText().toString(),fdate.format(date)));
                     getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_layout, user).commitAllowingStateLoss();
                 }
@@ -120,14 +120,16 @@ public class InitSetting extends Fragment {
             }
 
         });
-        rootView.findViewById(R.id.delete_button).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                db.UserDao().deleteAll();
-                String text = db.UserDao().getAll().toString();
-                show_data.setText(text);
-            }
-        });
+
+        //데이터 삭제 시 확인 코드
+//        rootView.findViewById(R.id.delete_button).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//           public void onClick(View view) {
+//                db.UserDao().deleteAll();
+//                String text = db.UserDao().getAll().toString();
+//                show_data.setText(text);
+//            }
+//        });
 
     }
 

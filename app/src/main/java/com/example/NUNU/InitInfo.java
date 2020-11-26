@@ -94,7 +94,7 @@ public class InitInfo extends AppCompatActivity {
                 }else if((Float.valueOf(set_right.getText().toString())>=-20.0 && Float.valueOf(set_right.getText().toString())<=10.0)==false) {
                     Toast.makeText(InitInfo.this, "우안 시력이 범위를 벗어났습니다.", Toast.LENGTH_SHORT).show();
                 }else{
-                    Toast.makeText(InitInfo.this,"Done",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(InitInfo.this,"정보가 입력되었습니다.",Toast.LENGTH_SHORT).show();
                     db.UserDao().insert(new UserInfo(set_name.getText().toString(),set_left.getText().toString(),set_right.getText().toString(),fdate.format(date)));
                     Intent intent = new Intent(getApplicationContext(),MainActivity.class);
                     startActivity(intent);

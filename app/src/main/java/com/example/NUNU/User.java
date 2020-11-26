@@ -5,6 +5,7 @@ import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.LiveData;
 import androidx.room.Room;
 
 import android.graphics.Color;
@@ -28,25 +29,19 @@ import android.widget.TextView;
 
 public class User extends Fragment {
     private LineChart lineChart;
-    private int lensnum;
-    private LensDao lensdao;
-    UserInfo user;
     Option option;
     TextView userTextView;
     TextView count_lens;
     TextView leftSightTextView;
     TextView rightSightTextView;
     InitSetting initSetting;
-    public static List<NoteAdapter> mNotes = new ArrayList<>();
-    NoteAdapter noteAdapter;
+    private int mlenscnt=0;
+    
     public User(){
 
     }
-    public User(Application application){
-        LensDatabase lensdb = LensDatabase.getDatabase(application);
-        lensdao = lensdb.lensDao();
-        lensnum = lensdao.getNum();
-    }
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,9 +72,10 @@ public class User extends Fragment {
         String name = db.UserDao().getName();
         userTextView.setText(name+"님");
 
-//        count_lens = rootView.findViewById(R.id.count_lens);
-//        int size = lensnum;
-//        count_lens.setText(Integer.toString(size));
+        count_lens = rootView.findViewById(R.id.count_lens);
+
+        int size = mlenscnt;
+        count_lens.setText(Integer.toString(size));
 
         leftSightTextView = rootView.findViewById(R.id.leftSight);
         String leftSight = db.UserDao().getLeft();

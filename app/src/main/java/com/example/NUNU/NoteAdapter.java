@@ -114,6 +114,9 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {/
         private TextView end_date;
         private TextView dday;
 
+
+
+
         public ViewHolder(View itemView) {
             super(itemView);
             layout1 = itemView.findViewById(R.id.layout1);
@@ -143,6 +146,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {/
             lens_cnt.setText("보유개수 :" + item.getLens_cnt());
             //start_date.setText(item.getLens_start());
             end_date.setText(item.getLens_end());
+
         }
 
 
