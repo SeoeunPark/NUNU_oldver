@@ -26,16 +26,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import java.util.Calendar;
+
 
 public class User extends Fragment {
     private LineChart lineChart;
     Option option;
     TextView userTextView;
-    TextView count_lens;
+    TextView greeting;
     TextView leftSightTextView;
     TextView rightSightTextView;
     InitSetting initSetting;
-    private int mlenscnt=0;
+
     
     public User(){
 
@@ -47,8 +49,6 @@ public class User extends Fragment {
         super.onCreate(savedInstanceState);
         option = new Option();
         initSetting = new InitSetting();
-
-
     }
 
     public View onCreateView (LayoutInflater inflater, ViewGroup container, Bundle
@@ -62,6 +62,21 @@ public class User extends Fragment {
 
 
     private void initInfo(ViewGroup rootView){
+        Calendar cal = Calendar.getInstance();
+        int h=0;
+        h=cal.get(Calendar.HOUR);
+        greeting = rootView.findViewById(R.id.greeting);
+        if(h>=0 && h<=4 && h>=20){
+            String evening = "눈 건강을 위해 렌즈를 빼고 취침하세요!";
+            greeting.setText(evening);
+        }else if(h>=5 && h<=11){
+            String morning = "좋은 아침입니다~";
+            greeting.setText(morning);
+        }else{
+            String lunch = "나른한 오후입니다.\n눈의 피로 풀어주세요!";
+            greeting.setText(lunch);
+        }
+
         Context context = getContext();
         final AppDatabase db = Room.databaseBuilder(context,AppDatabase.class,"userinfo-db")
                 .fallbackToDestructiveMigration ()
@@ -72,10 +87,6 @@ public class User extends Fragment {
         String name = db.UserDao().getName();
         userTextView.setText(name+"님");
 
-        count_lens = rootView.findViewById(R.id.count_lens);
-
-        int size = mlenscnt;
-        count_lens.setText(Integer.toString(size));
 
         leftSightTextView = rootView.findViewById(R.id.leftSight);
         String leftSight = db.UserDao().getLeft();
