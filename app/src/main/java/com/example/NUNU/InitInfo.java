@@ -20,7 +20,6 @@ public class InitInfo extends AppCompatActivity {
     public EditText set_name;
     public EditText set_left;
     public EditText set_right;
-    private TextView show_data;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,7 +76,7 @@ public class InitInfo extends AppCompatActivity {
             }
             @Override
             public void onClick(View v) {
-                SimpleDateFormat fdate = new SimpleDateFormat("MM-dd");
+                SimpleDateFormat fdate = new SimpleDateFormat("MM/dd");
                 Date date = new Date();
                 insertNum();
                 if(TextUtils.isEmpty(set_name.getText().toString())){

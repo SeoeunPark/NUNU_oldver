@@ -99,24 +99,25 @@
     <TextView
         android:layout_width="94dp"
         android:layout_height="43dp"
+        android:layout_marginBottom="8dp"
         android:text="1240"
         android:textColor="@color/white"
         android:textSize="40sp"
         app:layout_constraintBottom_toBottomOf="@+id/niceEye"
         app:layout_constraintEnd_toEndOf="@+id/niceEye"
-        app:layout_constraintStart_toStartOf="@+id/niceEye"
-        app:layout_constraintTop_toBottomOf="@+id/astigmatism"
-        app:layout_constraintVertical_bias="0.789" />
+        app:layout_constraintHorizontal_bias="0.529"
+        app:layout_constraintStart_toStartOf="@+id/niceEye" />
 
     <TextView
-        android:layout_width="90dp"
-        android:layout_height="44dp"
+        android:layout_width="93dp"
+        android:layout_height="45dp"
+        android:layout_marginBottom="4dp"
         android:text="3246"
         android:textColor="@color/white"
         android:textSize="40sp"
         app:layout_constraintBottom_toBottomOf="@+id/all"
         app:layout_constraintEnd_toEndOf="@+id/all"
-        app:layout_constraintStart_toStartOf="@+id/all"
-        app:layout_constraintTop_toBottomOf="@+id/nearsighted" />
+        app:layout_constraintHorizontal_bias="0.538"
+        app:layout_constraintStart_toStartOf="@+id/all" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

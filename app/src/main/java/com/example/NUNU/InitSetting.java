@@ -51,7 +51,7 @@ public class InitSetting extends Fragment {
 
 
         rootView.findViewById(R.id.add_button).setOnClickListener(new View.OnClickListener() {
-            SimpleDateFormat fdate = new SimpleDateFormat("MM-dd");
+            SimpleDateFormat fdate = new SimpleDateFormat("MM/dd");
             Date date = new Date();
             @Override
             public void onClick(View view) {
