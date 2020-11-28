@@ -43,7 +43,6 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView.setOnClickMenuListener(new MeowBottomNavigation.ClickListener() {
             @Override
             public void onClickItem(MeowBottomNavigation.Model item) {
-                Toast.makeText(getApplicationContext(),"Click",Toast.LENGTH_SHORT).show();
             }
         });
         bottomNavigationView.setOnShowListener(new MeowBottomNavigation.ShowListener() {
