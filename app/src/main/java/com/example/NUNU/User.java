@@ -19,13 +19,19 @@ import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.formatter.ValueFormatter;
 import com.github.mikephil.charting.utils.ColorTemplate;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+
+import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import java.util.Calendar;
 
 
@@ -62,14 +68,15 @@ public class User extends Fragment {
 
 
     private void initInfo(ViewGroup rootView){
+        SimpleDateFormat sdf = new SimpleDateFormat("k");
         Calendar cal = Calendar.getInstance();
-        int h=0;
-        h=cal.get(Calendar.HOUR);
+        String h = sdf.format(cal.getTime());
+        int hour = Integer.parseInt(h);
         greeting = rootView.findViewById(R.id.greeting);
-        if(h>=0 && h<=4 && h>=20){
-            String evening = "눈 건강을 위해 렌즈를 빼고 취침하세요!";
+        if((hour>=0 && hour<=4 )||hour>=20){
+            String evening = "눈 건강을 위해\n렌즈를 빼고 취침하세요!";
             greeting.setText(evening);
-        }else if(h>=5 && h<=11){
+        }else if(hour>=5 && hour<=11){
             String morning = "좋은 아침입니다~";
             greeting.setText(morning);
         }else{
