@@ -2,15 +2,20 @@ package com.example.NUNU;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
+    MeowBottomNavigation bottomNavigationView;
+    private final static int LENS = 1;
+    private final static int HOME = 2;
+    private final static int PERSON = 3;
 
-    BottomNavigationView bottomNavigationView;
     Lens fragment1; // 렌즈 fragment
     EyeTest fragment2; // 홈 fragment
     User fragment3; // 유저 fragment
@@ -19,7 +24,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        bottomNavigationView = findViewById(R.id.bottomNavigationView);
+        bottomNavigationView = (MeowBottomNavigation) findViewById(R.id.bottomNavigationView);
+
+        bottomNavigationView.add(new MeowBottomNavigation.Model(1,R.drawable.eye));
+        bottomNavigationView.add(new MeowBottomNavigation.Model(2,R.drawable.home));
+        bottomNavigationView.add(new MeowBottomNavigation.Model(3,R.drawable.person));
         //프래그먼트 생성
         fragment1 = new Lens();
         fragment2 = new EyeTest();
@@ -29,32 +38,29 @@ public class MainActivity extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction().replace(R.id.main_layout, fragment1).commitAllowingStateLoss();
         navi_bar(); // 메뉴 선택
     }
-
     //bottomnavigationview의 아이콘을 선택 했을때 fragment 띄우기
     public void navi_bar(){
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+        bottomNavigationView.setOnClickMenuListener(new MeowBottomNavigation.ClickListener() {
             @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                switch (menuItem.getItemId()) {
-                    //my_navigation_items.xml에서 지정해줬던 아이디 값을 받아와서 각 아이디값마다 다른 이벤트를 발생
-                    case R.id.eye: {
+            public void onClickItem(MeowBottomNavigation.Model item) {
+                Toast.makeText(getApplicationContext(),"Click",Toast.LENGTH_SHORT).show();
+            }
+        });
+        bottomNavigationView.setOnShowListener(new MeowBottomNavigation.ShowListener() {
+            @Override
+            public void onShowItem(MeowBottomNavigation.Model item) {
+                switch (item.getId()){
+                    case LENS:
                         getSupportFragmentManager().beginTransaction().replace(R.id.main_layout, fragment1).commitAllowingStateLoss();
-                        return true;
-                    }
-                    case R.id.home: {
+                        break;
+                    case HOME:
                         getSupportFragmentManager().beginTransaction().replace(R.id.main_layout, fragment2).commitAllowingStateLoss();
-                        return true;
-                    }
-                    case R.id.user: {
+                        break;
+                    case PERSON:
                         getSupportFragmentManager().beginTransaction().replace(R.id.main_layout, fragment3).commitAllowingStateLoss();
-                        return true;
-                    }
-                    default:
-                        return false;
-                 }
+                        break;
+                }
             }
         });
     }
-
-
 }

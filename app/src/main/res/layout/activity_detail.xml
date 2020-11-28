@@ -166,7 +166,6 @@
             android:textSize="30sp"
             app:layout_constraintBottom_toBottomOf="@id/detail_type2"
             app:layout_constraintLeft_toRightOf="@id/detail_type2" />
-
         <ImageView
             android:id="@+id/nunu_ch"
             android:layout_width="203dp"
@@ -178,7 +177,8 @@
             app:srcCompat="@drawable/blue"
             tools:ignore="NotSibling" />
 
-        <TextView
+
+         <TextView
             android:id="@+id/type_om"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
