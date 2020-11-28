@@ -78,7 +78,7 @@ public class Option extends Fragment {
                     }
                 });
                 builder.setNegativeButton("아니오",null);
-                builder.setNeutralButton("취소",null);
+
                 builder.create().show();
             }
         });

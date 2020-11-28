@@ -36,9 +36,6 @@ public class InitInfo extends AppCompatActivity {
         set_name = findViewById(R.id.set_name);
         set_left = findViewById(R.id.set_left);
         set_right = findViewById(R.id.set_right);
-        show_data = findViewById(R.id.show_data);
-
-        show_data.setText(db.UserDao().getAll().toString());
 
         add_button.setOnClickListener(new Button.OnClickListener() {
             public void insertNum(){
