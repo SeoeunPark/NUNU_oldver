@@ -251,6 +251,7 @@ public class Lens extends Fragment implements View.OnClickListener{
                     //getActivity().startActivity(new Intent(getActivity(), oneday.getClass())); //<= 액티비티 화면 ( 네비게이션 바 안 뜸)
                     Intent intent = new Intent(v.getContext(), Oneday.class); //이거 진짜 중요
                     startActivityForResult(intent, NEW_WORD_ACTIVITY_REQUEST_CODE); // 이것도 중요
+                    anim();
                     //Toast.makeText(getActivity(),"Button1", Toast.LENGTH_SHORT).show();
                     break;
                 case R.id.fab2:
@@ -258,6 +259,7 @@ public class Lens extends Fragment implements View.OnClickListener{
                     //getActivity().startActivity(new Intent(getActivity(), monthly.getClass()));
                     Intent mintent = new Intent(v.getContext(), Monthly.class); //이거 진짜 중요
                     startActivityForResult(mintent, NEW_WORD_ACTIVITY_REQUEST_CODE); // 이것도 중요
+                    anim();
                     //getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_layout, monthly).commitAllowingStateLoss();
                     //Toast.makeText(getActivity(), "Button2", Toast.LENGTH_SHORT).show(); 버튼 누르면 토스트 발생, 지금은 필요없을 듯
                     break;

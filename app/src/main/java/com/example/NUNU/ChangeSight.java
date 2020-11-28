@@ -56,6 +56,7 @@ public class ChangeSight extends Fragment {
         showright = rootView.findViewById(R.id.showright);
         String right = db.UserDao().getRight();
         showright.setText("우안 시력은 "+right+"이에요.");
+        db.close();
     }
 
     private void ButtonAction(ViewGroup rootView) {
@@ -69,6 +70,7 @@ public class ChangeSight extends Fragment {
         ImageButton gobackbtn = (ImageButton)rootView.findViewById(R.id.exit2);
         SimpleDateFormat fdate = new SimpleDateFormat("MM-dd");
         Date date = new Date();
+        db.close();
 
         gobackbtn.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -95,6 +97,7 @@ public class ChangeSight extends Fragment {
                     db.UserDao().insert(new UserInfo(db.UserDao().getName(),editleft.getText().toString(),editright.getText().toString(),fdate.format(date)));
                     Toast.makeText(context,"시력이 변경되었습니다.",Toast.LENGTH_SHORT).show();
                     getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_layout, User).commitAllowingStateLoss();
+                    db.close();
                 }
             }
 

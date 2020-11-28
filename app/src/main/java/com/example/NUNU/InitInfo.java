@@ -97,6 +97,7 @@ public class InitInfo extends AppCompatActivity {
                     Toast.makeText(InitInfo.this,"정보가 입력되었습니다.",Toast.LENGTH_SHORT).show();
                     db.UserDao().insert(new UserInfo(set_name.getText().toString(),set_left.getText().toString(),set_right.getText().toString(),fdate.format(date)));
                     Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                    db.close();
                     startActivity(intent);
                 }
 
