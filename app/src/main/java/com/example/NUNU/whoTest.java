@@ -35,7 +35,7 @@ public class whoTest extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_who, container, false);
         Context context = container.getContext();
-        ImageView ma = (ImageView) view.findViewById(R.id.ma);
+        Button ma = (Button) view.findViewById(R.id.ma);
         ma.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -50,7 +50,7 @@ public class whoTest extends Fragment {
                 builder.create().show();
             }
         });
-        ImageView a = (ImageView) view.findViewById(R.id.a);
+        Button a = (Button) view.findViewById(R.id.a);
         a.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

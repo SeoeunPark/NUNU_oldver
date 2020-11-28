@@ -35,7 +35,7 @@ public class sightTest extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_sight_test, container, false);
         Context context = getContext();
-        ImageView near = (ImageView) view.findViewById(R.id.nearsighted);
+        Button near = (Button) view.findViewById(R.id.nearsighted);
         near.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -50,7 +50,7 @@ public class sightTest extends Fragment {
                 builder.create().show();
             }
         });
-        ImageView as = (ImageView) view.findViewById(R.id.astigmatism);
+        Button as = (Button) view.findViewById(R.id.astigmatism);
         as.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -65,7 +65,7 @@ public class sightTest extends Fragment {
                 builder.create().show();
             }
         });
-        ImageView all = (ImageView) view.findViewById(R.id.all);
+        Button all = (Button) view.findViewById(R.id.all);
         all.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -80,7 +80,7 @@ public class sightTest extends Fragment {
                 builder.create().show();
             }
         });
-        ImageView niceEye = (ImageView) view.findViewById(R.id.niceEye);
+        Button niceEye = (Button) view.findViewById(R.id.niceEye);
         niceEye.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
