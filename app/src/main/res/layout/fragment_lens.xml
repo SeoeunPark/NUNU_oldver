@@ -56,6 +56,22 @@
             app:elevation="6dp"
             app:maxImageSize="36dp"
             app:pressedTranslationZ="12dp" />
+        <ImageView
+            android:id="@+id/emptyimage"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/groupnunu" />
+
+        <TextView
+            android:id="@+id/emptytext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/emptyimage"
+            android:layout_centerHorizontal="true"
+            android:text="아직 렌즈정보가 없습니다."
+            android:textSize="20dp" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"

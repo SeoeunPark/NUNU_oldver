@@ -4,8 +4,10 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Canvas;
+import android.media.Image;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -15,6 +17,9 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -31,6 +36,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,6 +51,8 @@ public class Lens extends Fragment implements View.OnClickListener{
         RecyclerView recyclerView;
         private List<Note> mDataItemList;
         private NoteAdapter mListAdapter;
+        private TextView emptyText;
+        private ImageView emptyImage;
         NoteAdapter adapter;
         Context context;
         Oneday oneday;
@@ -65,16 +74,18 @@ public class Lens extends Fragment implements View.OnClickListener{
 
             if (mListAdapter != null) {
                 mListAdapter.setItems(dataItemList);
+                emptyText.setVisibility(View.GONE);
+                emptyImage.setVisibility(View.GONE);
             }
         }
 
         @RequiresApi(api = Build.VERSION_CODES.M)
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
-            super.onCreate(savedInstanceState);
             ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_lens, container, false);
-
+            emptyImage = (ImageView) rootView.findViewById(R.id.emptyimage);
+            emptyText = (TextView) rootView.findViewById(R.id.emptytext);
+            super.onCreate(savedInstanceState);
             RecyclerView recyclerView = rootView.findViewById(R.id.recyclerView);
             final NoteAdapter adapter = new NoteAdapter(getActivity());
             recyclerView.setAdapter(adapter);
@@ -85,6 +96,13 @@ public class Lens extends Fragment implements View.OnClickListener{
                 @Override
                 public void onChanged(@Nullable final List<Note> notes) {
                     //update RecylerView 리사이클러뷰 업데이트 매우 중요
+                    if (notes.size()==0){
+                        emptyText.setVisibility(View.VISIBLE);
+                        emptyImage.setVisibility(View.VISIBLE);
+                    }else{
+                        emptyText.setVisibility(View.GONE);
+                        emptyImage.setVisibility(View.GONE);
+                    }
                     adapter.setItems(notes);
                 }
             });
