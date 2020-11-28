@@ -34,6 +34,7 @@ import androidx.recyclerview.widget.ItemTouchUIUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.w3c.dom.Text;
@@ -52,7 +53,8 @@ public class Lens extends Fragment implements View.OnClickListener{
         private List<Note> mDataItemList;
         private NoteAdapter mListAdapter;
         private TextView emptyText;
-        private ImageView emptyImage;
+        private com.airbnb.lottie.LottieAnimationView emptyImage;
+        //private ImageView emptyImage;
         NoteAdapter adapter;
         Context context;
         Oneday oneday;
@@ -83,7 +85,7 @@ public class Lens extends Fragment implements View.OnClickListener{
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
             ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_lens, container, false);
-            emptyImage = (ImageView) rootView.findViewById(R.id.emptyimage);
+            emptyImage = (LottieAnimationView) rootView.findViewById(R.id.emptyimage);
             emptyText = (TextView) rootView.findViewById(R.id.emptytext);
             super.onCreate(savedInstanceState);
             RecyclerView recyclerView = rootView.findViewById(R.id.recyclerView);

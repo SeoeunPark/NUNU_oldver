@@ -56,13 +56,16 @@
             app:elevation="6dp"
             app:maxImageSize="36dp"
             app:pressedTranslationZ="12dp" />
-        <ImageView
+
+        <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/emptyimage"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true"
-            android:src="@drawable/groupnunu" />
+            app:lottie_autoPlay="true"
+            app:lottie_rawRes="@raw/search"
+            app:lottie_loop="true"/>
 
         <TextView
             android:id="@+id/emptytext"
@@ -70,7 +73,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/emptyimage"
             android:layout_centerHorizontal="true"
-            android:text="아직 렌즈정보가 없습니다."
+            android:text="아직 렌즈정보가 없어요."
             android:textSize="20dp" />
 
         <androidx.recyclerview.widget.RecyclerView
