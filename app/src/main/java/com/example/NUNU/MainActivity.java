@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView = (MeowBottomNavigation) findViewById(R.id.bottomNavigationView);
 
         bottomNavigationView.add(new MeowBottomNavigation.Model(1,R.drawable.eye));
-        bottomNavigationView.add(new MeowBottomNavigation.Model(2,R.drawable.home));
+        bottomNavigationView.add(new MeowBottomNavigation.Model(2,R.drawable.test));
         bottomNavigationView.add(new MeowBottomNavigation.Model(3,R.drawable.person));
         //프래그먼트 생성
         fragment1 = new Lens();
