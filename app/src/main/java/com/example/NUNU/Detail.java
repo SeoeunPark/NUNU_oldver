@@ -2,7 +2,11 @@ package com.example.NUNU;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
 
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Intent;
 import android.media.Image;
 import android.os.Build;
@@ -44,6 +48,10 @@ public class Detail extends AppCompatActivity {
     private String idinfo;
     private String idid;
     private String  idcl;
+    NotificationManager manager;
+    NotificationCompat.Builder builder;
+    private static String CHANNEL_ID = "channel1";
+    private static String CHANEL_NAME = "Channel1";
 
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -51,6 +59,8 @@ public class Detail extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Intent intent = getIntent();
+
+
 
         setContentView(R.layout.activity_detail);
         cancel = (Button) findViewById(R.id.go_out);
@@ -94,6 +104,9 @@ public class Detail extends AppCompatActivity {
             dminus.setText("-");
             dday.setText("DAY");
         }else{
+            if(substract==1){
+                showNoti();
+            }
             dminus.setText("-");
             dday.setText(Integer.toString((int)substract));
         }
@@ -143,4 +156,21 @@ public class Detail extends AppCompatActivity {
             }
         });
     }
+
+    public void showNoti(){
+        builder = null;
+        manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            manager.createNotificationChannel( new NotificationChannel(CHANNEL_ID, CHANEL_NAME, NotificationManager.IMPORTANCE_DEFAULT) );
+            builder = new NotificationCompat.Builder(this,CHANNEL_ID);
+        }else{
+            builder = new NotificationCompat.Builder(this);
+        }
+        builder.setContentTitle("D-1");
+        builder.setContentText(idname+" 렌즈 유효기간이 하루 남았습니다!");
+        builder.setSmallIcon(R.mipmap.ic_launcher_round);
+        Notification notification = builder.build();
+        manager.notify(1,notification);
+    }
+
     }
