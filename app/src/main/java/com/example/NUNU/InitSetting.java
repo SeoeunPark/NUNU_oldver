@@ -48,13 +48,10 @@ public class InitSetting extends Fragment {
         set_name = rootView.findViewById(R.id.set_name);
         set_left = rootView.findViewById(R.id.set_left);
         set_right = rootView.findViewById(R.id.set_right);
-        show_data = rootView.findViewById(R.id.show_data);
-
-        show_data.setText(db.UserDao().getAll().toString());
 
 
         rootView.findViewById(R.id.add_button).setOnClickListener(new View.OnClickListener() {
-            SimpleDateFormat fdate = new SimpleDateFormat("MM-dd");
+            SimpleDateFormat fdate = new SimpleDateFormat("MM/dd");
             Date date = new Date();
             @Override
             public void onClick(View view) {
@@ -75,9 +72,9 @@ public class InitSetting extends Fragment {
                     getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_layout, user).commitAllowingStateLoss();
                 }
                insertNum();
-
-                String text = db.UserDao().getAll().toString();
-                show_data.setText(text);
+//                현재 데이터 상태 확인하기 위한 코드
+//                String text = db.UserDao().getAll().toString();
+//                show_data.setText(text);
 
                 //show_data.setText(db.todoDao().getAll().get(5).toString()); getAll().get(숫자) 하면 원하는 거 가져올 수 있음
             }
