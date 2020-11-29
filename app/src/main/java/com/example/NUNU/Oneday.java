@@ -193,7 +193,6 @@ public class Oneday extends AppCompatActivity  {
 
             alertDialogBuilder.setSingleChoiceItems(items, -1, new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int id) {
-                    Toast.makeText(getApplicationContext(), items[id], Toast.LENGTH_SHORT).show();
                     EditText type = (EditText) findViewById(R.id.Oneday_type);
                     type.setText(items[id]);
                     dialog.dismiss();
