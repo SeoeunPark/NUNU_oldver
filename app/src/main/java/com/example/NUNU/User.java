@@ -40,6 +40,7 @@ public class User extends Fragment {
     Option option;
     TextView userTextView;
     TextView greeting;
+    TextView recentTextView;
     TextView leftSightTextView;
     TextView rightSightTextView;
     InitSetting initSetting;
@@ -102,6 +103,10 @@ public class User extends Fragment {
         rightSightTextView = rootView.findViewById(R.id.rightSight);
         String rightSight = db.UserDao().getRight();
         rightSightTextView.setText(rightSight);
+
+        recentTextView = rootView.findViewById(R.id.recent);
+        String recent = db.UserDao().getDate();
+        recentTextView.setText("                                                                       최근 업데이트 : "+recent);
     }
 
     private void initGraph(ViewGroup rootView){
@@ -130,7 +135,7 @@ public class User extends Fragment {
         set1.setValueTextColor(ColorTemplate.getHoloBlue());
         set1.setLineWidth(1.5f);
         set1.setDrawCircles(true);
-        set1.setDrawValues(false);
+        set1.setDrawValues(true);
         set1.setFillAlpha(65);
         set1.setFillColor(ColorTemplate.getHoloBlue());
         set1.setHighLightColor(Color.rgb(244, 117, 117));
@@ -140,7 +145,7 @@ public class User extends Fragment {
         set2.setValueTextColor(Color.parseColor("#646EFF"));
         set2.setLineWidth(1.5f);
         set2.setDrawCircles(true);
-        set2.setDrawValues(false);
+        set2.setDrawValues(true);
         set2.setFillAlpha(65);
         set2.setHighLightColor(Color.rgb(220, 180, 117));
         set2.setDrawCircleHole(true);
@@ -153,7 +158,7 @@ public class User extends Fragment {
 
         XAxis xAxis = lineChart.getXAxis();
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
-        xAxis.setTextColor(Color.BLACK);
+        xAxis.setTextColor(Color.WHITE);
         xAxis.enableGridDashedLine(8, 24, 0);
         YAxis yLAxis = lineChart.getAxisLeft();
         yLAxis.setTextColor(Color.BLACK);
