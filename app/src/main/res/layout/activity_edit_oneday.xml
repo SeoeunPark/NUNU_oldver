@@ -205,7 +205,7 @@
                         android:layout_marginEnd="16dp"
                         android:layout_marginRight="16dp"
                         android:layout_marginBottom="16dp"
-                        android:background="@color/color"
+                        android:background="@drawable/button_background2"
                         android:text="저장"
                         android:textColor="@color/white"
                         android:textSize="30sp"

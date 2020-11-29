@@ -89,6 +89,7 @@
             android:id="@+id/emptyimage"
             android:layout_width="300dp"
             android:layout_height="300dp"
+            android:visibility="invisible"
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true"
             app:lottie_autoPlay="true"
@@ -101,6 +102,7 @@
             android:layout_height="wrap_content"
             android:layout_above="@id/emptyimage"
             android:layout_centerHorizontal="true"
+            android:visibility="invisible"
             android:text="아직 렌즈정보가 없어요."
             android:textSize="20dp" />
 

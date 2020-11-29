@@ -49,22 +49,22 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView.setOnShowListener(new MeowBottomNavigation.ShowListener() {
             @Override
             public void onShowItem(MeowBottomNavigation.Model item) {
-                Fragment select_fragment = null;
+                //Fragment select_fragment = null;
                 switch (item.getId()){
                     case LENS:
-                        //getSupportFragmentManager().beginTransaction().replace(R.id.main_layout, fragment1).commitAllowingStateLoss();
-                        select_fragment = new Lens();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.main_layout, fragment1).commitAllowingStateLoss();
+                        //select_fragment = new Lens();
                         break;
                     case HOME:
-                        //getSupportFragmentManager().beginTransaction().replace(R.id.main_layout, fragment2).commitAllowingStateLoss();
-                        select_fragment = new EyeTest();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.main_layout, fragment2).commitAllowingStateLoss();
+                        //select_fragment = new EyeTest();
                         break;
                     case PERSON:
-                        select_fragment = new User();
-                        //getSupportFragmentManager().beginTransaction().replace(R.id.main_layout, fragment3).commitAllowingStateLoss();
+                        //select_fragment = new User();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.main_layout, fragment3).commitAllowingStateLoss();
                         break;
                 }
-                getSupportFragmentManager().beginTransaction().replace(R.id.main_layout,select_fragment).commit();
+                //getSupportFragmentManager().beginTransaction().replace(R.id.main_layout,select_fragment).commit();
             }
         });
     }
