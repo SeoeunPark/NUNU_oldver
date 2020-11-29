@@ -6,141 +6,120 @@
     android:layout_height="match_parent"
     android:background="#FFFFFF">
 
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <RelativeLayout
         android:id="@+id/relativeLayout"
-        android:layout_width="409dp"
-        android:layout_height="607dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-
-        <TextView
-            android:id="@+id/addInfoKor"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="21dp"
-            android:layout_marginLeft="21dp"
-            android:layout_marginTop="60dp"
-            android:text="정보를 입력하세요. "
-            android:textSize="26sp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <TextView
             android:id="@+id/addInfo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="25dp"
-            android:layout_marginLeft="25dp"
-            android:layout_marginTop="20dp"
-            android:text="Add Info"
+            android:text="ADD INFO"
             android:textSize="30sp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_marginTop="20dp"
+            android:textColor="@color/dartblue"
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:id="@+id/addInfoKor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="정보를 입력하세요. "
+            android:textSize="20sp"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/dartblue"
+            android:textStyle="bold"
+            android:layout_below="@id/addInfo"
+            android:layout_centerHorizontal="true"/>
 
         <TextView
             android:id="@+id/name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="19dp"
-            android:layout_marginLeft="19dp"
-            android:layout_marginTop="120dp"
             android:text="이름"
+            android:textColor="@color/black"
             android:textSize="26sp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_below="@id/addInfoKor"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="50dp"
+            />
 
         <TextView
             android:id="@+id/left"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="18dp"
-            android:layout_marginLeft="18dp"
-            android:layout_marginTop="220dp"
+            android:layout_marginTop="20dp"
             android:text="왼쪽 시력"
-            android:textSize="26sp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:textColor="@color/black"
+            android:layout_below="@id/set_name"
+            android:layout_marginLeft="50dp"
+            android:textSize="26sp" />
 
 
         <EditText
             android:id="@+id/set_left"
             android:layout_width="283dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="19dp"
-            android:layout_marginLeft="19dp"
-            android:layout_marginTop="260dp"
             android:ems="10"
             android:hint="ex) 0.8"
             android:inputType="phone"
             android:textSize="20sp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="50dp"
+            android:layout_below="@id/left"/>
 
         <EditText
             android:id="@+id/set_name"
             android:layout_width="283dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="17dp"
-            android:layout_marginLeft="17dp"
-            android:layout_marginTop="160dp"
-            android:textSize="20sp"
-            android:inputType="text"
             android:ems="10"
             android:hint="ex) 누누"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:inputType="text"
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/name"
+            android:layout_marginLeft="50dp"
+            android:textSize="20sp" />
 
         <EditText
             android:id="@+id/set_right"
             android:layout_width="283dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="19dp"
-            android:layout_marginLeft="19dp"
-            android:layout_marginTop="360dp"
             android:ems="10"
-            android:inputType="phone"
-            android:textSize="20sp"
             android:hint="ex) 0.7"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:inputType="phone"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/right"
+            android:textSize="20sp"/>
 
 
         <TextView
             android:id="@+id/right"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="21dp"
-            android:layout_marginLeft="21dp"
-            android:layout_marginTop="320dp"
             android:text="오른쪽 시력"
+            android:textColor="@color/black"
             android:textSize="26sp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_marginLeft="50dp"
+            android:layout_below="@id/set_left"
+            android:layout_marginTop="20dp"/>
 
         <Button
             android:id="@+id/add_button"
-            android:layout_width="wrap_content"
+            android:layout_width="120dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="35dp"
-            android:layout_marginRight="35dp"
-            android:layout_marginBottom="100dp"
+            android:background="@drawable/button_background"
             android:text="저장"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintRight_toRightOf="parent" />
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:layout_below="@id/set_right"
+            android:layout_marginRight="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="30dp"/>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </RelativeLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
