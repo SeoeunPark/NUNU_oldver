@@ -9,4 +9,7 @@
     <style name="SplashTheme" parent="@android:style/Theme.Light.NoTitleBar">
         <item name="android:windowBackground">@drawable/splash</item>
     </style>
+    <style name="LabelStyle">
+        <item name="android:background">@drawable/fab_plus</item>
+    </style>
 </resources>

@@ -92,21 +92,6 @@ public class Oneday extends AppCompatActivity  {
                 new DatePickerDialog(Oneday.this,myDatePicker,myCalendar.get(Calendar.YEAR), myCalendar.get(Calendar.MONTH), myCalendar.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
-        /*
-        //추가버튼시 DB에 데이터 INSERT
-        findViewById(R.id.Oneday_save).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                    new insertAsyncTask(db.LensDao()).execute(new Note(one_name.getText().toString(),one_type.getText().toString(),
-                    Integer.parseInt(one_cnt.getText().toString()),1,clname,"0",et_Date.getText().toString()));
-                    one_name.setText("");
-                    one_type.setText("");
-                    one_cnt.setText("");
-                    et_Date.setText("");
-                    pallete.setText("");
-            }
-        });
-         */
 
         //x 버튼
         cancel.setOnClickListener(new View.OnClickListener() {
@@ -156,11 +141,6 @@ public class Oneday extends AppCompatActivity  {
         colors.add("#4863ad"); //blue
         colors.add("#e38aae"); //pink
         colors.add("#9172ec"); //purple
-        //colors.add("#e6ee9c");
-        //colors.add("#fff59d");
-        //colors.add("#ffe082");
-        //colors.add("#ffcc80");
-        //colors.add("#bcaaa4");
         colorPicker.setColors(colors)  // 만들어둔 list 적용
                 .setColumns(5)  // 5열로 설정
                 .setRoundColorButton(true)  // 원형 버튼으로 설정
@@ -200,8 +180,6 @@ public class Oneday extends AppCompatActivity  {
                         // Cancel 버튼 클릭 시 이벤트
                     }
                 }).show();  // dialog 생성
-        //색 잘 들어가는지 확인
-        // Toast.makeText(getApplicationContext(), clname, Toast.LENGTH_SHORT).show();
     }
 
 

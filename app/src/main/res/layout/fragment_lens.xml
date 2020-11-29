@@ -11,9 +11,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
-
+        android:layout_height="match_parent">
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab"
             android:layout_width="wrap_content"
@@ -42,6 +40,21 @@
             app:maxImageSize="36dp"
             app:pressedTranslationZ="12dp" />
 
+        <TextView
+            android:id="@+id/fab1text"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="95dp"
+            android:layout_width="120dp"
+            android:textAlignment="center"
+            android:layout_height="wrap_content"
+            android:text="원데이 렌즈"
+            android:background="@drawable/round_background2"
+            android:textColor="@color/white"
+            android:visibility="invisible"
+            android:textSize="20sp"
+            android:layout_toLeftOf="@id/fab1"
+            android:gravity="center_horizontal" />
+
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab2"
             android:layout_width="wrap_content"
@@ -56,6 +69,21 @@
             app:elevation="6dp"
             app:maxImageSize="36dp"
             app:pressedTranslationZ="12dp" />
+        <TextView
+            android:id="@+id/fab2text"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="155dp"
+            android:layout_width="110dp"
+            android:textAlignment="center"
+            android:layout_height="wrap_content"
+            android:background="@drawable/round_background2"
+            android:textSize="20dp"
+            android:text="기간 렌즈"
+            android:visibility="invisible"
+            android:textColor="@color/white"
+            android:layout_toLeftOf="@id/fab2"
+            android:gravity="center_horizontal"/>
+
 
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/emptyimage"
@@ -71,7 +99,7 @@
             android:id="@+id/emptytext"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/emptyimage"
+            android:layout_above="@id/emptyimage"
             android:layout_centerHorizontal="true"
             android:text="아직 렌즈정보가 없어요."
             android:textSize="20dp" />

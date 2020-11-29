@@ -142,20 +142,6 @@ public class EditOneday extends AppCompatActivity  {
                     replyIntent.putExtra("estart","");
                     replyIntent.putExtra("ecl", eclname);
                     replyIntent.putExtra("eend",et_Date.getText().toString());
-                    /*
-                    //replyIntent.putExtra(EXTRA_ID,eid);
-                    replyIntent.putExtra(EXTRA_NAME, "please"); //name 이란 이름으로 one_name에 들어간 text 저장
-                    replyIntent.putExtra(EXTRA_TYPE, "미용렌즈");
-                    replyIntent.putExtra(EXTRA_CNT,55);
-                    replyIntent.putExtra(EXTRA_PERIOD,1); //1 이면 원데이 2이면 먼슬리
-                   // replyIntent.putExtra(EXTRA_NAME, eclname);
-                    replyIntent.putExtra(EXTRA_START,"");
-                    replyIntent.putExtra(EXTRA_CL,"분홍색");
-
-                    int id = getIntent().getIntExtra("id",-1);
-                    if (eid != "-1"){
-                        replyIntent.putExtra(,eid);
-                    }*/
 
                     setResult(RESULT_OK, replyIntent);
                     finish();
@@ -217,11 +203,6 @@ public class EditOneday extends AppCompatActivity  {
         colors.add("#4863ad"); //blue
         colors.add("#e38aae"); //pink
         colors.add("#9172ec"); //purple
-        //colors.add("#e6ee9c");
-        //colors.add("#fff59d");
-        //colors.add("#ffe082");
-        //colors.add("#ffcc80");
-        //colors.add("#bcaaa4");
         colorPicker.setColors(colors)  // 만들어둔 list 적용
                 .setColumns(5)  // 5열로 설정
                 .setRoundColorButton(true)  // 원형 버튼으로 설정
@@ -263,7 +244,6 @@ public class EditOneday extends AppCompatActivity  {
                     }
                 }).show();  // dialog 생성
         //색 잘 들어가는지 확인
-        // Toast.makeText(getApplicationContext(), clname, Toast.LENGTH_SHORT).show();
     }
 
 

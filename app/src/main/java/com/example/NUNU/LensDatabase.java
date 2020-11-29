@@ -35,23 +35,4 @@ public abstract class LensDatabase extends RoomDatabase {
             super.onCreate(db);
         }
     };
-    /*
-    private static class PopulateDbAsyncTask extends AsyncTask<Void,Void,Void>{
-        private LensDao lensDao;
-
-        private PopulateDbAsyncTask(LensDatabase db){
-            lensDao = db.lensDao();
-        }
-        private PopulateDbAsyncTask(LensDao lensDao) {
-            this.lensDao = lensDao;
-        }
-
-        @Override
-        protected Void doInBackground(Void... voids) {
-            lensDao.insert(new Note(""));
-            return null;
-        }
-    }
-
-     */
 }

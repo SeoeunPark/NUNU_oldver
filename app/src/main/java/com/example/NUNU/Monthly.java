@@ -83,21 +83,9 @@ public class Monthly extends AppCompatActivity {
             }
         });
 
-        /*
-        //유효기간
-        monthly_start.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                new DatePickerDialog(Monthly.this, myDatePicker_start,myCalendar.get(Calendar.YEAR), myCalendar.get(Calendar.MONTH), myCalendar.get(Calendar.DAY_OF_MONTH)).show();
-            }
-        });
-*/
         monthly_end.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                //if(monthly_start.getText().toString().length()!=0) {
                     new DatePickerDialog(Monthly.this, myDatePicker_end, myCalendar.get(Calendar.YEAR), myCalendar.get(Calendar.MONTH), myCalendar.get(Calendar.DAY_OF_MONTH)).show();
-                //}else if(monthly_start.getText().toString().length()==0){
-                    //Toast.makeText(getApplicationContext(),"시작일부터 입력해주세요.", Toast.LENGTH_SHORT).show();
-                //}
             }
         });
 
@@ -118,19 +106,6 @@ public class Monthly extends AppCompatActivity {
         });
     } //end of onCreate
 
-    //날짜 입력
-    /*
-    DatePickerDialog.OnDateSetListener myDatePicker_start = new DatePickerDialog.OnDateSetListener(){
-        @Override
-        public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-            myCalendar.set(Calendar.YEAR, year);
-            myCalendar.set(Calendar.MONTH, month);
-            myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-            updateLabel_start();
-        }
-    };
-     */
-
     DatePickerDialog.OnDateSetListener myDatePicker_end = new DatePickerDialog.OnDateSetListener(){
         @Override
         public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
@@ -140,15 +115,6 @@ public class Monthly extends AppCompatActivity {
             updateLabel_end();
         }
     };
-
-    /*
-    private void updateLabel_start() {
-        String myFormat = "yyyy/MM/dd";    // 출력형식   2018/11/28
-        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.KOREA);
-        EditText monthly_start = (EditText) findViewById(R.id.Monthly_start);
-        monthly_start.setText(sdf.format(myCalendar.getTime()));
-    }
-     */
 
     private void updateLabel_end() {
         String myFormat = "yyyy/MM/dd";    // 출력형식   2018/11/28
@@ -171,11 +137,6 @@ public class Monthly extends AppCompatActivity {
         colors.add("#4863ad"); //blue
         colors.add("#e38aae"); //pink
         colors.add("#9172ec"); //purple
-        //colors.add("#e6ee9c");
-        //colors.add("#fff59d");
-        //colors.add("#ffe082");
-        //colors.add("#ffcc80");
-        //colors.add("#bcaaa4");
         colorPicker.setColors(colors)  // 만들어둔 list 적용
                 .setColumns(5)  // 5열로 설정
                 .setRoundColorButton(true)  // 원형 버튼으로 설정
@@ -218,7 +179,6 @@ public class Monthly extends AppCompatActivity {
                     }
                 }).show();  // dialog 생성
         //색 잘 들어가는지 확인
-        // Toast.makeText(getApplicationContext(), clname, Toast.LENGTH_SHORT).show();
     }
     final Context context = this;
     public void type(){

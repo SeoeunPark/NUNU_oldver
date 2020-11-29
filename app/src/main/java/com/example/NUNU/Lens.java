@@ -53,6 +53,7 @@ public class Lens extends Fragment implements View.OnClickListener{
         private List<Note> mDataItemList;
         private NoteAdapter mListAdapter;
         private TextView emptyText;
+        private TextView fab1t,fab2t;
         private com.airbnb.lottie.LottieAnimationView emptyImage;
         //private ImageView emptyImage;
         NoteAdapter adapter;
@@ -87,6 +88,8 @@ public class Lens extends Fragment implements View.OnClickListener{
             ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_lens, container, false);
             emptyImage = (LottieAnimationView) rootView.findViewById(R.id.emptyimage);
             emptyText = (TextView) rootView.findViewById(R.id.emptytext);
+            fab1t = (TextView) rootView.findViewById(R.id.fab1text);
+            fab2t = (TextView) rootView.findViewById(R.id.fab2text);
             super.onCreate(savedInstanceState);
             RecyclerView recyclerView = rootView.findViewById(R.id.recyclerView);
             final NoteAdapter adapter = new NoteAdapter(getActivity());
@@ -108,10 +111,7 @@ public class Lens extends Fragment implements View.OnClickListener{
                 }
             });
 
-            //ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleCallback);
-
             //스와이프해서 삭제
-
             new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0,
                     ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
                 @Override
@@ -186,7 +186,6 @@ public class Lens extends Fragment implements View.OnClickListener{
                     startActivityForResult(intent, EDIT_NOTE_REQUEST);
                 }
             });
-
             //이건 floating 버튼 애니메이션
             initFL(rootView);
             recyclerView.setAdapter(adapter);
@@ -201,12 +200,9 @@ public class Lens extends Fragment implements View.OnClickListener{
             }
             else if(requestCode == ED_NOTE_REQUEST && resultCode == Activity.RESULT_OK) {
                 int id = data.getExtras().getInt("eid");
-                //int id = Integer.parseInt(i.getExtras().getString("eid"));
                 Note word = new Note(data.getExtras().getString("ename"), data.getExtras().getString("etype"), data.getExtras().getInt("ecnt"), data.getExtras().getInt("eperiod"), data.getExtras().getString("ecl"), data.getExtras().getString("estart"), data.getExtras().getString("eend"));
-                //Note word = new Note(data.getStringExtra(EditOneday.EXTRA_NAME),data.getStringExtra(EditOneday.EXTRA_TYPE),data.getIntExtra(EditOneday.EXTRA_CNT,1),data.getIntExtra(EditOneday.EXTRA_PERIOD,1),data.getStringExtra(EditOneday.EXTRA_CL),data.getStringExtra(EditOneday.EXTRA_START),data.getStringExtra(EditOneday.EXTRA_END));
                 word.set_id(id);
                 mWordViewModel.update(word);
-                //Toast.makeText(getActivity(), "저장되어 있는 단어가 없습니다.", Toast.LENGTH_LONG).show();
             }
         }
             //adapter = new NoteAdapter();
@@ -214,7 +210,6 @@ public class Lens extends Fragment implements View.OnClickListener{
         //lens_menu 가져와서 보여주기
         @Override
         public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
-            //MenuInflater menuInflater = getActivity().getMenuInflater();
             super.onCreateOptionsMenu(menu,inflater);
             inflater.inflate(R.menu.lens_menu,menu);
         }
@@ -224,7 +219,6 @@ public class Lens extends Fragment implements View.OnClickListener{
             switch (item.getItemId()){
                 case R.id.delete_all_notes:
                     mWordViewModel.deleteAllNotes();
-                    Toast.makeText(getActivity(), "모든 렌즈가 삭제되었습니다.", Toast.LENGTH_SHORT).show();
                     return true;
                 default:
                     return super.onOptionsItemSelected(item);
@@ -258,29 +252,16 @@ public class Lens extends Fragment implements View.OnClickListener{
             switch (id) {
                 case R.id.fab:
                     anim();
-                    /*
-                    Intent intent = new Intent(v.getContext(), Oneday.class);
-                    startActivityForResult(intent, NEW_WORD_ACTIVITY_REQUEST_CODE);
-                     */
-                    //Toast.makeText(getActivity(), "Floating Action Button", Toast.LENGTH_SHORT).show();
                     break;
                 case R.id.fab1:
-                    //anim();
-                    //getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_layout, oneday).commitAllowingStateLoss();
-                    //getActivity().startActivity(new Intent(getActivity(), oneday.getClass())); //<= 액티비티 화면 ( 네비게이션 바 안 뜸)
                     Intent intent = new Intent(v.getContext(), Oneday.class); //이거 진짜 중요
                     startActivityForResult(intent, NEW_WORD_ACTIVITY_REQUEST_CODE); // 이것도 중요
                     anim();
-                    //Toast.makeText(getActivity(),"Button1", Toast.LENGTH_SHORT).show();
                     break;
                 case R.id.fab2:
-                    //anim();
-                    //getActivity().startActivity(new Intent(getActivity(), monthly.getClass()));
                     Intent mintent = new Intent(v.getContext(), Monthly.class); //이거 진짜 중요
                     startActivityForResult(mintent, NEW_WORD_ACTIVITY_REQUEST_CODE); // 이것도 중요
                     anim();
-                    //getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_layout, monthly).commitAllowingStateLoss();
-                    //Toast.makeText(getActivity(), "Button2", Toast.LENGTH_SHORT).show(); 버튼 누르면 토스트 발생, 지금은 필요없을 듯
                     break;
             }
         }
@@ -290,6 +271,8 @@ public class Lens extends Fragment implements View.OnClickListener{
                 fab.setImageResource(R.drawable.fab_plus);
                 fab1.startAnimation(fab_close);
                 fab2.startAnimation(fab_close);
+                fab1t.startAnimation(fab_close);
+                fab2t.startAnimation(fab_close);
                 fab1.setClickable(false);
                 fab2.setClickable(false);
                 isFabOpen = false;
@@ -297,6 +280,8 @@ public class Lens extends Fragment implements View.OnClickListener{
                 fab.setImageResource(R.drawable.fab_close);
                 fab1.startAnimation(fab_open);
                 fab2.startAnimation(fab_open);
+                fab1t.startAnimation(fab_open);
+                fab2t.startAnimation(fab_open);
                 fab1.setClickable(true);
                 fab2.setClickable(true);
                 isFabOpen = true;
@@ -309,6 +294,4 @@ public class Lens extends Fragment implements View.OnClickListener{
             //onClick delete item from list
             void onListFragmentDeleteItemById(long idItem);
         }
-
-
 }

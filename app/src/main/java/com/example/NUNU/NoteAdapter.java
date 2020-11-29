@@ -23,13 +23,6 @@ import java.time.LocalDate;
 import java.util.Calendar;
 
 public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {//implements OnPersonItemClickListener{
-    //OnPersonItemClickListener listener;
-    /*
-    private OnItemClickListener listener;
-    private final LayoutInflater mInflater;
-    private List<Note> mNotes = new ArrayList<>();
-
-     */
     private static OnItemClickListener listener;
     private final LayoutInflater mInflater;
     private static List<Note> mNotes = new ArrayList<>();
@@ -81,8 +74,6 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {/
             //holder.start_date.setText("No word");
             holder.end_date.setText("No word");
         }
-        //Note item = items.get(position);
-        //viewHolder.setItem(item);  //이게 추가하는 거
 
     }
 
@@ -164,20 +155,4 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {/
         mInflater = LayoutInflater.from(context);
     }
 
-    //apdapter에 들어갈 list
-    //ArrayList<Note> items = new ArrayList<Note>();
-
-    //recylerview의 총 개수
-
-    /*
-    public Note getItem(int position){
-        return .get(position); }
-
-    /*
-    //외부에서 itme 추가
-    public void addItem(Note item) {
-        items.add(item);
-    }
-
-     */
 }
