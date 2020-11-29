@@ -16,8 +16,8 @@
 
     <TableLayout
         android:layout_width="match_parent"
-        android:layout_height="115dp"
-        android:layout_marginTop="145dp"
+        android:layout_height="98dp"
+        android:layout_marginTop="135dp"
         android:gravity="center"
         android:stretchColumns="*">
 
@@ -175,8 +175,8 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="312dp"
-        android:layout_marginTop="270dp"
+        android:layout_height="346dp"
+        android:layout_marginTop="230dp"
         android:orientation="vertical">
 
         <androidx.cardview.widget.CardView
@@ -199,7 +199,7 @@
                     android:layout_height="wrap_content"
                     android:text="시력 상태 변화"
                     android:textColor="#004182"
-                    android:textSize="24sp"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <com.github.mikephil.charting.charts.LineChart
@@ -209,6 +209,12 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp" />
+
+                <TextView
+                    android:id="@+id/recent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
