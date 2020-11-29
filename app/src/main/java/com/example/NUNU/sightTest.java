@@ -43,7 +43,6 @@ public class sightTest extends Fragment {
             }
         };
 
-        ImageView near = (ImageView) view.findViewById(R.id.nearsighted);
         near.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

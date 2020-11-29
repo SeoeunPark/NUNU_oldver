@@ -97,13 +97,12 @@ public class Lens extends Fragment implements View.OnClickListener{
             mWordViewModel.getAllWords().observe(getViewLifecycleOwner(), new Observer<List<Note>>() {
                 @Override
                 public void onChanged(@Nullable final List<Note> notes) {
+                    emptyText.setVisibility(View.GONE);
+                    emptyImage.setVisibility(View.GONE);
                     //update RecylerView 리사이클러뷰 업데이트 매우 중요
-                    if (notes.size()==0){
+                    if (notes.size()==0) {
                         emptyText.setVisibility(View.VISIBLE);
                         emptyImage.setVisibility(View.VISIBLE);
-                    }else{
-                        emptyText.setVisibility(View.GONE);
-                        emptyImage.setVisibility(View.GONE);
                     }
                     adapter.setItems(notes);
                 }
