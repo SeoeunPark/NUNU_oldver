@@ -56,15 +56,15 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {/
 
             LocalDate fromDate = LocalDate.now();
             LocalDate toDate = LocalDate.of(cyear, cmonth, cday);
-            long substract = ChronoUnit.DAYS.between(fromDate, toDate);
+            long subtract = ChronoUnit.DAYS.between(fromDate, toDate);
 
-            if(substract<0){
-                holder.dday.setText("D + "+Integer.toString(Math.abs((int) substract)));
+            if(subtract<0){
+                holder.dday.setText("D + "+Integer.toString(Math.abs((int) subtract)));
 
-            }else if(substract==0){
+            }else if(subtract==0){
                 holder.dday.setText("D - DAY");
             }else{
-                holder.dday.setText("D - " + Integer.toString((int) substract));
+                holder.dday.setText("D - " + Integer.toString((int) subtract));
             }
         } else {
             holder.lens_name.setText("No word");

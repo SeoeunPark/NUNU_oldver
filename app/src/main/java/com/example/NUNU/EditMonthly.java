@@ -212,7 +212,7 @@ public class EditMonthly extends AppCompatActivity {
         private void updateLabel_period() {
             String myFormat = "yyyy/MM/dd";    // 출력형식   2018/11/28
             SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.KOREA);
-            EditText et_date = (EditText) findViewById(R.id.eOneday_period);
+            EditText et_date = (EditText) findViewById(R.id.eMonthly_end);
             et_date.setText(sdf.format(myCalendar.getTime()));
         }
 
@@ -285,7 +285,7 @@ public class EditMonthly extends AppCompatActivity {
 
                 alertDialogBuilder.setSingleChoiceItems(items, -1, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        EditText type = (EditText) findViewById(R.id.eOneday_type);
+                        EditText type = (EditText) findViewById(R.id.eMonthly_type);
                         type.setText(items[id]);
                         dialog.dismiss();
                     }
